@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const FoodItems = db.define('foodItems', {
+const FoodItem = db.define('foodItem', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      isEmpty: false
+      notEmpty: true
     }
   },
   imageUrl: {
@@ -16,4 +16,4 @@ const FoodItems = db.define('foodItems', {
   }
 })
 
-module.exports = FoodItems
+module.exports = FoodItem

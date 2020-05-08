@@ -1,10 +1,9 @@
 const User = require('./user')
-const FoodItems = require('./foodItems')
+const FoodItem = require('./foodItem')
 
-FoodItems.belongsToMany(User, {through: 'fridge'})
-User.hasMany(FoodItems, {throguh: 'fridge'})
+FoodItem.belongsToMany(User, {through: 'fridge'})
 
 module.exports = {
   User,
-  FoodItems
+  FoodItem
 }

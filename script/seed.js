@@ -1,15 +1,94 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, FoodItem} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({
+      firstName: 'Cody',
+      lastName: 'Pug',
+      email: 'cody@email.com',
+      password: '123'
+    }),
+    User.create({
+      firstName: 'Gordon',
+      lastName: 'Ramsey',
+      email: 'gordon@remy.com',
+      password: 'masterchef'
+    }),
+    User.create({
+      firstName: 'Anthony',
+      lastName: 'Bourdain',
+      email: 'anthony@remy.com',
+      password: 'noreservations'
+    }),
+    User.create({
+      firstName: 'Guy',
+      lastName: 'Fieri',
+      email: 'guy@remy.com',
+      password: 'flavortown'
+    }),
+    User.create({
+      firstName: 'Julia',
+      lastName: 'Childs',
+      email: 'julia@remy.com',
+      password: 'classic'
+    }),
+    User.create({
+      firstName: 'Ina',
+      lastName: 'Garten',
+      email: 'ina@remy.com',
+      password: 'barefootcontessa'
+    }),
+    User.create({
+      firstName: 'Bobby',
+      lastName: 'Flay',
+      email: 'bobby@remy.com',
+      password: 'throwdown'
+    }),
+    User.create({
+      firstName: 'Rachel',
+      lastName: 'Ray',
+      email: 'rachel@remy.com',
+      password: 'kitchen'
+    })
+  ])
+
+  const foodItem = await Promise.all([
+    FoodItem.create({
+      name: 'bread',
+      imageUrl:
+        'https://cdn.iconscout.com/icon/free/png-256/bread-food-diet-bake-nutrition-bakery-31126.png'
+    }),
+    FoodItem.create({
+      name: 'apple',
+      imageUrl:
+        'https://cdn.iconscout.com/icon/free/png-512/red-apple-fruit-emoj-symbol-food-30677.png'
+    }),
+    FoodItem.create({
+      name: 'carrot',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/food-2-11/128/carrot-food-vegetable-vegetables-512.png'
+    }),
+    FoodItem.create({
+      name: 'chicken',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSSR1qWRVfUCoZJRKhDFuVchQc8XQPh30LHbReowZSkRndPXH1j&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'pineapple',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/fruits-and-vegetables-filled-color/300/1474586Untitled-3-512.png'
+    }),
+    FoodItem.create({
+      name: 'milk',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/coffee-house-hand-drawn-icons/64/Coffee-House_36-512.png'
+    })
   ])
 
   console.log(`seeded ${users.length} users`)

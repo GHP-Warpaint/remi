@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "remy",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Chef Remy is at your service! Here to help with your kitchen needs.",
   "engines": {
     "node": "~12.11.1"
   },

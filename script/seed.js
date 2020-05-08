@@ -58,7 +58,7 @@ async function seed() {
     })
   ])
 
-  const foodItem = await Promise.all([
+  const foodItems = await Promise.all([
     FoodItem.create({
       name: 'bread',
       imageUrl:
@@ -91,7 +91,64 @@ async function seed() {
     })
   ])
 
+  const cody = await User.findOne({
+    where: {
+      email: 'cody@email.com'
+    }
+  })
+
+  const guy = await User.findOne({
+    where: {
+      email: 'guy@remy.com'
+    }
+  })
+
+  const ina = await User.findOne({
+    where: {
+      email: 'ina@remy.com'
+    }
+  })
+
+  const milk = await FoodItem.findOne({
+    where: {
+      name: 'milk'
+    }
+  })
+
+  const pineapple = await FoodItem.findOne({
+    where: {
+      name: 'pineapple'
+    }
+  })
+
+  const bread = await FoodItem.findOne({
+    where: {
+      name: 'bread'
+    }
+  })
+
+  const apple = await FoodItem.findOne({
+    where: {
+      name: 'apple'
+    }
+  })
+
+  await milk.addUser(cody)
+  await milk.addUser(guy)
+  await milk.addUser(ina)
+
+  await apple.addUser(ina)
+  await apple.addUser(guy)
+
+  await pineapple.addUser(cody)
+  await pineapple.addUser(guy)
+  await pineapple.addUser(ina)
+
+  await bread.addUser(cody)
+  await bread.addUser(ina)
+
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${foodItems.length}.length} users`)
   console.log(`seeded successfully`)
 }
 

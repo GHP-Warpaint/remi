@@ -11,9 +11,9 @@ export class Fridge extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.fetchAllPuzzles()
-  }
+  // componentDidMount() {
+  //   this.props.fetchAllPuzzles()
+  // }
 
   render() {
     return (

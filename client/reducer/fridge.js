@@ -4,19 +4,19 @@ import axios from 'axios'
  * ACTION TYPES
  */
 
-const GET_FOOD = 'GET_FOOD'
-const ADD_FOODITEM = 'ADD_FOOD'
+// const GET_FOOD = 'GET_FOOD'
+const ADD_FOOD = 'ADD_FOOD'
 
-const setFood = food => {
-  return {
-    type: GET_FOOD,
-    food
-  }
-}
+// const getFood = food => {
+//   return {
+//     type: GET_FOOD,
+//     food
+//   }
+// }
 
 const addFood = foodItem => {
   return {
-    type: ADD_FOODITEM,
+    type: ADD_FOOD,
     foodItem
   }
 }
@@ -32,11 +32,12 @@ export const fetchFood = food => {
   }
 }
 
-export const addFoodToFridge = food => {
+export const addFoodToFridge = foodName => {
   return async dispatch => {
     try {
-      const {name} = food
-      const data = await axios.get(`/api/foodItems`, name)
+      const {name} = foodName
+      const data = await axios.get(`/api/foodItems?name=${name}`)
+      console.log(data)
       if (data) {
         addFood(data)
       }
@@ -52,8 +53,8 @@ const initialState = {
 
 export default function fridgeReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_FOOD:
-      return {...state, food: action.food}
+    // case GET_FOOD:
+    //   return {...state, food: action.food}
     case ADD_FOOD:
       return {...state, food: [state.food, ...action.food]}
     default:

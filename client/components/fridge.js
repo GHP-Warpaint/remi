@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import fetchFood from '../store/fridge'
+import fetchFood from '../reducer/fridge'
 import AddFoodItem from './AddFoodItem'
 
 /**

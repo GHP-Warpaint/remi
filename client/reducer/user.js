@@ -8,11 +8,6 @@ const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 
 /**
- * INITIAL STATE
- */
-const defaultUser = {}
-
-/**
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
@@ -57,9 +52,14 @@ export const logout = () => async dispatch => {
 }
 
 /**
+ * INITIAL STATE
+ */
+const defaultUser = {}
+
+/**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+export default function userReducer(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
       return action.user

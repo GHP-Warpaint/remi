@@ -5,17 +5,18 @@ const {FoodItem} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
-    if (req.body) {
+    const foodName = req.query.name
+
+    if (req.query.name) {
       const foodItem = await FoodItem.findOne({
         where: {
-          name: req.body.name
+          name: foodName
         }
       })
       res.json(foodItem)
-    } else {
-      const foodItems = await FoodItem.findAll()
-      res.json(foodItems)
     }
+    const foodItems = await FoodItem.findAll()
+    res.json(foodItems)
   } catch (err) {
     next(err)
   }

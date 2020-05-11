@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addFoodToFridge} from '../reducer/fridge'
+// import { addFoodToFridge} from '../reducer/fridge'
+import {getFoodItem} from '../reducer/foodItems'
 
 class AddFoodItem extends React.Component {
   constructor() {
@@ -8,21 +9,28 @@ class AddFoodItem extends React.Component {
     this.state = {
       name: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state)
   }
 
-  handleSubmit = async event => {}
+  handleSubmit = async event => {
+    event.preventDefault()
+    console.log('in handle submit')
+    const {getFood} = this.props
+    const food = this.state
+    await getFood(food)
+  }
 
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>Add Food Item</label>
           <input
             type="text"
@@ -37,4 +45,16 @@ class AddFoodItem extends React.Component {
   }
 }
 
-export default AddFoodItem
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    getFood: foodName => dispatch(getFoodItem(foodName))
+  }
+}
+
+export default connect(mapState, mapDispatch)(AddFoodItem)

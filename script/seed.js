@@ -1,8 +1,9 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, FoodItem} = require('../server/db/models')
+const {User, FoodItem, Fridge} = require('../server/db/models')
 
+// eslint-disable-next-line max-statements
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -91,9 +92,42 @@ async function seed() {
     })
   ])
 
+  const fridges = await Promise.all([
+    Fridge.create({
+      name: 'cody-fridge'
+    }),
+    Fridge.create({
+      name: 'gordon-fridge'
+    }),
+    Fridge.create({
+      name: 'anthony-fridge'
+    }),
+    Fridge.create({
+      name: 'guy-fridge'
+    }),
+    Fridge.create({
+      name: 'julia-fridge'
+    }),
+    Fridge.create({
+      name: 'ina-fridge'
+    })
+  ])
+
   const cody = await User.findOne({
     where: {
       email: 'cody@email.com'
+    }
+  })
+
+  const gordon = await User.findOne({
+    where: {
+      email: 'gordon@remy.com'
+    }
+  })
+
+  const anthony = await User.findOne({
+    where: {
+      email: 'anthony@remy.com'
     }
   })
 
@@ -103,11 +137,60 @@ async function seed() {
     }
   })
 
+  const julia = await User.findOne({
+    where: {
+      email: 'julia@remy.com'
+    }
+  })
+
   const ina = await User.findOne({
     where: {
       email: 'ina@remy.com'
     }
   })
+
+  const codyFridge = await Fridge.findOne({
+    where: {
+      name: 'cody-fridge'
+    }
+  })
+
+  const gordonFridge = await Fridge.findOne({
+    where: {
+      name: 'gordon-fridge'
+    }
+  })
+
+  const anthonyFridge = await Fridge.findOne({
+    where: {
+      name: 'anthony-fridge'
+    }
+  })
+
+  const guyFridge = await Fridge.findOne({
+    where: {
+      name: 'guy-fridge'
+    }
+  })
+
+  const juliaFridge = await Fridge.findOne({
+    where: {
+      name: 'julia-fridge'
+    }
+  })
+
+  const inaFridge = await Fridge.findOne({
+    where: {
+      name: 'ina-fridge'
+    }
+  })
+
+  await cody.setFridge(codyFridge)
+  await gordon.setFridge(gordonFridge)
+  await anthony.setFridge(anthonyFridge)
+  await guy.setFridge(guyFridge)
+  await julia.setFridge(juliaFridge)
+  await ina.setFridge(inaFridge)
 
   const milk = await FoodItem.findOne({
     where: {
@@ -133,19 +216,19 @@ async function seed() {
     }
   })
 
-  await milk.addUser(cody)
-  await milk.addUser(guy)
-  await milk.addUser(ina)
+  await milk.addFridge(codyFridge)
+  await milk.addFridge(guyFridge)
+  await milk.addFridge(inaFridge)
 
-  await apple.addUser(ina)
-  await apple.addUser(guy)
+  await apple.addFridge(inaFridge)
+  await apple.addFridge(guyFridge)
 
-  await pineapple.addUser(cody)
-  await pineapple.addUser(guy)
-  await pineapple.addUser(ina)
+  await pineapple.addFridge(codyFridge)
+  await pineapple.addFridge(guyFridge)
+  await pineapple.addFridge(inaFridge)
 
-  await bread.addUser(cody)
-  await bread.addUser(ina)
+  await bread.addFridge(codyFridge)
+  await bread.addFridge(inaFridge)
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${foodItems.length}.length} users`)

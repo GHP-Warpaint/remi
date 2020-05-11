@@ -5,11 +5,19 @@ import axios from 'axios'
  */
 
 const GET_FOOD = 'GET_FOOD'
+const ADD_FOODITEM = 'ADD_FOOD'
 
 const setFood = food => {
   return {
     type: GET_FOOD,
     food
+  }
+}
+
+const addFood = foodItem => {
+  return {
+    type: ADD_FOODITEM,
+    foodItem
   }
 }
 
@@ -24,14 +32,30 @@ export const fetchFood = food => {
   }
 }
 
+export const addFoodToFridge = food => {
+  return async dispatch => {
+    try {
+      const {name} = food
+      const data = await axios.get(`/api/foodItems`, name)
+      if (data) {
+        addFood(data)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 const initialState = {
   food: []
 }
 
-export default function campusesReducer(state = initialState, action) {
+export default function fridgeReducer(state = initialState, action) {
   switch (action.type) {
     case SET_FOOD:
       return {...state, food: action.food}
+    case ADD_FOOD:
+      return {...state, food: [state.food, ...action.food]}
     default:
       return state
   }

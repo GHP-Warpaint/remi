@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import fetchFood from '../store/fridge'
+import AddFoodItem from './AddFoodItem'
 
 /**
  * COMPONENT
@@ -19,6 +20,8 @@ export class Fridge extends React.Component {
     return (
       <div>
         <h1>Welcome to the fridge!</h1>
+
+        <AddFoodItem />
       </div>
     )
   }

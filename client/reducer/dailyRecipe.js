@@ -10,7 +10,7 @@ export const fetchDailyRecipe = dailyrecipe => ({
 export const getDailyRecipe = () => {
   return async dispatch => {
     try {
-      const {data} = await axios.get(`/api/dailyrecipe`)
+      const {data} = await axios.get(`/api/dailyRecipes`)
       dispatch(fetchDailyRecipe(data))
     } catch (error) {
       console.error(error)

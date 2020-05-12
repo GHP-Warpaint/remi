@@ -7,12 +7,12 @@ class DailyRecipe extends Component {
   //   super()
   // }
   componentDidMount() {
-    this.props.dailyRecipeInfo()
+    this.props.getDailyRecipeInfo()
   }
 
   render() {
     console.log('DAILY RECIPE PROPS', this.props)
-    console.log('dailyRecipeInfo', this.props.dailyRecipeInfo)
+    console.log('dailyRecipeInfo', this.props.dailyRec)
     return (
       <div>
         {/* <h1>Our Suggested Recipe of the Day!</h1>
@@ -29,7 +29,7 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  dailyRecipeInfo: () => dispatch(getDailyRecipe())
+  getDailyRecipeInfo: () => dispatch(getDailyRecipe())
 })
 
 export default connect(mapState, mapDispatch)(DailyRecipe)

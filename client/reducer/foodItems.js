@@ -53,7 +53,7 @@ export const addFoodItemToFridge = food => {
       const newFoodItem = await axios.post(`/api/foodItems`, {
         name: food.name
       })
-      console.log('inthunk', newFoodItem.data.foodItemId)
+      console.log('inthunk', newFoodItem)
     } catch (error) {
       console.error(error)
     }

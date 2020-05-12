@@ -20,7 +20,6 @@ export class Fridge extends React.Component {
     return (
       <div>
         <h1>Welcome to the fridge!</h1>
-
         <AddFoodItem />
       </div>
     )

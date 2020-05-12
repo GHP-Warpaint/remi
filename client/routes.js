@@ -7,9 +7,6 @@ import Recipe from './components/recipe'
 import Fridge from './components/fridge'
 import {me} from './store'
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()

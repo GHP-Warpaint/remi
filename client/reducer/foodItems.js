@@ -38,7 +38,6 @@ export const getFoodItem = food => {
           name: name
         }
       })
-
       console.log('in thunk', foodItem)
       const foodObject = foodItem.data
       console.log(foodObject)
@@ -51,13 +50,10 @@ export const getFoodItem = food => {
 export const addFoodItemToFridge = food => {
   return async dispatch => {
     try {
-      const foodItem = await axios.post(`/api/foodItems`, {
+      const newFoodItem = await axios.post(`/api/foodItems`, {
         name: food.name
       })
-
-      console.log('in thunk', foodItem)
-      const foodObject = foodItem.data
-      console.log(foodObject)
+      console.log('inthunk', newFoodItem.data.foodItemId)
     } catch (error) {
       console.error(error)
     }

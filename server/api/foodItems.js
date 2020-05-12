@@ -4,11 +4,12 @@ const {FoodItem, User} = require('../db/models')
 //get foodItems
 router.get('/', async (req, res, next) => {
   try {
-    const foodName = req.query.name
-    if (req.query.name) {
+    const foodId = req.query.id
+    console.log(req.query)
+    if (req.query.id) {
       const foodItem = await FoodItem.findOne({
         where: {
-          name: foodName
+          id: foodId
         }
       })
       res.json(foodItem)
@@ -24,16 +25,20 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const foodName = req.body.name
-    const userId = 8
-    //const userId = req.session.id
+    const userId = req.session.passport.user
     const user = await User.findByPk(userId)
     const food = await FoodItem.findOne({
       where: {
         name: foodName
       }
     })
-    const [fridge] = await food.addUser(user)
-    res.json(fridge.dataValues)
+    const data = await food.addUser(user)
+
+    console.log(data)
+
+    const fridgeItem = data[0].dataValues
+
+    res.json(fridgeItem)
   } catch (error) {
     console.error(error)
   }

@@ -6,17 +6,15 @@ import {fetchRecipe, sendRecipe} from '../store/recipe'
 class Recipe extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      title: '',
-      imgUrl: '',
-      steps: [],
-      ingredients: []
-    }
     this.handleClick = this.handleClick.bind(this)
   }
+
+  componentDidMount() {
+    console.log('RECIPE PROPS=>', this.props)
+  }
+
   handleClick(event) {
     event.preventDefault()
-    console.log('RECIPE PROPS=>', this.props)
     this.props.fetchRecipe()
   }
   render() {
@@ -51,7 +49,9 @@ class Recipe extends Component {
 }
 
 const mapState = state => {
-  return {fridgeItems: state.items} //an array of items
+  return {
+    fridgeItems: state
+  } //an array of items
 }
 
 const mapDispatch = dispatch => ({

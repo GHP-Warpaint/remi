@@ -17,30 +17,47 @@ const getFood = food => {
   }
 }
 
-export const fetchFoodItemsFromServer = () => {
+// export const fetchFoodItemsFromServer = () => {
+//   return async dispatch => {
+//     try {
+//       const data = await axios.get(`/api/foodItems`)
+//       console.log(data)
+//       getFoodItems(data)
+//     } catch (error) {
+//       console.error(error)
+//     }
+//   }
+// }
+
+export const getFoodItem = food => {
   return async dispatch => {
     try {
-      const data = await axios.get(`/api/foodItems`)
-      console.log(data)
-      getFoodItems(data)
+      const {name} = food
+      const foodItem = await axios.get(`/api/foodItems`, {
+        params: {
+          name: name
+        }
+      })
+
+      console.log('in thunk', foodItem)
+      const foodObject = foodItem.data
+      console.log(foodObject)
     } catch (error) {
       console.error(error)
     }
   }
 }
 
-export const getFoodItem = (food, user) => {
+export const addFoodItemToFridge = food => {
   return async dispatch => {
     try {
-      const {name} = food
-      const {userId} = user
-      const data = await axios.get(`/api/foodItems`, {
-        params: {
-          name: name
-        }
+      const foodItem = await axios.post(`/api/foodItems`, {
+        name: food.name
       })
-      const foodObject = data.data
-      getFoodItems(data.data)
+
+      console.log('in thunk', foodItem)
+      const foodObject = foodItem.data
+      console.log(foodObject)
     } catch (error) {
       console.error(error)
     }

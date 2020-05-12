@@ -11,20 +11,17 @@ class DailyRecipe extends Component {
   }
 
   render() {
-    console.log('dailyRecipeInfo', this.props.dailyRec)
     return (
       <div>
         <h1>Our Suggested Recipe of the Day!</h1>
         {this.props.dailyRec.dailyRecipe
           ? this.props.dailyRec.dailyRecipe.map(recipe => {
-              console.log('recipe', recipe)
               return (
                 <div key={recipe.id}>
                   <h3>{recipe.title}</h3>
                   <img src={recipe.imageUrl} height="300" />
                   <p>
-                    Check out the recipe here: <br />{' '}
-                    <a href={recipe.url}>{recipe.url}</a>
+                    Check out the recipe <a href={recipe.url}>Here</a>
                   </p>
                 </div>
               )

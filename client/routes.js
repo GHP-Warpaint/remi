@@ -3,12 +3,9 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
-import {Fridge} from './components/fridge'
+import Fridge from './components/fridge'
 import {me} from './store'
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()

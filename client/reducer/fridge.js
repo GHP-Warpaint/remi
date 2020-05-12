@@ -2,18 +2,15 @@ import axios from 'axios'
 
 const GET_FOOD = 'GET_FOOD'
 
-const setFood = food => {
-  return {
-    type: GET_FOOD,
-    food
-  }
-}
+const setFood = food => ({
+  type: GET_FOOD,
+  food
+})
 
-export const fetchFood = food => {
+export const fetchFood = () => {
   return async dispatch => {
     try {
       const {data} = await axios.get('/api/fridge')
-      console.log(data)
       dispatch(setFood(data))
     } catch (error) {
       dispatch(console.error(error))

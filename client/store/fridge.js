@@ -1,9 +1,5 @@
 import axios from 'axios'
 
-/**
- * ACTION TYPES
- */
-
 const GET_FOOD = 'GET_FOOD'
 
 const setFood = food => {
@@ -16,7 +12,8 @@ const setFood = food => {
 export const fetchFood = food => {
   return async dispatch => {
     try {
-      const {data} = await axios.get('INSERT API HERE')
+      const {data} = await axios.get('/api/fridge')
+      console.log(data)
       dispatch(setFood(data))
     } catch (error) {
       dispatch(console.error(error))
@@ -28,9 +25,9 @@ const initialState = {
   food: []
 }
 
-export default function campusesReducer(state = initialState, action) {
+export default function fridgeReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_FOOD:
+    case GET_FOOD:
       return {...state, food: action.food}
     default:
       return state

@@ -12,13 +12,14 @@ export class Fridge extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllPuzzles()
+    this.props.fetchFood()
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
-        <h1>Welcome to the fridge!</h1>
+        <h1>WELCOME TO THE FRIDGE!</h1>
       </div>
     )
   }

@@ -11,10 +11,28 @@ class DailyRecipe extends Component {
   }
 
   render() {
+    const randomNum = this.props.dailyRec.dailyRecipe.length
+      ? Math.floor(Math.random() * this.props.dailyRec.dailyRecipe.length)
+      : 6
+    const randomChoice = this.props.dailyRec.dailyRecipe[1]
+      ? this.props.dailyRec.dailyRecipe[randomNum]
+      : 'loads'
     return (
       <div>
         <h1>Our Suggested Recipe of the Day!</h1>
-        {this.props.dailyRec.dailyRecipe
+        {randomChoice !== 'loads' ? (
+          <div>
+            <h3>{randomChoice.title}</h3>
+            <img src={randomChoice.imageUrl} height="300" />
+            <p>
+              Check out the recipe <a href={randomChoice.url}>Here</a>
+            </p>
+          </div>
+        ) : (
+          'loading'
+        )}
+        {/* the following returns a list of all available daily recipes */}
+        {/* {this.props.dailyRec.dailyRecipe
           ? this.props.dailyRec.dailyRecipe.map(recipe => {
               return (
                 <div key={recipe.id}>
@@ -26,7 +44,7 @@ class DailyRecipe extends Component {
                 </div>
               )
             })
-          : 'loading...'}
+          : 'loading...'} */}
       </div>
     )
   }

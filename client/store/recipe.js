@@ -25,11 +25,24 @@ const initialRecipeState = {
 
 export const fetchRecipe = () => async dispatch => {
   try {
-    const {data} = await axios
-      .get
-      //I really don't know what to put here
-      ()
-    dispatch(getRecipe(data))
+    const API_KEY = '2905bb46b5ea4b48aa1c8c6e3a434a6f'
+    const INGREDIENT_LIST = ['bananas', 'apples', 'cheese', 'crackers']
+    let requestString = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=`
+    // const ingredientsString = INGREDIENT_LIST.map(ingredient =>
+    //    ingredient + ',+'
+    // );
+    const ingredientsString = INGREDIENT_LIST.join(',+')
+    requestString = requestString + ingredientsString
+    console.log('THUNK REQUEST STRING=>', requestString)
+    const returnReq = await axios.get(requestString)
+    console
+      .log('THUNK RETURN REQUEST', returnReq)
+      // .header("X-RapidAPI-Key",  API_KEY)
+      .end(function(result) {
+        if (result.status === 200) {
+          console.log('RESULT BODY', result.body)
+        }
+      })
   } catch (err) {
     console.error(err)
   }

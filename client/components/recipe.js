@@ -12,43 +12,46 @@ class Recipe extends Component {
       steps: [],
       ingredients: []
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
-  handleSubmit(event) {
+  handleClick(event) {
     event.preventDefault()
-    //some other things that I haven't figured out to send this to alexa
+    console.log('RECIPE PROPS=>', this.props)
+    this.props.fetchRecipe()
   }
   render() {
+    //props = fridge ingredients
+    //onclick, send ingredients to api, recipe must include fridge ingredients
     return (
       <div id="recipe">
-        <h1>{this.state.title}</h1>
+        <button type="button" onClick={this.handleClick}>
+          Get my Recipe
+        </button>
+        {/* <h1>{this.props.title}</h1>
 
-        <img src={this.state.imgUrl} id="recipeImg" />
+        <img src={this.props.imgUrl} id="recipeImg" />
 
         <div id="ingredients">
-          {this.state.ingredients.map(item => (
+          {this.props.ingredients.map(item => (
             <div key={item.name}>{item.name}</div>
           ))}
         </div>
 
         <div id="steps">
-          {this.state.steps.map((step, index) => (
+          {this.props.steps.map((step, index) => (
             <div key={step}>
               {index}
               {step}
             </div>
           ))}
-        </div>
-        <button type="submit" onSubmit={this.handleSubmit}>
-          Send to Alexa
-        </button>
+        </div> */}
       </div>
     )
   }
 }
 
 const mapState = state => {
-  return {recipe: state.recipe}
+  return {fridgeItems: state.items} //an array of items
 }
 
 const mapDispatch = dispatch => ({

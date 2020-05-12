@@ -4,22 +4,18 @@ import {Link} from 'react-router-dom'
 import {fetchFood} from '../reducer/fridge'
 import AddFoodItem from './AddFoodItem'
 
-/**
- * COMPONENT
- */
 class Fridge extends React.Component {
   // constructor(props) {
   //   super(props)
   // }
 
   componentDidMount() {
-    console.log('beofre mount', this.props)
     this.props.fetchFood()
-    console.log('after mount', this.props)
   }
 
   render() {
     if (!this.props.food) return <h1>Loading</h1>
+
     return (
       <div id="fridge">
         <h1>WELCOME TO THE FRIDGE!</h1>
@@ -37,10 +33,6 @@ class Fridge extends React.Component {
     )
   }
 }
-
-/**
- * CONTAINER
- */
 
 const mapState = state => {
   return {

@@ -1,33 +1,65 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 // import {Link} from 'react-router-dom'
-import {fetchRecipe, sendRecipe} from '../store/recipe'
+import {fetchRecipe, sendRecipe, fetchRecipeDirections} from '../reducer/recipe'
+import {fetchFood} from '../reducer/fridge'
 
 class Recipe extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
+    this.cookRecipe = this.cookRecipe.bind(this)
   }
 
   componentDidMount() {
-    console.log('RECIPE PROPS=>', this.props)
+    this.props.fetchFood()
   }
 
   handleClick(event) {
     event.preventDefault()
-    this.props.fetchRecipe()
+    const ingredients = this.props.food.map(foodItem => {
+      return foodItem.name
+    })
+    this.props.fetchRecipe(ingredients)
   }
+
+  cookRecipe(event) {
+    event.preventDefault()
+    const id = this.props.recipe[0].id
+    this.props.fetchDirections(id)
+    console.log(this.props.recipe.directions)
+  }
+
   render() {
-    //props = fridge ingredients
-    //onclick, send ingredients to api, recipe must include fridge ingredients
+    if (!this.props.recipe.length)
+      return (
+        <div>
+          <button type="button" onClick={this.handleClick}>
+            Get my Recipe
+          </button>
+        </div>
+      )
+
     return (
       <div id="recipe">
-        <button type="button" onClick={this.handleClick}>
-          Get my Recipe
+        <h1>{this.props.recipe[0].title}</h1>
+        <img src={this.props.recipe[0].image} id="recipeImg" />
+        <button type="button" onClick={this.cookRecipe}>
+          Cook this Recipe!
         </button>
-        {/* <h1>{this.props.title}</h1>
 
-        <img src={this.props.imgUrl} id="recipeImg" />
+        {this.props.recipe.directions &&
+          console.log(this.props.recipe.directions)
+
+        // this.props.recipe.directions[0].steps.map(
+        //   steps => {
+        //     console.log(steps)
+        //     return <h1 key={steps.number}>{steps.step}</h1>
+        //   }
+        // )
+        }
+
+        {/*
 
         <div id="ingredients">
           {this.props.ingredients.map(item => (
@@ -50,13 +82,16 @@ class Recipe extends Component {
 
 const mapState = state => {
   return {
-    fridgeItems: state
+    food: state.fridge.food,
+    recipe: state.recipe.recipe
   } //an array of items
 }
 
 const mapDispatch = dispatch => ({
-  fetchRecipe: () => dispatch(fetchRecipe()),
-  sendRecipe: () => dispatch(sendRecipe())
+  fetchRecipe: ingredients => dispatch(fetchRecipe(ingredients)),
+  fetchDirections: id => dispatch(fetchRecipeDirections(id)),
+  sendRecipe: () => dispatch(sendRecipe()),
+  fetchFood: () => dispatch(fetchFood())
 })
 
 export default connect(mapState, mapDispatch)(Recipe)

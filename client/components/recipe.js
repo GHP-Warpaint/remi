@@ -63,14 +63,7 @@ class Recipe extends Component {
           ))}
         </div>
 
-        <div id="steps">
-          {this.props.steps.map((step, index) => (
-            <div key={step}>
-              {index}
-              {step}
-            </div>
-          ))}
-        </div> */}
+         */}
       </div>
     )
   }

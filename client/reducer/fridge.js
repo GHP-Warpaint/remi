@@ -19,7 +19,6 @@ export const fetchFood = () => {
   return async dispatch => {
     try {
       const {data} = await axios.get('/api/fridge')
-      console.log(data)
       dispatch(setFood(data))
     } catch (error) {
       dispatch(console.error(error))

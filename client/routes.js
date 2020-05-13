@@ -2,12 +2,11 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, Fridge} from './components'
+import {Login, Signup, UserHome} from './components'
+import Recipe from './components/recipe'
+import Fridge from './components/fridge'
 import {me} from './store'
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
@@ -21,11 +20,12 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/fridge" component={Fridge} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route path="/recipe" component={Recipe} />
+            <Route path="/fridge" component={Fridge} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

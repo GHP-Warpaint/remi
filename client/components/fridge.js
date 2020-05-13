@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchFood, deleteFood} from '../store/fridge'
+import {fetchFood, deleteFood} from '../reducer/fridge'
 
 /**
  * COMPONENT
@@ -24,6 +24,7 @@ export class Fridge extends React.Component {
     return (
       <div id="fridge">
         <h1>WELCOME TO THE FRIDGE!</h1>
+        <AddFoodItem />
         <div>
           {this.props.food &&
             this.props.food.map(food => (
@@ -38,10 +39,6 @@ export class Fridge extends React.Component {
     )
   }
 }
-
-/**
- * CONTAINER
- */
 
 const mapState = state => {
   return {

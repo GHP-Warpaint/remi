@@ -6,7 +6,6 @@ import {Login, Signup, UserHome, Fridge, MyAccount} from './components'
 
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
-import Fridge from './components/fridge'
 
 import {me} from './store'
 

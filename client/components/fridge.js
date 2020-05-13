@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchFood} from '../store/fridge'
+import {fetchFood, deleteFood} from '../reducer/fridge'
 
 /**
  * COMPONENT
@@ -9,31 +9,29 @@ import {fetchFood} from '../store/fridge'
 export class Fridge extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   food: [],
-    // }
+    this.removeFood = this.removeFood.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchFood()
-    console.log(this.props)
-    console.log('Comp did mount: ^^^^Props, vvvv State')
-    console.log(this.state)
+  }
+
+  removeFood(id) {
+    this.props.deleteFood(id)
   }
 
   render() {
-    console.log(this.props)
-    console.log('Render: ^^^^Props, vvvv State')
-    console.log(this.state)
     return (
       <div id="fridge">
         <h1>WELCOME TO THE FRIDGE!</h1>
+        {/* <AddFoodItem /> */}
         <div>
           {this.props.food &&
             this.props.food.map(food => (
               <div key={food.id} className="item">
                 <img src={food.imageUrl} height="100px" width="auto" />
                 {food.name}
+                <button onClick={() => this.removeFood(food.id)}> X</button>
               </div>
             ))}
         </div>
@@ -41,10 +39,6 @@ export class Fridge extends React.Component {
     )
   }
 }
-
-/**
- * CONTAINER
- */
 
 const mapState = state => {
   return {
@@ -54,7 +48,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    fetchFood: () => dispatch(fetchFood())
+    fetchFood: () => dispatch(fetchFood()),
+    deleteFood: id => dispatch(deleteFood(id))
   }
 }
 

@@ -139,6 +139,61 @@ async function seed() {
         'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2016/10/5/1/AS0708H_Chocolate-Hazelnut-Babka-French-Toast-with-Caramelized-Bananas_s4x3.jpg.rend.hgtvcom.966.725.suffix/1547062357227.jpeg',
       url:
         'https://www.foodnetwork.com/recipes/bobby-flay/chocolate-hazelnut-babka-french-toast-with-caramelized-bananas-3513253'
+    }),
+    DailyRecipe.create({
+      title: 'Waffles with Blueberry Compote and Lemon Ricotta Cream',
+      imageUrl:
+        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/12/27/1/FNM_010118-Waffles-with-Blueberry-Compote_s4x3.jpg.rend.hgtvcom.966.725.suffix/1514485377254.jpeg',
+      url:
+        'https://www.foodnetwork.com/recipes/bobby-flay/waffles-withblueberry-compoteand-lemon-ricotta-cream-4622249'
+    }),
+    DailyRecipe.create({
+      title: 'Acai Breakfast Bowl',
+      imageUrl:
+        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2014/12/12/0/cc_acai-breakfast-bowl-recipe_s4x3.jpg.rend.hgtvcom.966.725.suffix/1418418212045.jpeg',
+      url:
+        'https://www.foodnetwork.com/recipes/food-network-kitchen/acai-breakfast-bowl-3363448'
+    }),
+    DailyRecipe.create({
+      title: 'Chocolate Lava Cake',
+      imageUrl:
+        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2014/2/19/1/WU0701H_Molten-Chocolate-Cakes_s4x3.jpg.rend.hgtvcom.966.725.suffix/1485880987811.jpeg',
+      url: 'https://www.foodnetwork.com/recipes/chocolate-lava-cakes-2312421'
+    }),
+    DailyRecipe.create({
+      title: 'Pot Roast',
+      imageUrl:
+        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/1/25/0/WU0105H_Pot-Roast_s4x3.jpg.rend.hgtvcom.966.725.suffix/1387299383780.jpeg',
+      url:
+        'https://www.foodnetwork.com/recipes/ree-drummond/perfect-pot-roast-recipe-2118771'
+    }),
+    DailyRecipe.create({
+      title: 'Oven-Baked Salmon',
+      imageUrl:
+        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/CN1B01_oven-baked-salmon_s4x3.jpg.rend.hgtvcom.966.725.suffix/1382545141944.jpeg',
+      url:
+        'https://www.foodnetwork.com/recipes/oven-baked-salmon-recipe-1911951'
+    }),
+    DailyRecipe.create({
+      title: 'Spring Vegetable Fettuccine Alfredo',
+      imageUrl:
+        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/1/9/6/FNK_Spring-Vegetable-Alfredo_s4x3.jpg.rend.hgtvcom.966.725.suffix/1484859771784.jpeg',
+      url:
+        'https://www.foodnetwork.com/recipes/food-network-kitchen/spring-vegetable-fettuccine-alfredo-3577686'
+    }),
+    DailyRecipe.create({
+      title: 'Sausage Pizza With Spinach Salad',
+      imageUrl:
+        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/3/8/0/FNM_040118-Sausage-Pizza-with-Spinach-Salad_s4x3.jpg.rend.hgtvcom.966.725.suffix/1520543569719.jpeg',
+      url:
+        'https://www.foodnetwork.com/recipes/food-network-kitchen/sausage-pizza-with-spinach-salad-5126657'
+    }),
+    DailyRecipe.create({
+      title: 'Tacos de Carne Asada',
+      imageUrl:
+        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/4/22/0/CCMP1C20_Beef-Tacos_s4x3.jpg.rend.hgtvcom.966.725.suffix/1371597614473.jpeg',
+      url:
+        'https://www.foodnetwork.com/recipes/beef-tacos-tacos-de-carne-asada-recipe-1939460'
     })
   ])
 
@@ -199,8 +254,8 @@ async function seed() {
   await bread.addUser(ina)
 
   console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${foodItems.length}.length food items`)
-  console.log(`seeded ${dailyRecipes.length}.length daily recipes`)
+  console.log(`seeded ${foodItems.length} food items`)
+  console.log(`seeded ${dailyRecipes.length} daily recipes`)
   console.log(`seeded successfully`)
 }
 

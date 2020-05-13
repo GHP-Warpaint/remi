@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {me} from '../store/user'
+import {me} from '../reducer/user'
 
 export class Fridge extends React.Component {
   constructor(props) {

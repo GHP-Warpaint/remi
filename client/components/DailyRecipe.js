@@ -25,7 +25,14 @@ class DailyRecipe extends Component {
             <h3>{randomChoice.title}</h3>
             <img src={randomChoice.imageUrl} height="300" />
             <p>
-              Check out the recipe <a href={randomChoice.url}>Here</a>
+              Check out the recipe{' '}
+              <a
+                href={randomChoice.url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Here
+              </a>
             </p>
           </div>
         ) : (

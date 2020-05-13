@@ -27,13 +27,9 @@ router.get('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    id = req.session.passport.user
+    const id = req.session.passport.user
     const currentUser = await User.findByPk(id)
-    const deleteFood = await currentUser.getFoodItems({
-      where: {id: req.params.id}
-    })
-    console.log(deleteFood.fridge)
-
+    await currentUser.removeFoodItem(req.params.id)
     res.sendStatus(204)
   } catch (err) {
     next(err)

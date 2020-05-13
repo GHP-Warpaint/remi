@@ -5,6 +5,7 @@
 
 body {
   font-family: sans-serif;
+  text-align: center;
 }
 
 a {
@@ -14,9 +15,17 @@ a {
 label {
   display: block;
 }
+.headlinerImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+nav div {
+  text-align: justify;
+  display: inline-block;
+}
 
 nav a {
-  display: inline-block;
   margin: 1em;
 }
 

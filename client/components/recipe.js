@@ -44,6 +44,7 @@ class Recipe extends Component {
       <div id="recipe">
         <h1>{this.props.recipe[0].title}</h1>
         <img src={this.props.recipe[0].image} id="recipeImg" />
+        <br />
         <button type="button" onClick={this.cookRecipe}>
           Cook this Recipe!
         </button>

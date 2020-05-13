@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import { addFoodToFridge} from '../reducer/fridge'
-import {getFoodItem, addFoodItemToFridge} from '../reducer/foodItems'
+import {fetchFood, addFoodItem} from '../reducer/fridge'
+// import {getFoodItem, addFoodItemToFridge} from '../reducer/foodItems'
 
 class AddFoodItem extends React.Component {
   constructor() {
@@ -52,8 +52,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getFood: foodName => dispatch(getFoodItem(foodName)),
-    addFood: foodName => dispatch(addFoodItemToFridge(foodName))
+    addFood: foodName => dispatch(addFoodItem(foodName)),
+    fetchFood: () => dispatch(fetchFood())
   }
 }
 

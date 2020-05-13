@@ -2,6 +2,8 @@ const router = require('express').Router()
 const {FoodItem, User} = require('../db/models')
 module.exports = router
 
+//mounted on /fridge
+//getting contents of fridge by user
 router.get('/', async (req, res, next) => {
   try {
     const id = req.session.passport.user
@@ -12,6 +14,9 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+// i don't know if this is meant to lead somewhere other than fridge
+//does this path have the same goal as above?
 router.get('/:id', async (req, res, next) => {
   try {
     const id = req.session.passport.user
@@ -33,5 +38,32 @@ router.delete('/:id', async (req, res, next) => {
     res.sendStatus(204)
   } catch (err) {
     next(err)
+  }
+})
+
+//add food item to fridge
+//having issues with this route
+router.post('/add', async (req, res, next) => {
+  try {
+    const foodName = req.body.name
+    console.log('----------------------------')
+    console.log('in API foodName is ', foodName)
+    console.log('----------------------------')
+    const userId = req.session.passport.user
+    const user = await User.findByPk(userId)
+    const food = await FoodItem.findOne({
+      where: {
+        name: foodName
+      }
+    })
+    food.addUser(user)
+    console.log('----------------------------')
+    console.log('in api post', food.dataValues)
+    console.log('----------------------------')
+    // const fridgeItem = data[0].dataValues
+
+    res.json(food.dataValues)
+  } catch (error) {
+    console.error(error)
   }
 })

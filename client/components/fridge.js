@@ -1,33 +1,25 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {fetchFood} from '../store/fridge'
+import {fetchFood} from '../reducer/fridge'
+import AddFoodItem from './AddFoodItem'
 
-/**
- * COMPONENT
- */
-export class Fridge extends React.Component {
-  constructor(props) {
-    super(props)
-    // this.state = {
-    //   food: [],
-    // }
-  }
+class Fridge extends React.Component {
+  // constructor(props) {
+  //   super(props)
+  // }
 
   componentDidMount() {
     this.props.fetchFood()
-    console.log(this.props)
-    console.log('Comp did mount: ^^^^Props, vvvv State')
-    console.log(this.state)
   }
 
   render() {
-    console.log(this.props)
-    console.log('Render: ^^^^Props, vvvv State')
-    console.log(this.state)
+    if (!this.props.food) return <h1>Loading</h1>
+
     return (
       <div id="fridge">
         <h1>WELCOME TO THE FRIDGE!</h1>
+        <AddFoodItem />
         <div>
           {this.props.food &&
             this.props.food.map(food => (
@@ -41,10 +33,6 @@ export class Fridge extends React.Component {
     )
   }
 }
-
-/**
- * CONTAINER
- */
 
 const mapState = state => {
   return {

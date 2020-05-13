@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import { addFoodToFridge} from '../reducer/fridge'
-import {getFoodItem, addFoodItemToFridge} from '../reducer/foodItems'
+import {fetchFood, addFoodItemToFridge} from '../reducer/fridge'
+// import {getFoodItem, addFoodItemToFridge} from '../reducer/foodItems'
 
 class AddFoodItem extends React.Component {
   constructor() {
@@ -20,7 +20,9 @@ class AddFoodItem extends React.Component {
   }
 
   handleSubmit = async event => {
-    event.preventDefault()
+    // event.preventDefault()
+    console.log('State in submit', this.state)
+    console.log('props in sumbit', this.props)
     const {addFood} = this.props
     const food = this.state
     await addFood(food)
@@ -52,7 +54,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getFood: foodName => dispatch(getFoodItem(foodName)),
+    // getFood: (foodName) => dispatch(getFoodItem(foodName)),
+    fetchFood: () => dispatch(fetchFood()),
     addFood: foodName => dispatch(addFoodItemToFridge(foodName))
   }
 }

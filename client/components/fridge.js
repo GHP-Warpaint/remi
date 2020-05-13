@@ -2,12 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchFood} from '../reducer/fridge'
+// import {getFoodItem, addFoodItemToFridge} from '../reducer/foodItems'
 import AddFoodItem from './AddFoodItem'
 
 class Fridge extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props)
+    this.state = []
+  }
 
   componentDidMount() {
     this.props.fetchFood()
@@ -15,7 +17,8 @@ class Fridge extends React.Component {
 
   render() {
     if (!this.props.food) return <h1>Loading</h1>
-
+    console.log('State dot food in render', this.state.food)
+    console.log('props in render', this.props)
     return (
       <div id="fridge">
         <h1>WELCOME TO THE FRIDGE!</h1>
@@ -35,6 +38,7 @@ class Fridge extends React.Component {
 }
 
 const mapState = state => {
+  console.log('map State fridge compon', state)
   return {
     food: state.fridge.food
   }

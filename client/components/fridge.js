@@ -24,7 +24,7 @@ export class Fridge extends React.Component {
     return (
       <div id="fridge">
         <h1>WELCOME TO THE FRIDGE!</h1>
-        <AddFoodItem />
+        {/* <AddFoodItem /> */}
         <div>
           {this.props.food &&
             this.props.food.map(food => (

@@ -24,6 +24,7 @@ class AddFoodItem extends React.Component {
     const {addFood} = this.props
     const food = this.state
     await addFood(food)
+    this.setState({name: ''})
   }
 
   render() {

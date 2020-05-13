@@ -1,4 +1,5 @@
 import axios from 'axios'
+require('../../secrets')
 //action creators
 const GET_RECIPE = 'GET_RECIPE'
 const SEND_TO_ALEXA = 'SEND_TO_ALEXA'
@@ -29,27 +30,28 @@ const initialRecipeState = {
 
 export const fetchRecipe = ingredients => async dispatch => {
   try {
-    const API_KEY = '2905bb46b5ea4b48aa1c8c6e3a434a6f'
-    const INGREDIENT_LIST = ingredients
-    let requestString = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=`
+    const apiKey = process.env.SPOON_API_KEY
+    console.log(apiKey)
+    const ingredientList = ingredients
+    let requestString = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=`
 
-    const ingredientsString = INGREDIENT_LIST.join(',+')
+    const ingredientsString = ingredientList.join(',+')
     requestString = requestString + ingredientsString + '&number=1&ranking=2'
 
     //console.log('THUNK REQUEST STRING=>', requestString)
-    // const returnReq = await axios.get(requestString)
-    //console.log('THUNK RETURN REQUEST', returnReq)
+    const returnReq = await axios.get(requestString)
+    console.log('THUNK RETURN REQUEST', returnReq)
 
     //just for testing
-    const returnReq = {
-      data: [
-        {
-          id: 284543,
-          image: 'https://spoonacular.com/recipeImages/284543-312x231.jpg',
-          title: '1 Minute Apple Tortilla'
-        }
-      ]
-    }
+    // const returnReq = {
+    //   data: [
+    //     {
+    //       id: 284543,
+    //       image: 'https://spoonacular.com/recipeImages/284543-312x231.jpg',
+    //       title: '1 Minute Apple Tortilla'
+    //     }
+    //   ]
+    // }
 
     dispatch(getRecipe(returnReq.data))
   } catch (err) {

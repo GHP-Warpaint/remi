@@ -448,6 +448,46 @@ async function seed() {
         'https://cdn2.iconfinder.com/data/icons/food-drink-60/50/1F950-croissant-128.png'
     }),
     FoodItem.create({
+      name: 'endives',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/set-01-food-colors-doodle/91/Food_33-128.png'
+    }),
+    FoodItem.create({
+      name: 'peach',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/vegetable-and-fruit-fill-style/64/peach-food-juicy-fruit-healthy-nectarine-128.png'
+    }),
+    FoodItem.create({
+      name: 'almond milk',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/vegan-9/64/14-almond_milk-gastronomy-healthy_food-nutrition-diet-vegetarian-milk-128.png'
+    }),
+    FoodItem.create({
+      name: 'cloves',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/seasoning-in-kitchen/128/yumminky-spice-42-128.png'
+    }),
+    FoodItem.create({
+      name: 'cinnamon',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/vegetables-filled-line/100/vegetables-18-128.png'
+    }),
+    FoodItem.create({
+      name: 'granola',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlVyndpP8QM-6atj5YWmhSQZgB-GqcYUjJ8760Oc9DF_KKHiuM&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'muesli',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlVyndpP8QM-6atj5YWmhSQZgB-GqcYUjJ8760Oc9DF_KKHiuM&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'oatmeal',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTemKaOcAKS6YSBoiquVGKr-4FaV_ZhorFSTzRsH_jLc_igjo3b&usqp=CAU'
+    }),
+    FoodItem.create({
       name: 'olive oil',
       imageUrl:
         'https://cdn4.iconfinder.com/data/icons/food-drink-smooth-vol-2/256/MEDITERRANEAN-128.png'

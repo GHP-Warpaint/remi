@@ -123,7 +123,7 @@ async function seed() {
         'https://cdn2.iconfinder.com/data/icons/food-icons-6/200/food_onion-128.png'
     }),
     FoodItem.create({
-      name: 'scallion',
+      name: 'scallions',
       imageUrl:
         'https://cdn3.iconfinder.com/data/icons/vegetable-26/128/Scallion-green-herb-leek-culinary-128.png'
     }),
@@ -179,6 +179,11 @@ async function seed() {
     }),
     FoodItem.create({
       name: 'jalapeno pepper',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/food-line-filled/614/369_-_Pepper-128.png'
+    }),
+    FoodItem.create({
+      name: 'jalapenos',
       imageUrl:
         'https://cdn4.iconfinder.com/data/icons/food-line-filled/614/369_-_Pepper-128.png'
     }),

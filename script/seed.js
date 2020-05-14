@@ -588,6 +588,56 @@ async function seed() {
         'https://cdn4.iconfinder.com/data/icons/remy-1/128/honey-128.png'
     }),
     FoodItem.create({
+      name: 'lentils',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSqGNxmheVX1qRiAW3QXnm-M8wuXvX4A9o-ZtZuzSqKkLvkCoW&s'
+    }),
+    FoodItem.create({
+      name: 'grapefruit',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/fruits-79/48/03-grapefruit-128.png'
+    }),
+    FoodItem.create({
+      name: 'carrots',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/healthy-food-9/64/carrots-vegetable-healthy-nutritious-128.png'
+    }),
+    FoodItem.create({
+      name: 'cream cheese',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTUq2pmPW93wEOnUcEpFLAkaDZTcOn_q518LajCC7iyPVBjQ2DJ&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'yogurt',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-1048/64/Yogurt_healthy_milk_dessertcream-128.png'
+    }),
+    FoodItem.create({
+      name: 'clementine',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/simply-fruit-naive-stamp/2000/fruit_food_eat_flavor_smoothie_sketch__clementine_1-128.png'
+    }),
+    FoodItem.create({
+      name: 'whipped cream',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/coffee-152/64/Whipped-cream-bottle-aerosol-decoration-128.png'
+    }),
+    FoodItem.create({
+      name: 'heavy cream',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRnNI5aTbRt0zB-ahjZ1ktsPBqqwkSi4-OsOmfRMH2mNPEjUCYS&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'fries',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-drink-60/50/1F35F-french-fries-A-128.png'
+    }),
+    FoodItem.create({
+      name: 'chips',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/food-drinks-caramel-vol-2/512/SNACK-128.png'
+    }),
+    FoodItem.create({
       name: 'hazelnuts',
       imageUrl:
         'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_nuts-128.png'

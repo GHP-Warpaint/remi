@@ -1,37 +1,75 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+require('../../secrets')
 
 /**
  * COMPONENT
  */
-const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
-    </div>
-  )
+class AuthForm extends Component {
+  constructor() {
+    super()
+    this.amazonOnClick = this.amazonOnClick.bind(this)
+  }
+
+  componentDidMount() {
+    window.onAmazonLoginReady = function() {
+      amazon.Login.setClientId(process.env.AMAZON_CLIENT_SECRET)
+    }
+  }
+
+  amazonOnClick() {
+    let options = {}
+    options.scope = 'profile'
+    options.scope_data = {
+      profile: {essential: false}
+    }
+    amazon.Login.authorize(
+      options,
+      'https://chef-remy.herokuapp.com/handle_login.php'
+    )
+    return false
+  }
+
+  render() {
+    const {name, displayName, handleSubmit, error} = this.props
+
+    return (
+      <div>
+        <form onSubmit={handleSubmit} name={name}>
+          <div>
+            <label htmlFor="email">
+              <small>Email</small>
+            </label>
+            <input name="email" type="text" />
+          </div>
+          <div>
+            <label htmlFor="password">
+              <small>Password</small>
+            </label>
+            <input name="password" type="password" />
+          </div>
+          <div>
+            <button type="submit">{displayName}</button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+
+        <a href id="LoginWithAmazon" onClick={this.amazonOnClick}>
+          <img
+            border="0"
+            alt="Login with Amazon"
+            src="http://g-ecx.images-amazon.com/images/G/01/lwa/btnLWA_gry_32x32.png"
+            width="32"
+            height="32"
+          />
+        </a>
+        <a href="/auth/google">{displayName} with Google</a>
+      </div>
+    )
+  }
 }
 
 /**

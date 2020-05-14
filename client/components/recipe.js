@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {ToastContainer, toast} from 'react-toastify'
+//import 'react-toastify/dist/ReactToastify.css';
 // import {Link} from 'react-router-dom'
 import {fetchRecipe, sendRecipe, fetchRecipeDirections} from '../reducer/recipe'
 import {fetchFood} from '../reducer/fridge'

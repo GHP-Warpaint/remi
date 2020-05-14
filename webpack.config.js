@@ -21,8 +21,26 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        //exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: resolve(__dirname, 'node_modules'),
+        exclude: resolve(__dirname, 'node_modules/unfetch') // or your module - also can be an array (read doc)
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ]
       }
     ]
   }

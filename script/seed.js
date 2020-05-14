@@ -566,6 +566,31 @@ async function seed() {
       name: 'hazelnuts',
       imageUrl:
         'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_nuts-128.png'
+    }),
+    FoodItem.create({
+      name: 'honey',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/remy-1/128/honey-128.png'
+    }),
+    FoodItem.create({
+      name: 'hazelnuts',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_nuts-128.png'
+    }),
+    FoodItem.create({
+      name: 'farro',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRNWfE2UFsCYo0kKL-2TmGP-MOXEF17AHDM-BujN-ORf9ieeACG&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'barley',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ44cXY0qiuL-keP9zsdjhfHVqzKfaWX3Irync4y4dXqDCxlbNL&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'quinoa',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS8rWVlOSPlNbuBB08Szph1ZGCEPS7VFFc0FoX5rC97_mUbH72I&usqp=CAU'
     })
   ])
 

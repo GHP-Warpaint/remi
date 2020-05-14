@@ -561,6 +561,11 @@ async function seed() {
       name: 'peanuts',
       imageUrl:
         'https://cdn2.iconfinder.com/data/icons/food-drink-60/50/1F95C-peanuts-128.png'
+    }),
+    FoodItem.create({
+      name: 'hazelnuts',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_nuts-128.png'
     })
   ])
 

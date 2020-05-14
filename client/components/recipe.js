@@ -27,7 +27,6 @@ class Recipe extends Component {
     event.preventDefault()
     const id = this.props.recipe[0].id
     this.props.fetchDirections(id)
-    console.log('RECIPE PROPS', this.props)
   }
 
   render() {
@@ -44,26 +43,16 @@ class Recipe extends Component {
       <div id="recipe">
         <h1>{this.props.recipe[0].title}</h1>
         <img src={this.props.recipe[0].image} id="recipeImg" />
+        <br />
         <button type="button" onClick={this.cookRecipe}>
           Cook this Recipe!
         </button>
 
         {this.props.directions.length
           ? this.props.directions[0].steps.map(steps => {
-              console.log(steps)
               return <p key={steps.number}>{steps.step}</p>
             })
           : 'loading'}
-
-        {/*
-
-        <div id="ingredients">
-          {this.props.ingredients.map(item => (
-            <div key={item.name}>{item.name}</div>
-          ))}
-        </div>
-
-         */}
       </div>
     )
   }
@@ -74,7 +63,7 @@ const mapState = state => {
     food: state.fridge.food,
     recipe: state.recipe.recipe,
     directions: state.recipe.directions
-  } //an array of items
+  }
 }
 
 const mapDispatch = dispatch => ({

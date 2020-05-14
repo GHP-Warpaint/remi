@@ -21,26 +21,15 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        //exclude: /node_modules/,
-        loader: 'babel-loader'
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-3']
+        }
       },
       {
-        test: resolve(__dirname, 'node_modules'),
-        exclude: resolve(__dirname, 'node_modules/unfetch') // or your module - also can be an array (read doc)
-      },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader'
-          }
-        ]
+        test: /\.(s?)css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   }

@@ -188,6 +188,11 @@ async function seed() {
         'https://cdn0.iconfinder.com/data/icons/food-beverages-1/24/Chilli-128.png'
     }),
     FoodItem.create({
+      name: 'chilis',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/food-beverages-1/24/Chilli-128.png'
+    }),
+    FoodItem.create({
       name: 'green pepper',
       imageUrl:
         'https://cdn3.iconfinder.com/data/icons/food-emoji/50/GreenPepper-128.png'
@@ -373,6 +378,11 @@ async function seed() {
         'https://cdn0.iconfinder.com/data/icons/australia-basic-lineal-color/512/18_Wine-128.png'
     }),
     FoodItem.create({
+      name: 'wine',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/australia-basic-lineal-color/512/18_Wine-128.png'
+    }),
+    FoodItem.create({
       name: 'tarragon',
       imageUrl:
         'https://cdn3.iconfinder.com/data/icons/herb-flat/64/tarragon-food-vegetable-herb-128.png'
@@ -384,6 +394,11 @@ async function seed() {
     }),
     FoodItem.create({
       name: 'vanilla',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/herb-flat/64/vanilla-food-vegetable-herb-128.png'
+    }),
+    FoodItem.create({
+      name: 'vanilla extract',
       imageUrl:
         'https://cdn3.iconfinder.com/data/icons/herb-flat/64/vanilla-food-vegetable-herb-128.png'
     }),
@@ -591,6 +606,31 @@ async function seed() {
       name: 'quinoa',
       imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS8rWVlOSPlNbuBB08Szph1ZGCEPS7VFFc0FoX5rC97_mUbH72I&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'sage',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/herbs-and-spices-flat/48/Plants_Spices_Artboard_12-128.png'
+    }),
+    FoodItem.create({
+      name: 'thyme',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/herbs-and-spices-flat/48/Plants_Spices_Artboard_20-128.png'
+    }),
+    FoodItem.create({
+      name: 'salt',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/gastronomy-3-retro-vol-2/60/166_-Salt_Shaker-_gastronomy_food_cooking-128.png'
+    }),
+    FoodItem.create({
+      name: 'paprika',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTqIQJ2NxBasexYkYypwcTPnhwoPR31MQohxIJ-SQExg7srdFmq&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'beer',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/hanami-party/512/HANAMI_ICONS_SVG-22-128.png'
     })
   ])
 

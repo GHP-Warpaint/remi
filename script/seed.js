@@ -588,6 +588,16 @@ async function seed() {
         'https://cdn4.iconfinder.com/data/icons/remy-1/128/honey-128.png'
     }),
     FoodItem.create({
+      name: 'ham',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-ingredient/512/10-meat-ham-food-128.png'
+    }),
+    FoodItem.create({
+      name: 'pork',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-ingredient/512/14-meat-pork-food-128.png'
+    }),
+    FoodItem.create({
       name: 'lentils',
       imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSqGNxmheVX1qRiAW3QXnm-M8wuXvX4A9o-ZtZuzSqKkLvkCoW&s'
@@ -681,6 +691,51 @@ async function seed() {
       name: 'beer',
       imageUrl:
         'https://cdn0.iconfinder.com/data/icons/hanami-party/512/HANAMI_ICONS_SVG-22-128.png'
+    }),
+    FoodItem.create({
+      name: 'brandy',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/drink-beverage/512/24-alcohol-booze-liquor-brandy-128.png'
+    }),
+    FoodItem.create({
+      name: 'champagne',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/new-years-eve-celebration/120/champagne_popping_cork-128.png'
+    }),
+    FoodItem.create({
+      name: 'orange juice',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/drink-beverage/512/41-glass-jug-juice-orange-128.png'
+    }),
+    FoodItem.create({
+      name: 'juice',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/drink-beverage/512/41-glass-jug-juice-orange-128.png'
+    }),
+    FoodItem.create({
+      name: 'pear',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/fruits-collection-full-color/150/Fruits_Collection-24-128.png'
+    }),
+    FoodItem.create({
+      name: 'walnuts',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/fruit-nut/512/48-walnut-nut-food-oil-128.png'
+    }),
+    FoodItem.create({
+      name: 'rhubarb',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/vegetables-18/100/vegetable_food_colour-10-128.png'
+    }),
+    FoodItem.create({
+      name: 'chives',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/vegetable-spice/512/40-spring-onion-chives-vegetable-128.png'
+    }),
+    FoodItem.create({
+      name: 'celery',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/vegetable-flat-1/48/Plants_Vegetables_Artboard_15-128.png'
     })
   ])
 

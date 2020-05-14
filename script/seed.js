@@ -371,6 +371,141 @@ async function seed() {
       name: 'red wine',
       imageUrl:
         'https://cdn0.iconfinder.com/data/icons/australia-basic-lineal-color/512/18_Wine-128.png'
+    }),
+    FoodItem.create({
+      name: 'tarragon',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/herb-flat/64/tarragon-food-vegetable-herb-128.png'
+    }),
+    FoodItem.create({
+      name: 'chickpeas',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/different-types-of-legumes/32/chickpeas-128.png'
+    }),
+    FoodItem.create({
+      name: 'vanilla',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/herb-flat/64/vanilla-food-vegetable-herb-128.png'
+    }),
+    FoodItem.create({
+      name: 'hazelnuts',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_nuts-128.png'
+    }),
+    FoodItem.create({
+      name: 'mustard',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-ingredient/512/59-mustard-sauce-food-128.png'
+    }),
+    FoodItem.create({
+      name: 'mayonnaise',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/food-volume-ii/128/mayonnaise-jar-128.png'
+    }),
+    FoodItem.create({
+      name: 'avocado',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/fruits-8/512/avocado-128.png'
+    }),
+    FoodItem.create({
+      name: 'vinegar',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-ingredient/512/57-bottle-vinegar-food-128.png'
+    }),
+    FoodItem.create({
+      name: 'sausage',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-ingredient/512/05-frankfurter-sausage-food-128.png'
+    }),
+    FoodItem.create({
+      name: 'salami',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/flat-food-3/512/salami-128.png'
+    }),
+    FoodItem.create({
+      name: 'tortilla',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQggXb8XnV8k6DUXG6bu-LACRI03ncKLjX7yNcrJLvSHW5L9CXz&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'croissant',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-drink-60/50/1F950-croissant-128.png'
+    }),
+    FoodItem.create({
+      name: 'olive oil',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/food-drink-smooth-vol-2/256/MEDITERRANEAN-128.png'
+    }),
+    FoodItem.create({
+      name: 'olive',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/set-01-food-colors-doodle/91/Food_42-128.png'
+    }),
+    FoodItem.create({
+      name: 'artichoke',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/vegetable-spice/512/02-vegetable-food-artichoke-128.png'
+    }),
+    FoodItem.create({
+      name: 'pomegranate',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/fruit-and-vegetables-4/200/374-128.png'
+    }),
+    FoodItem.create({
+      name: 'cumin',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/seasoning-in-kitchen/128/yumminky-spice-43-128.png'
+    }),
+    FoodItem.create({
+      name: 'turmeric',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/herbs-spices-color/290/22-128.png'
+    }),
+    FoodItem.create({
+      name: 'ginger',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-and-cooking-1/110/ginger__vegetable__food__kitchen_-128.png'
+    }),
+    FoodItem.create({
+      name: 'sweet potato',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/vegetable-26/128/Sweet-potato-yam-root-crop-128.png'
+    }),
+    FoodItem.create({
+      name: 'squash',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/flat-vegetables-yummy/512/iconfinder_butternut_squash_flat_vegetable-128.png'
+    }),
+    FoodItem.create({
+      name: 'pumpkin',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-round/64/Food_pumpkin-128.png'
+    }),
+    FoodItem.create({
+      name: 'basil',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/seasoning-in-kitchen/128/yumminky-spice-38-2-128.png'
+    }),
+    FoodItem.create({
+      name: 'soy sauce',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/sushi-12/1200/SingleCartoonSushiYulia1011-128.png'
+    }),
+    FoodItem.create({
+      name: 'cucumber',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/summer-1-3/512/SUMMER_ICON_1_FINAL-25-128.png'
+    }),
+    FoodItem.create({
+      name: 'pickles',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/smashicons-gastronomy-2-retro-vol-2/61/48_-Pickles-_gastronomy_food_cooking-128.png'
+    }),
+    FoodItem.create({
+      name: 'bread crumbs',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTtLvo7qxWzcXycTg9UQJwE0NioaTZGLecXGN6mYcnLwjMXcGGx&usqp=CAU'
     })
   ])
 

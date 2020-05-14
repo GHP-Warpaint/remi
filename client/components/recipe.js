@@ -60,8 +60,8 @@ class Recipe extends Component {
           }}
         >
           Cook this Recipe!
+          <ToastContainer />
         </button>
-        <ToastContainer />
 
         {this.props.directions.length
           ? this.props.directions[0].steps.map(steps => {

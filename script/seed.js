@@ -88,6 +88,289 @@ async function seed() {
       name: 'milk',
       imageUrl:
         'https://cdn4.iconfinder.com/data/icons/coffee-house-hand-drawn-icons/64/Coffee-House_36-512.png'
+    }),
+    FoodItem.create({
+      name: 'orange',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_orange-512.png'
+    }),
+    FoodItem.create({
+      name: 'blueberry',
+      imageUrl: 'https://cdn0.iconfinder.com/data/icons/berries-1/50/42-128.png'
+    }),
+    FoodItem.create({
+      name: 'raspberry',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/fruit-and-vegetables-3/200/308-128.png'
+    }),
+    FoodItem.create({
+      name: 'lemon',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-drink-fruit-meat-nut/200/Food_fruit_lemon-128.png'
+    }),
+    FoodItem.create({
+      name: 'strawberry',
+      imageUrl: 'https://cdn2.iconfinder.com/data/icons/fruit-i/83/05-128.png'
+    }),
+    FoodItem.create({
+      name: 'lime',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/fruit-4/842/lime-128.png'
+    }),
+    FoodItem.create({
+      name: 'onion',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-icons-6/200/food_onion-128.png'
+    }),
+    FoodItem.create({
+      name: 'scallion',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/vegetable-26/128/Scallion-green-herb-leek-culinary-128.png'
+    }),
+    FoodItem.create({
+      name: 'garlic',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/fruit-and-vegetables-4/200/358-128.png'
+    }),
+    FoodItem.create({
+      name: 'lettuce',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/vegetables-20/500/Lechuga-128.png'
+    }),
+    FoodItem.create({
+      name: 'raddish',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/vegetables-flat-1/169/flat_vegetable_raddish2-128.png'
+    }),
+    FoodItem.create({
+      name: 'broccoli',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/vegetables-for-food/512/broccoli-food-vegetable-128.png'
+    }),
+    FoodItem.create({
+      name: 'kale',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/vegetable-flat-1/48/Plants_Vegetables_Artboard_41-128.png'
+    }),
+    FoodItem.create({
+      name: 'spinach',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/food-2-23/50/122-128.png'
+    }),
+    FoodItem.create({
+      name: 'banana',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/food-111/512/banana-128.png'
+    }),
+    FoodItem.create({
+      name: 'eggs',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_eggs-128.png'
+    }),
+    FoodItem.create({
+      name: 'tomato',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/food-111/512/tomato-128.png'
+    }),
+    FoodItem.create({
+      name: 'red pepper',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/colorix-vegetables/128/Colorix_bell_pepper-128.png'
+    }),
+    FoodItem.create({
+      name: 'jalapeno pepper',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/food-line-filled/614/369_-_Pepper-128.png'
+    }),
+    FoodItem.create({
+      name: 'chili pepper',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/food-beverages-1/24/Chilli-128.png'
+    }),
+    FoodItem.create({
+      name: 'green pepper',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-emoji/50/GreenPepper-128.png'
+    }),
+    FoodItem.create({
+      name: 'yellow pepper',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/garden-25/100/Yellow_Bell_Pepper-128.png'
+    }),
+    FoodItem.create({
+      name: 'orange pepper',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/produce/60/VEGGIES_orange_pepper-128.png'
+    }),
+    FoodItem.create({
+      name: 'asparagus',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/colorix-vegetables/128/Colorix_asparagus-128.png'
+    }),
+    FoodItem.create({
+      name: 'bacon',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/food-volume-ii/128/bacon-128.png'
+    }),
+    FoodItem.create({
+      name: 'sugar',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/sugar-blue-line/64/174_sugar-bag-wholesale-16-128.png'
+    }),
+    FoodItem.create({
+      name: 'flour',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/food-flat-sticker-vol-3/150/flour__bag__wheat__grain-128.png'
+    }),
+    FoodItem.create({
+      name: 'butter',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-drink-60/50/1F9C8-butter-128.png'
+    }),
+    FoodItem.create({
+      name: 'potato',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/food-volume-ii/128/potato-128.png'
+    }),
+    FoodItem.create({
+      name: 'trout',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/healthy-food-9/64/Trout-protein-omega-healthy-128.png'
+    }),
+    FoodItem.create({
+      name: 'salmon',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/food-flat-8/64/salmon-food-meat-meal-128.png'
+    }),
+    FoodItem.create({
+      name: 'pollock',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/fish-13/100/fish-1px-go-09-128.png'
+    }),
+    FoodItem.create({
+      name: 'tuna',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/sushi-bold/256/sushi-18-128.png'
+    }),
+    FoodItem.create({
+      name: 'crab',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/food-icons-4/110/Crab-128.png'
+    }),
+    FoodItem.create({
+      name: 'lobster',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/food-drinks-caramel-vol-1/512/LOBSTER-128.png'
+    }),
+    FoodItem.create({
+      name: 'shrimp',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-ingredient/512/24-prawn-seafood-shrimp-128.png'
+    }),
+    FoodItem.create({
+      name: 'pepper',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/seasoning-in-kitchen/128/yumminky-spice-32-128.png'
+    }),
+    FoodItem.create({
+      name: 'oregano',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/seasoning-in-kitchen/128/yumminky-spice-37-128.png'
+    }),
+    FoodItem.create({
+      name: 'ketchup',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/fast-food-106/567/ketchup-128.png'
+    }),
+    FoodItem.create({
+      name: 'pasta',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-ingredient/512/49-pasta-farfalle-food-128.png'
+    }),
+    FoodItem.create({
+      name: 'chocolate',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_chocolate-128.png'
+    }),
+    FoodItem.create({
+      name: 'syrup',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-from-around-the-world/512/maple_syrup-128.png'
+    }),
+    FoodItem.create({
+      name: 'mozzarella',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/food-ingredients-1/50/16-128.png'
+    }),
+    FoodItem.create({
+      name: 'cheese',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/shift-food-drinks/32/Piece_of_cheese-128.png'
+    }),
+    FoodItem.create({
+      name: 'beef',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/food-ingredient/512/z5-meat-steak-beef-food-128.png'
+    }),
+    FoodItem.create({
+      name: 'peas',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/vegetables-57/200/Peas_Vegetables_food-128.png'
+    }),
+    FoodItem.create({
+      name: 'beans',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/vegetable-spice/512/20-vegetable-beans-bean-128.png'
+    }),
+    FoodItem.create({
+      name: 'coffee beans',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/coffee-cafe-brewery-caramel-vol-1/512/COFFEE_SCOOP-128.png'
+    }),
+    FoodItem.create({
+      name: 'turkey',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/unigrid-phantom-food-vol-1/60/006_005_chicken_turkey_grill_food_kfc-128.png'
+    }),
+    FoodItem.create({
+      name: 'rice',
+      imageUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR5ttG_ekK03m9LlI_1yIs9aXljyNxmzj93Ne9mon-8lWMsCADl&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'coconut',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_coconut-128.png'
+    }),
+    FoodItem.create({
+      name: 'tofu',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/veggie-food-colored/96/Tofu_Cubes-128.png'
+    }),
+    FoodItem.create({
+      name: 'cilantro',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/herbs-and-spices-flat/48/Plants_Spices_Artboard_36-128.png'
+    }),
+    FoodItem.create({
+      name: 'parsley',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/fruits-n-vegetables-colored-gradient/128/parsley-128.png'
+    }),
+    FoodItem.create({
+      name: 'rosemary',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/herbs-and-spices-flat/48/Plants_Spices_Artboard_13-128.png'
+    }),
+    FoodItem.create({
+      name: 'white wine',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/alcoholic-drinks-1/1200/SingleCartoonAlcoholYulia1003-128.png'
+    }),
+    FoodItem.create({
+      name: 'red wine',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/australia-basic-lineal-color/512/18_Wine-128.png'
     })
   ])
 

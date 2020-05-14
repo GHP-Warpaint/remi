@@ -506,6 +506,61 @@ async function seed() {
       name: 'bread crumbs',
       imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTtLvo7qxWzcXycTg9UQJwE0NioaTZGLecXGN6mYcnLwjMXcGGx&usqp=CAU'
+    }),
+    FoodItem.create({
+      name: 'caramel',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/ice-cream-68/512/caramel-syrup-ice-cream-128.png'
+    }),
+    FoodItem.create({
+      name: 'mushroom',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/food-volume-2-3/256/45-128.png'
+    }),
+    FoodItem.create({
+      name: 'zucchini',
+      imageUrl:
+        'https://cdn3.iconfinder.com/data/icons/fruit-and-vegetables/512/zucchini-128.png'
+    }),
+    FoodItem.create({
+      name: 'eggplant',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/vegetables-60/48/Vegetable_eggplant_food_vegetable-128.png'
+    }),
+    FoodItem.create({
+      name: 'rum',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/drink-50/512/rum-whisky-alcohol-drink-128.png'
+    }),
+    FoodItem.create({
+      name: 'whiskey',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/drink-and-cocktails/206/Whiskey_3-128.png'
+    }),
+    FoodItem.create({
+      name: 'vodka',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/drink-and-cocktails/206/Vodka_4-128.png'
+    }),
+    FoodItem.create({
+      name: 'tamarind',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/fruit-84/128/Tamarind-fruit-food-healthy-diet-128.png'
+    }),
+    FoodItem.create({
+      name: 'mango',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/fruits-114/145/fruits-22-128.png'
+    }),
+    FoodItem.create({
+      name: 'almonds',
+      imageUrl:
+        'https://cdn0.iconfinder.com/data/icons/spices-seeds-and-nuts-ingredients/200/almonds_nuts-01-128.png'
+    }),
+    FoodItem.create({
+      name: 'peanuts',
+      imageUrl:
+        'https://cdn2.iconfinder.com/data/icons/food-drink-60/50/1F95C-peanuts-128.png'
     })
   ])
 

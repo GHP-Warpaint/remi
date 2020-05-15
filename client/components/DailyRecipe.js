@@ -19,9 +19,11 @@ recognition.onresult = function(evt) {
 function readOutLoud(message) {
   const speech = new SpeechSynthesisUtterance()
 
+  //"Welcome to the home of Chef Remy. Please, allow me to show you around. Would you like to add some food to your fridge, update your account details, or generate a new recipe?" (10000ms)
   if (message.includes('fridge')) {
     location.assign('https://chef-remy.herokuapp.com/fridge')
-    speech.text = 'magnificent decision! Welcome to the fridge.'
+    speech.text =
+      "magnificent decision! Welcome to the fridge... Type out the ingredients you have before pressing the add button. When you are done, head over to recipe. We'll make something delicious together."
   } else if (message.includes('account')) {
     location.assign('https://chef-remy.herokuapp.com/account')
     speech.text =
@@ -67,7 +69,7 @@ class DailyRecipe extends Component {
   }
 
   timer = () => {
-    setTimeout(this.letThemTalk, 6000)
+    setTimeout(this.letThemTalk, 1000)
   }
 
   handleTalk = () => {

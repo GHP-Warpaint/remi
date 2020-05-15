@@ -108,6 +108,7 @@ class DailyRecipe extends Component {
             </p>
           </div>
         )}
+        <br />
         <div>
           <h2>New to Chef Remy</h2>
           <p>

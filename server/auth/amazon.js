@@ -5,19 +5,6 @@ const {User} = require('../db/models')
 require('../../secrets')
 module.exports = router
 
-// passport.use(new AmazonStrategy({
-//     clientID: process.env.AMAZON_CLIENT_ID,
-//     clientSecret: process.env.AMAZON_CLIENT_SECRET,
-//     callbackURL: "http://localhost:5000/auth/amazon/callback"
-//   },
-
-//   function(accessToken, refreshToken, profile, done) {
-//     User.findOrCreate({ amazonId: profile.id }, function (err, user) {
-//       return done(err, user);
-//     });
-//   }
-//   ));
-
 passport.serializeUser(function(user, cb) {
   cb(null, user)
 })
@@ -29,7 +16,7 @@ passport.deserializeUser(function(user, cb) {
 const amazonConfig = {
   clientID: process.env.AMAZON_CLIENT_ID,
   clientSecret: process.env.AMAZON_CLIENT_SECRET,
-  callbackURL: 'http://localhost:5000/auth/amazon/callback'
+  callbackURL: process.env.AMAZON_CALLBACK_URL
 }
 
 const strategy = new AmazonStrategy(
@@ -37,8 +24,6 @@ const strategy = new AmazonStrategy(
   (accessToken, refreshToken, profile, done) => {
     const amazonId = profile.id
     const email = profile.emails[0].value
-
-    console.log(amazonId, email)
 
     User.findOrCreate({
       where: {amazonId},
@@ -51,7 +36,12 @@ const strategy = new AmazonStrategy(
 
 passport.use(strategy)
 
-router.get('/', passport.authenticate('amazon', {scope: ['profile']}))
+router.get(
+  '/',
+  passport.authenticate('amazon', {
+    scope: ['profile']
+  })
+)
 
 router.get(
   '/callback',

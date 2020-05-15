@@ -61,7 +61,7 @@ class DailyRecipe extends Component {
 
   handleSpeech = () => {
     const msg = new SpeechSynthesisUtterance(
-      'Welcome to the home of Chef Remy. Please, allow me to show you around. Would you like to add some food to your fridge, update your account details, or generate a new recipe?'
+      'Welcome to the home of Chef Remy. Please allow me to show you around. Would you like to add some food to your fridge, update your account details, or generate a new recipe?'
     )
     msg.lang = 'en-GB'
     window.speechSynthesis.speak(msg)
@@ -92,7 +92,7 @@ class DailyRecipe extends Component {
     return (
       <div>
         <br />
-        <h1>Our Suggested Recipe of the Day!</h1> <br />
+        <h1>Our Suggested Recipes of the Day!</h1> <br />
         {randomChoice !== 'loads' && (
           <div>
             <h3>{randomChoice.title}</h3>

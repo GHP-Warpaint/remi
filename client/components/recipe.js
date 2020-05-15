@@ -1,14 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {ToastContainer, toast} from 'react-toastify'
 // import {Link} from 'react-router-dom'
 import {fetchRecipe, sendRecipe, fetchRecipeDirections} from '../reducer/recipe'
 import {fetchFood} from '../reducer/fridge'
+
+toast.configure()
 
 class Recipe extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
     this.cookRecipe = this.cookRecipe.bind(this)
+    this.notify = this.notify.bind(this)
   }
 
   componentDidMount() {
@@ -29,6 +33,10 @@ class Recipe extends Component {
     this.props.fetchDirections(id)
   }
 
+  notify() {
+    toast('This recipe is now accessible on Amazon Alexa')
+  }
+
   render() {
     if (!this.props.recipe.length)
       return (
@@ -44,8 +52,15 @@ class Recipe extends Component {
         <h1>{this.props.recipe[0].title}</h1>
         <img src={this.props.recipe[0].image} id="recipeImg" />
         <br />
-        <button type="button" onClick={this.cookRecipe}>
+        <button
+          type="button"
+          onClick={event => {
+            this.notify()
+            this.cookRecipe(event)
+          }}
+        >
           Cook this Recipe!
+          <ToastContainer />
         </button>
 
         {this.props.directions.length

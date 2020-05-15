@@ -7,6 +7,7 @@ import AlexaInstruct from './components/AlexaGuide'
 
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
+import Privacy from './components/Privacy'
 
 import {me} from './store'
 
@@ -27,6 +28,7 @@ class Routes extends Component {
         <Route path="/fridge" component={Fridge} />
         <Route path="/account" component={MyAccount} />
         <Route path="/about-alexa" component={AlexaInstruct} />
+        <Route path="/privacy" component={Privacy} />
 
         {isLoggedIn && (
           <Switch>

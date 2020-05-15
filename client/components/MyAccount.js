@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {me} from '../reducer/user'
 
-export class Fridge extends React.Component {
+export class MyAccount extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -40,4 +40,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Fridge)
+export default connect(mapState, mapDispatch)(MyAccount)

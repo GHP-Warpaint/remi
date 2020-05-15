@@ -8,12 +8,12 @@ const AlexaInstruct = () => {
       <ul className="instructions">
         <li>
           To begin using Chef Remy, say "Alexa, ask for Chef Remy" and he will
-          ask you to add items to your fridge
+          start asking you to add items to your fridge.
         </li>
         <br />
         <li>
           To add food or drinks to your fridge, using tomato as an example,
-          you'd say "Add tomato" and Chef Remy will confirm the tomato is in
+          you'd say "Add tomato" and Chef Remy will confirm the tomato is now in
           your fridge.
         </li>
         <br />

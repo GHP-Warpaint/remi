@@ -13,10 +13,17 @@ body {
 }
 #main {
   background-color: whitesmoke;
-  width: 800px;
+  width: 700px;
   margin: auto;
   padding: 0em 4em 4em;
   height: 80vh;
+}
+
+@media screen and (max-width: 800px) {
+  #main {
+    width: 90%;
+    padding: 0em 1em 1em;
+  }
 }
 .headliner {
   float: left;
@@ -94,18 +101,15 @@ form div {
 }
 
 button {
-  margin-bottom: 5%;
+  background-color: rgb(51, 0, 17);
+  padding: 5px;
+  color: whitesmoke;
+  border-radius: 4px;
 }
 .itemBtn {
-  border-radius: 4px;
-  background-color: #f44336;
-  color: cornsilk;
+  /* background-color: #f44336;
+  color: cornsilk; */
   size: 1em;
   padding: 3px;
   float: right;
-}
-
-button {
-  color: rgb(51, 0, 17);
-  padding: 5px;
 }

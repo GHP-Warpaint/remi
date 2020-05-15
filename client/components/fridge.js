@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link, useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import AddFoodItem from './AddFoodItem'
 import {fetchFood, deleteFood} from '../reducer/fridge'
 

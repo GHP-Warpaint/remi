@@ -9,29 +9,6 @@ require('../../secrets')
  */
 
 class AuthForm extends Component {
-  constructor() {
-    super()
-    this.amazonOnClick = this.amazonOnClick.bind(this)
-  }
-
-  // componentDidMount() {
-  //   window.onAmazonLoginReady = function() {
-  //     amazon.Login.setClientId(process.env.AMAZON_CLIENT_SECRET)
-  //   }
-  // }
-
-  amazonOnClick() {
-    let options = {}
-    options.scope = 'profile'
-    options.scope_data = {
-      profile: {
-        essential: false
-      }
-    }
-    amazon.Login.authorize(options, 'http://localhost:5000/handle_login.php')
-    return false
-  }
-
   render() {
     const {name, displayName, handleSubmit, error} = this.props
 
@@ -55,18 +32,15 @@ class AuthForm extends Component {
           </div>
           {error && error.response && <div> {error.response.data} </div>}
         </form>
-        <div id="amazon-root" />
-        {/* <a href id="LoginWithAmazon" onClick={this.amazonOnClick}>
+        <a href="/auth/amazon">
           <img
-            border="0"
-            alt="Login with Amazon"
-            src="http://g-ecx.images-amazon.com/images/G/01/lwa/btnLWA_gry_32x32.png"
-            width="32"
+            src="https://cdn.worldvectorlogo.com/logos/amazon-icon.svg"
+            alt="amazon-login"
             height="32"
+            width="32"
           />
-        </a> */}
-        <a href="/auth/amazon">login w amazon</a>
-        <a href="/auth/google">{displayName} with Google</a>
+        </a>
+        {/* <a href="/auth/google">{displayName} with Google</a> */}
       </div>
     )
   }

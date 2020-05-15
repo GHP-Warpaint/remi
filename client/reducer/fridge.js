@@ -49,7 +49,7 @@ export const addFoodItem = food => {
     try {
       const newFoodItem = await axios.post(`/api/fridge/add`, {name: food.name})
       // console.log('in Thunk', data)
-      console.log('inthunk', newFoodItem)
+      // console.log('inthunk', newFoodItem)
       dispatch(addFood(newFoodItem.data))
     } catch (err) {
       dispatch(console.error(err))

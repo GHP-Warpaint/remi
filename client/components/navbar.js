@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
+  <div id="head">
     <Link to="/home">
       <h1>
         <img className="headlinerImg" src="./ChefHat.png" width="40" /> Chef

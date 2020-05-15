@@ -64,6 +64,10 @@ class DailyRecipe extends Component {
     })
   }
 
+  timer = () => {
+    setTimeout(this.letThemTalk, 6000)
+  }
+
   handleTalk = () => {
     recognition.start()
   }
@@ -99,7 +103,7 @@ class DailyRecipe extends Component {
             type="button"
             onClick={() => {
               this.handleSpeech() //(REASON WHY NO SPEECH ON INITL BTN CLICK)Remy starts his speech of how to boss him around
-              this.letThemTalk() //(DONE) sets clickedChat on state to true so the 'respond to Remy' btn can be activated
+              this.timer() //(DONE) sets clickedChat on state to true so the 'respond to Remy' btn can be activated
             }}
           >
             Chat with Remy!

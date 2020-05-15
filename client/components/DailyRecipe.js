@@ -108,6 +108,16 @@ class DailyRecipe extends Component {
             </p>
           </div>
         )}
+        <div>
+          <h2>New to Chef Remy</h2>
+          <p>
+            Have an Amazon Alexa enabled device? <br />
+            Find us in your skill store! <br />
+            Don’t want to use Alexa? That's fine too! <br /> We recommend
+            talking to Chef Remy on our site. <br /> To get started, find the
+            button that says "Chat with Remy!"
+          </p>
+        </div>
         {this.state.clickedChat === false ? (
           <button
             type="button"

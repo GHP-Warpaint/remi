@@ -50,3 +50,7 @@ form div {
   display: inline-block;
   padding: 20px 20px 30px 10px;
 }
+
+button {
+  margin-bottom: 5%;
+}

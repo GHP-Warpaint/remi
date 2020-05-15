@@ -46,8 +46,22 @@ function readOutLoud(message) {
 }
 
 class DailyRecipe extends Component {
+  constructor() {
+    super()
+    this.state = {
+      clickedChat: false
+    }
+  }
   componentDidMount() {
     this.props.getDailyRecipeInfo()
+  }
+
+  handleSpeech = () => {}
+
+  letThemTalk = () => {
+    this.setState({
+      clickedChat: true
+    })
   }
 
   handleTalk = () => {
@@ -80,9 +94,27 @@ class DailyRecipe extends Component {
             </p>
           </div>
         )}
-        <button type="button" onClick={this.handleTalk}>
-          Chat with Remy!
-        </button>
+        {this.state.clickedChat === false ? (
+          <button
+            type="button"
+            onClick={() => {
+              this.handleSpeech() //(REASON WHY NO SPEECH ON INITL BTN CLICK)Remy starts his speech of how to boss him around
+              this.letThemTalk() //(DONE) sets clickedChat on state to true so the 'respond to Remy' btn can be activated
+            }}
+          >
+            Chat with Remy!
+          </button>
+        ) : (
+          <div>
+            <button type="button" onClick={this.handleTalk}>
+              Respond to Remy!
+            </button>
+            <p>
+              If you stop talking and want to talk with Remy again, make sure
+              you re-click the button
+            </p>
+          </div>
+        )}
       </div>
     )
   }

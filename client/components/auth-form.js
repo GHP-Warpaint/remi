@@ -27,6 +27,7 @@ class AuthForm extends Component {
             </label>
             <input name="password" type="password" />
           </div>
+          <br />
           <div>
             <button type="submit">{displayName}</button>
           </div>

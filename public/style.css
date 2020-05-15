@@ -7,6 +7,16 @@ body {
   font-family: sans-serif;
   text-align: center;
   margin: 0;
+  background: url(/images/rainbowveg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#main {
+  background-color: whitesmoke;
+  width: fit-content;
+  margin: auto;
+  padding: 0em 4em 4em;
+  height: 80vh;
 }
 .headliner {
   float: left;
@@ -37,13 +47,18 @@ label {
   border-radius: 50%;
   background-color: white;
 }
-#head {
+/* #head {
   background: url(/images/rainbowveg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+} */
+
+#head {
+  background-color: rgb(51, 0, 17);
+  color: whitesmoke;
 }
 nav div {
-  background-color: rgba(255, 255, 255, 0.7);
+  /* background-color: rgba(255, 255, 255, 0.7); */
   text-align: justify;
   display: inline-block;
   padding: 5px;
@@ -51,6 +66,9 @@ nav div {
 
 nav a {
   margin: 1em;
+}
+nav a:visited {
+  color: whitesmoke;
 }
 
 form div {

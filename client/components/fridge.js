@@ -31,13 +31,16 @@ export class Fridge extends React.Component {
           <div>
             <br />
             <AddFoodItem />
+            <br />
             <Link to="/recipe" className="fakeButton">
+              <br />
               Let's Cook!
             </Link>
             {/* <button type="button" onClick={() => history.push('/recipe')}>
               Let's Cook!
             </button> */}
           </div>
+          <br />
           {this.props.food &&
             this.props.food.map(food => (
               <div key={food.id} className="item">

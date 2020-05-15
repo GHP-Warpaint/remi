@@ -14,7 +14,8 @@ export class MyAccount extends React.Component {
     return (
       <div id="myAccount">
         <br />
-        <h1>Welcome Back {user.firstName}!</h1>
+        <h2>Welcome Back {user.firstName}!</h2>
+
         <div>
           {user && (
             <div key={user.id}>

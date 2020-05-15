@@ -14,22 +14,21 @@ class AuthForm extends Component {
     this.amazonOnClick = this.amazonOnClick.bind(this)
   }
 
-  componentDidMount() {
-    window.onAmazonLoginReady = function() {
-      amazon.Login.setClientId(process.env.AMAZON_CLIENT_SECRET)
-    }
-  }
+  // componentDidMount() {
+  //   window.onAmazonLoginReady = function() {
+  //     amazon.Login.setClientId(process.env.AMAZON_CLIENT_SECRET)
+  //   }
+  // }
 
   amazonOnClick() {
     let options = {}
     options.scope = 'profile'
     options.scope_data = {
-      profile: {essential: false}
+      profile: {
+        essential: false
+      }
     }
-    amazon.Login.authorize(
-      options,
-      'https://chef-remy.herokuapp.com/handle_login.php'
-    )
+    amazon.Login.authorize(options, 'http://localhost:5000/handle_login.php')
     return false
   }
 
@@ -56,8 +55,8 @@ class AuthForm extends Component {
           </div>
           {error && error.response && <div> {error.response.data} </div>}
         </form>
-
-        <a href id="LoginWithAmazon" onClick={this.amazonOnClick}>
+        <div id="amazon-root" />
+        {/* <a href id="LoginWithAmazon" onClick={this.amazonOnClick}>
           <img
             border="0"
             alt="Login with Amazon"
@@ -65,7 +64,8 @@ class AuthForm extends Component {
             width="32"
             height="32"
           />
-        </a>
+        </a> */}
+        <a href="/auth/amazon">login w amazon</a>
         <a href="/auth/google">{displayName} with Google</a>
       </div>
     )

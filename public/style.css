@@ -69,6 +69,15 @@ form div {
   font-size: 2em;
 }
 
+.instructions {
+  text-align: justify;
+  display: inline-block;
+  padding: 20px 20px 30px 10px;
+}
+
+button {
+  margin-bottom: 5%;
+}
 .itemBtn {
   border-radius: 4px;
   background-color: #f44336;

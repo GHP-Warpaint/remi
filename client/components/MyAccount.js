@@ -13,13 +13,16 @@ export class MyAccount extends React.Component {
     let user = this.props.user
     return (
       <div id="myAccount">
+        <br />
         <h1>Welcome Back {user.firstName}!</h1>
         <div>
           {user && (
             <div key={user.id}>
+              <br />
               <h2>
                 Name: {user.firstName} {user.lastName}
               </h2>
+              <br />
               <h2>Email: {user.email}</h2>
             </div>
           )}

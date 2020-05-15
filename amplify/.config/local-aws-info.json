@@ -1,0 +1,7 @@
+{
+  "chef": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "default"
+  }
+}

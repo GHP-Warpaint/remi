@@ -7,13 +7,13 @@ body {
   font-family: sans-serif;
   text-align: center;
   margin: 0;
-  background: url(/images/rainbowveg.jpg);
+  background: url(/images/rainvivid.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 #main {
   background-color: whitesmoke;
-  width: fit-content;
+  width: 800px;
   margin: auto;
   padding: 0em 4em 4em;
   height: 80vh;
@@ -103,4 +103,9 @@ button {
   size: 1em;
   padding: 3px;
   float: right;
+}
+
+button {
+  color: rgb(51, 0, 17);
+  padding: 5px;
 }

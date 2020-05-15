@@ -34,12 +34,13 @@ function readOutLoud(message) {
     speech.text = "Excellent! We're back at our lovely home."
   } else {
     speech.text =
-      "Sorry, didn't catch that. if you are not sure what to say, try saying something like 'fridge', or 'lets go to the fridge."
+      "Sorry, didn't catch that. If you are not sure what to say, try saying something like 'fridge', or 'lets go to the fridge."
   }
 
   speech.volume = 1
   speech.rate = 1
   speech.pitch = 1
+  speech.lang = 'en-GB'
 
   //need this v to have window speak back
   window.speechSynthesis.speak(speech)
@@ -59,6 +60,7 @@ class DailyRecipe extends Component {
   handleSpeech = () => {}
 
   letThemTalk = () => {
+    console.log('THE WAIT IS OVER')
     this.setState({
       clickedChat: true
     })
@@ -114,8 +116,8 @@ class DailyRecipe extends Component {
               Respond to Remy!
             </button>
             <p>
-              If you stop talking and want to talk with Remy again, make sure
-              you re-click the button
+              (If you stop talking and want to talk with Remy again, make sure
+              you re-click the button)
             </p>
           </div>
         )}

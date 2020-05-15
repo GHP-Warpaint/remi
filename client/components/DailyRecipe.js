@@ -59,7 +59,13 @@ class DailyRecipe extends Component {
     this.props.getDailyRecipeInfo()
   }
 
-  handleSpeech = () => {}
+  handleSpeech = () => {
+    const msg = new SpeechSynthesisUtterance(
+      'Welcome to the home of Chef Remy. Please, allow me to show you around. Would you like to add some food to your fridge, update your account details, or generate a new recipe?'
+    )
+    msg.lang = 'en-GB'
+    window.speechSynthesis.speak(msg)
+  }
 
   letThemTalk = () => {
     console.log('THE WAIT IS OVER')
@@ -69,7 +75,7 @@ class DailyRecipe extends Component {
   }
 
   timer = () => {
-    setTimeout(this.letThemTalk, 1000)
+    setTimeout(this.letThemTalk, 10000)
   }
 
   handleTalk = () => {

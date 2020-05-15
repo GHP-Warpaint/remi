@@ -44,3 +44,9 @@ form div {
   text-transform: capitalize;
   font-size: 2em;
 }
+
+.instructions {
+  text-align: justify;
+  display: inline-block;
+  padding: 20px 20px 30px 10px;
+}

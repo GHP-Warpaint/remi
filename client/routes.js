@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, Fridge, MyAccount} from './components'
+import AlexaInstruct from './components/AlexaGuide'
 
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
@@ -25,6 +26,7 @@ class Routes extends Component {
 
         <Route path="/fridge" component={Fridge} />
         <Route path="/account" component={MyAccount} />
+        <Route path="/about-alexa" component={AlexaInstruct} />
 
         {isLoggedIn && (
           <Switch>

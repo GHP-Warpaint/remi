@@ -50,7 +50,9 @@ class Recipe extends Component {
 
     return (
       <div id="recipe">
+        <br />
         <h1>{this.props.recipe[0].title}</h1>
+        <br />
         <img src={this.props.recipe[0].image} id="recipeImg" />
         <br />
         <button
@@ -64,11 +66,16 @@ class Recipe extends Component {
           <ToastContainer />
         </button>
 
-        {this.props.directions.length
-          ? this.props.directions[0].steps.map(steps => {
-              return <p key={steps.number}>{steps.step}</p>
-            })
-          : 'loading'}
+        {this.props.directions.length ? (
+          this.props.directions[0].steps.map(steps => {
+            return <p key={steps.number}>{steps.step}</p>
+          })
+        ) : (
+          <div>
+            <br />
+            'loading'
+          </div>
+        )}
       </div>
     )
   }

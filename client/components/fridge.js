@@ -52,6 +52,7 @@ export class Fridge extends React.Component {
                   X
                 </button>
                 <img src={food.imageUrl} height="100px" width="auto" />
+                <br />
                 {food.name}
               </div>
             ))}

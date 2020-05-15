@@ -3,6 +3,7 @@ import React from 'react'
 const AlexaInstruct = () => {
   return (
     <div>
+      <br />
       <h1>Chef Remy's Guide to Amazon Alexa</h1>
       <br />
       <ul className="instructions">

@@ -25,9 +25,11 @@ export class Fridge extends React.Component {
     console.log('in render, this. props >>>>>>>>>', this.props)
     return (
       <div id="fridge">
+        <br />
         <h1>WELCOME TO THE FRIDGE!</h1>
         <div>
           <div>
+            <br />
             <AddFoodItem />
             <Link to="/recipe" className="fakeButton">
               Let's Cook!

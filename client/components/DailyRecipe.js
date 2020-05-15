@@ -91,7 +91,8 @@ class DailyRecipe extends Component {
       : 'loads'
     return (
       <div>
-        <h1>Our Suggested Recipe of the Day!</h1>
+        <br />
+        <h1>Our Suggested Recipe of the Day!</h1> <br />
         {randomChoice !== 'loads' && (
           <div>
             <h3>{randomChoice.title}</h3>
@@ -119,6 +120,8 @@ class DailyRecipe extends Component {
             button that says "Chat with Remy!"
           </p>
         </div>
+        <br />
+        <br />
         {this.state.clickedChat === false ? (
           <button
             type="button"

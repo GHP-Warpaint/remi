@@ -41,6 +41,7 @@ class Recipe extends Component {
     if (!this.props.recipe.length)
       return (
         <div>
+          <br />
           <button type="button" onClick={this.handleClick}>
             Get my Recipe
           </button>

@@ -1,8 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {me} from '../reducer/user'
-import {updateEmail} from '../reducer/user'
-import {updateName} from '../reducer/user'
+import {me, updateEmail, updateName} from '../reducer/user'
 
 export class MyAccount extends React.Component {
   constructor(props) {
@@ -17,6 +15,8 @@ export class MyAccount extends React.Component {
     this.toggleName = this.toggleName.bind(this)
     this.toggleEmail = this.toggleEmail.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmitName = this.handleSubmitName.bind(this)
+    this.handleSubmitEmail = this.handleSubmitEmail.bind(this)
   }
   componentDidMount() {
     this.props.me()
@@ -42,19 +42,25 @@ export class MyAccount extends React.Component {
 
   handleSubmitName(event) {
     event.preventDefault()
-    const userId = this.props.userId
-    let name = ({firstName, lastName} = {...this.state})
-    this.props.updateUserName(userId, name)
+    console.log('PROPS', this.props)
+    console.log('STATE', this.state)
+    const userId = this.props.user.id
+    const {firstName, lastName} = {...this.state}
+    let name = [firstName, lastName]
+    this.props.updateName(userId, name)
     this.setState({
-      firstName: ' ',
-      lastName: ' '
+      firstName: '',
+      lastName: ''
     })
   }
 
   handleSubmitEmail(event) {
     event.preventDefault()
-    const userId = this.props.userId
-    this.props.updateUserEmail(userId, this.state.email)
+    const userId = this.props.user.id
+    console.log('STATE EMAIL', this.state.email)
+    console.log('PROPS', this.props.updateEmail())
+    const email = {email: this.state.email}
+    this.props.updateEmail(userId, email)
     this.setState({
       email: ''
     })
@@ -122,7 +128,7 @@ export class MyAccount extends React.Component {
                 >
                   Edit
                 </button>
-                {this.state.nameClicked ? (
+                {this.state.emailClicked ? (
                   <form onSubmit={this.handleSubmitEmail}>
                     <label>
                       Email:

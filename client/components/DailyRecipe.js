@@ -136,7 +136,8 @@ class DailyRecipe extends Component {
         ) : (
           <div>
             <button type="button" onClick={this.handleTalk}>
-              Respond to Remy!
+              Respond to Remy!{' '}
+              <i className="fa fa-microphone" aria-hidden="true" />
             </button>
             <p>
               (If you stop talking and want to talk with Remy again, make sure

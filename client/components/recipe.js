@@ -66,7 +66,13 @@ class Recipe extends Component {
 
         {this.props.directions.length ? (
           this.props.directions[0].steps.map(steps => {
-            return <p key={steps.number}>{steps.step}</p>
+            return (
+              <div key={steps.number} className="cook-instructions">
+                <p>
+                  {steps.number}. {steps.step}
+                </p>
+              </div>
+            )
           })
         ) : (
           <div>

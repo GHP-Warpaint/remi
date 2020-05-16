@@ -36,9 +36,6 @@ export class Fridge extends React.Component {
               <br />
               Let's Cook!
             </Link>
-            {/* <button type="button" onClick={() => history.push('/recipe')}>
-              Let's Cook!
-            </button> */}
           </div>
           <br />
           {this.props.food &&

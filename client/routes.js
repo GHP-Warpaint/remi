@@ -4,6 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, Fridge, MyAccount} from './components'
 import AlexaInstruct from './components/AlexaGuide'
+import Welcome from './components/Welcome'
 
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
@@ -24,17 +25,17 @@ class Routes extends Component {
         <br />
         <Switch>
           {/* Routes placed here are available to all visitors */}
+          <Route path="/welcome" component={Welcome} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
 
-          <Route path="/fridge" component={Fridge} />
-          <Route path="/account" component={MyAccount} />
           <Route path="/about-alexa" component={AlexaInstruct} />
           <Route path="/privacy" component={Privacy} />
 
           {isLoggedIn && (
             <Switch>
               {/* Routes placed here are only available after logging in */}
+              <Route path="/account" component={MyAccount} />
               <Route path="/home" component={DailyRecipe} />
               <Route path="/recipe" component={Recipe} />
               <Route path="/fridge" component={Fridge} />

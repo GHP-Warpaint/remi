@@ -19,7 +19,6 @@ recognition.onresult = function(evt) {
 function readOutLoud(message) {
   const speech = new SpeechSynthesisUtterance()
 
-  //"Welcome to the home of Chef Remy. Please, allow me to show you around. Would you like to add some food to your fridge, update your account details, or generate a new recipe?" (10000ms)
   if (message.includes('fridge')) {
     location.assign('https://chef-remy.herokuapp.com/fridge')
     speech.text =

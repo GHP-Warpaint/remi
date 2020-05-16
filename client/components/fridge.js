@@ -32,10 +32,14 @@ export class Fridge extends React.Component {
             <br />
             <AddFoodItem />
             <br />
-            <Link to="/recipe" className="fakeButton">
-              <br />
-              Let's Cook!
-            </Link>
+            <div className="fridge-links">
+              <Link to="/receipt" className="fakeButton">
+                Scan my receipt!
+              </Link>
+              <Link to="/recipe" className="fakeButton">
+                Let's Cook!
+              </Link>
+            </div>
           </div>
           <br />
           {this.props.food &&

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, Fridge, MyAccount} from './components'
 import AlexaInstruct from './components/AlexaGuide'
 import Welcome from './components/Welcome'
+import Receipt from './components/Receipt'
 
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
@@ -31,6 +32,7 @@ class Routes extends Component {
 
           <Route path="/about-alexa" component={AlexaInstruct} />
           <Route path="/privacy" component={Privacy} />
+          <Route path="/receipt" component={Receipt} />
 
           {isLoggedIn && (
             <Switch>

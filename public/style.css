@@ -168,6 +168,11 @@ button:hover {
   float: right;
 }
 
+.fridge-links {
+  display: flex;
+  justify-content: space-around;
+}
+
 .field {
   padding: 0.42857em;
   width: 80%;

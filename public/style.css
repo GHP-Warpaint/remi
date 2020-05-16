@@ -179,6 +179,12 @@ button:hover {
   font-size: 1em;
 }
 
+footer {
+  background-color: rgb(62, 4, 28);
+  margin-top: 0.02%;
+  padding: 5%;
+}
+
 .alt1 {
   color: rgb(11, 38, 45);
 }

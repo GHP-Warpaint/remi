@@ -19,6 +19,7 @@ body {
   background-repeat: repeat space;
   background-size: cover;
 }
+
 #main {
   background-color: whitesmoke;
   background-repeat: repeat;
@@ -49,6 +50,10 @@ a {
 }
 a:visited {
   text-decoration: none;
+}
+
+.welcome {
+  margin: 5%;
 }
 
 label {
@@ -116,16 +121,38 @@ form div {
 
 button {
   background-color: rgb(51, 0, 17);
-  padding: 5px;
   color: whitesmoke;
   border-radius: 4px;
+  font-size: 1em;
+  padding: 10px 50px 10px 50px;
 }
+
+button:hover {
+  background: rgb(141, 4, 63);
+}
+
+.entice-btn {
+  background-color: rgb(91, 12, 38);
+  margin-top: 3%;
+}
+
 .itemBtn {
   /* background-color: #f44336;
   color: cornsilk; */
   size: 1em;
   padding: 3px;
   float: right;
+}
+
+.field {
+  padding: 0.42857em;
+  width: 80%;
+  box-sizing: border-box;
+  justify-content: center;
+  margin: 1%;
+  border-radius: 6px;
+  border: 1px transparent solid;
+  font-size: 1em;
 }
 
 .alt1 {

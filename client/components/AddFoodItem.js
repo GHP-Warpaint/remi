@@ -37,6 +37,7 @@ class AddFoodItem extends React.Component {
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
+            className="field"
           />
           <button type="submit">Add</button>
         </form>

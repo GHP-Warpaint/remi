@@ -198,17 +198,45 @@ footer {
   color: rgb(36, 9, 45);
 }
 
-.btn {
-  background-color: rgb(2, 2, 2);
-  border: none; /* Remove borders */
-  color: white; /* White text */
-  padding: 0px;
-  font-size: 30px;
-  cursor: pointer; /* Mouse pointer on hover */
-  border-radius: 16px;
+#help-icon {
+  font-size: xx-large;
+  display: flex;
+  justify-content: left;
+  width: 30px;
 }
 
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: rgb(65, 62, 61);
+#help-icon:hover {
+  color: rgb(177, 73, 91);
+}
+
+#help-icon .tooltiptext {
+  position: absolute;
+  visibility: hidden;
+  color: black;
+  border: solid black;
+  padding: 7px;
+  margin: 5px;
+  border-radius: 16px;
+  font-size: 16px;
+  width: 20%;
+  background: rgb(243, 181, 192);
+  line-height: 20px;
+  font-family: 'Jost', sans-serif;
+  top: 24%;
+  left: 4%;
+  /* margin-left: -60px; */
+}
+
+#help-icon:hover .tooltiptext {
+  visibility: visible;
+}
+
+.voice-help {
+  background-color: rgb(204, 118, 134);
+  border-radius: 16px;
+  margin-bottom: 2%;
+  height: 15%;
+}
+.voice-help:hover {
+  background-color: rgb(209, 101, 121);
 }

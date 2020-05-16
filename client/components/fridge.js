@@ -27,9 +27,20 @@ export class Fridge extends React.Component {
       <div id="fridge">
         <br />
         <h1>WELCOME TO THE FRIDGE!</h1>
-        <button type="button" className="btn">
-          <i className="fa fa-question-circle" aria-hidden="true" />
-        </button>
+        <i
+          className="fa fa-question-circle-o"
+          id="help-icon"
+          aria-hidden="true"
+        >
+          <span className="tooltiptext">
+            <button type="button" className="voice-help">
+              Click for Audio
+            </button>
+            <br />Type and add the foods you currently have available in your
+            kitchen. When you're done head over to the Recipes by clicking the
+            Let's Cook button or select Recipe in the nav bar.
+          </span>
+        </i>
         <div>
           <div>
             <br />

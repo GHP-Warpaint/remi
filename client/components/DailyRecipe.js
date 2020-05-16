@@ -125,9 +125,10 @@ class DailyRecipe extends Component {
           <button
             type="button"
             onClick={() => {
-              this.handleSpeech() //(REASON WHY NO SPEECH ON INITL BTN CLICK)Remy starts his speech of how to boss him around
-              this.timer() //(DONE) sets clickedChat on state to true so the 'respond to Remy' btn can be activated
+              this.handleSpeech()
+              this.timer()
             }}
+            aria-hidden="true"
           >
             Chat with Remy!
           </button>

@@ -21,8 +21,7 @@ function readOutLoud(message) {
 
   if (message.includes('fridge')) {
     location.assign('https://chef-remy.herokuapp.com/fridge')
-    speech.text =
-      "magnificent decision! Welcome to the fridge... Type out the ingredients you have before pressing the add button. When you are done, head over to recipe. We'll make something delicious together."
+    speech.text = 'magnificent decision! Welcome to the fridge.'
   } else if (message.includes('account')) {
     location.assign('https://chef-remy.herokuapp.com/account')
     speech.text =
@@ -33,6 +32,9 @@ function readOutLoud(message) {
   } else if (message.includes('home')) {
     location.assign('https://chef-remy.herokuapp.com/home')
     speech.text = "Excellent! We're back at our lovely home."
+  } else if (message.includes('alexa')) {
+    location.assign('https://chef-remy.herokuapp.com/about-alexa')
+    speech.text = 'Smashing! Presenting my dear friend, Alexa.'
   } else {
     speech.text =
       "Sorry, didn't catch that. If you are not sure what to say, try saying something like 'fridge', or 'lets go to the fridge."
@@ -67,14 +69,13 @@ class DailyRecipe extends Component {
   }
 
   letThemTalk = () => {
-    console.log('THE WAIT IS OVER')
     this.setState({
       clickedChat: true
     })
   }
 
   timer = () => {
-    setTimeout(this.letThemTalk, 10000)
+    setTimeout(this.letThemTalk, 4000)
   }
 
   handleTalk = () => {
@@ -130,7 +131,7 @@ class DailyRecipe extends Component {
             }}
             aria-hidden="true"
           >
-            Chat with Remy!
+            Chat with Remy! <i className="fa fa-volume-up" aria-hidden="true" />
           </button>
         ) : (
           <div>

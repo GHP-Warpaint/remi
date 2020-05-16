@@ -21,6 +21,14 @@ export class Fridge extends React.Component {
     this.props.deleteFood(id)
   }
 
+  handleSpeech = () => {
+    const msg = new SpeechSynthesisUtterance(
+      "Welcome to the Fridge. Type out the ingredients you currently have in your kitchen, then press add. When you're done head over to 'Recipe' to start cooking."
+    )
+    msg.lang = 'en-GB'
+    window.speechSynthesis.speak(msg)
+  }
+
   render() {
     console.log('in render, this. props >>>>>>>>>', this.props)
     return (
@@ -33,8 +41,13 @@ export class Fridge extends React.Component {
           aria-hidden="true"
         >
           <span className="tooltiptext">
-            <button type="button" className="voice-help">
-              Click for Audio
+            <button
+              type="button"
+              className="voice-help"
+              onClick={this.handleSpeech}
+            >
+              Click for Audio{' '}
+              <i className="fa fa-volume-up" aria-hidden="true" />
             </button>
             <br />Type and add the foods you currently have available in your
             kitchen. When you're done head over to the Recipes by clicking the

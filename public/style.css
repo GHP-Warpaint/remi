@@ -232,11 +232,12 @@ footer {
 }
 
 .voice-help {
-  background-color: rgb(204, 118, 134);
+  background-color: rgb(209, 101, 121);
   border-radius: 16px;
   margin-bottom: 2%;
+  padding: 10px 40px 10px 40px;
   height: 15%;
 }
 .voice-help:hover {
-  background-color: rgb(209, 101, 121);
+  background-color: rgb(206, 94, 114);
 }

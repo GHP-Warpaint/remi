@@ -23,7 +23,7 @@ export class Fridge extends React.Component {
 
   handleSpeech = () => {
     const msg = new SpeechSynthesisUtterance(
-      "Welcome to the Fridge. Type out the ingredients you currently have in your kitchen, then press add. When you're done head over to 'Recipe' to start cooking."
+      "Welcome to the Fridge. Type out the ingredients you currently have in your kitchen, then press add. When you're done, head over to 'Recipe' to start cooking."
     )
     msg.lang = 'en-GB'
     window.speechSynthesis.speak(msg)
@@ -51,7 +51,7 @@ export class Fridge extends React.Component {
             </button>
             <br />Type and add the foods you currently have available in your
             kitchen. When you're done head over to the Recipes by clicking the
-            Let's Cook button or select Recipe in the nav bar.
+            Let's Cook button or select Recipe in the nav menu.
           </span>
         </i>
         <div>

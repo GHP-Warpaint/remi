@@ -197,3 +197,18 @@ footer {
 .alt2 {
   color: rgb(36, 9, 45);
 }
+
+.btn {
+  background-color: rgb(2, 2, 2);
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 0px;
+  font-size: 30px;
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 16px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: rgb(65, 62, 61);
+}

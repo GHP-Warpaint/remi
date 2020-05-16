@@ -27,6 +27,9 @@ export class Fridge extends React.Component {
       <div id="fridge">
         <br />
         <h1>WELCOME TO THE FRIDGE!</h1>
+        <button type="button" className="btn">
+          <i className="fa fa-question-circle" aria-hidden="true" />
+        </button>
         <div>
           <div>
             <br />

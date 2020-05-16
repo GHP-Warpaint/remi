@@ -60,7 +60,7 @@ class DailyRecipe extends Component {
 
   handleSpeech = () => {
     const msg = new SpeechSynthesisUtterance(
-      'Welcome to the home of Chef Remy. Please allow me to show you around. Would you like to add some food to your fridge, update your account details, or generate a new recipe?'
+      'Welcome to the home of Chef Remy. Would you like to add some food to your fridge, update your account details, or generate a new recipe?'
     )
     msg.lang = 'en-GB'
     window.speechSynthesis.speak(msg)

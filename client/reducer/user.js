@@ -6,12 +6,16 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
+const UPDATED_NAME = 'UPDATED_NAME'
+const UPDATED_EMAIL = 'UPDATED_EMAIL'
 
 /**
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+const updatedName = name => ({type: UPDATED_NAME, name})
+const updatedEmail = email => ({type: UPDATED_EMAIL, email})
 
 /**
  * THUNK CREATORS
@@ -22,6 +26,24 @@ export const me = () => async dispatch => {
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
+  }
+}
+
+export const updateName = (userId, name) => async dispatch => {
+  try {
+    const res = await axios.put(`/auth/${userId}`, name)
+    dispatch(updatedName(res.data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const updateEmail = (userId, email) => async dispatch => {
+  try {
+    const res = await axios.put(`/auth/${userId}`, email)
+    dispatch(updatedEmail(res.data))
+  } catch (error) {
+    console.error(error)
   }
 }
 

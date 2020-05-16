@@ -119,6 +119,17 @@ form div {
   padding: 10px 20px 10px 10px;
 }
 
+.acct-details {
+  border-top: 0.25mm solid gray;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.acct-details:hover {
+  background: rgb(198, 196, 196);
+}
+
 button {
   background-color: rgb(51, 0, 17);
   color: whitesmoke;
@@ -129,6 +140,19 @@ button {
 
 button:hover {
   background: rgb(141, 4, 63);
+}
+
+.edit {
+  background: none;
+  padding: none;
+  border: none;
+  color: rgb(25, 78, 175);
+}
+
+.edit:hover {
+  background: none;
+  padding: none;
+  color: rgb(92, 133, 208);
 }
 
 .entice-btn {

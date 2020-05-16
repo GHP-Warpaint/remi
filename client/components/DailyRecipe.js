@@ -32,7 +32,7 @@ function readOutLoud(message) {
   } else if (message.includes('home')) {
     location.assign('https://chef-remy.herokuapp.com/home')
     speech.text = "Excellent! We're back at our lovely home."
-  } else if (message.includes('alexa')) {
+  } else if (message.includes('Alexa')) {
     location.assign('https://chef-remy.herokuapp.com/about-alexa')
     speech.text = 'Smashing! Presenting my dear friend, Alexa.'
   } else {

@@ -1,14 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost&family=Roboto&display=swap');
 * {
   margin: 0;
   padding: 0;
-}
-
-li,
-p,
-div,
-button {
-  font-family: 'Jost', sans-serif;
 }
 
 body {
@@ -16,16 +8,18 @@ body {
   text-align: center;
   margin: 0;
   background: url(/images/rainvivid.jpg);
-  background-repeat: repeat space;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 #main {
   background-color: whitesmoke;
-  background-repeat: repeat;
   width: 700px;
   margin: auto;
   padding: 0em 4em 4em;
   background-attachment: fixed;
+  background-size: auto 100%;
+  min-height: ;
+  height: 100vw;
 }
 
 @media screen and (max-width: 800px) {
@@ -82,6 +76,7 @@ nav div {
 
 nav a {
   margin: 1em;
+  color: whitesmoke;
 }
 nav a:visited {
   color: whitesmoke;
@@ -109,11 +104,6 @@ form div {
   padding: 20px 20px 30px 10px;
 }
 
-.cook-instructions {
-  text-align: justify;
-  padding: 10px 20px 10px 10px;
-}
-
 button {
   background-color: rgb(51, 0, 17);
   padding: 5px;
@@ -126,12 +116,4 @@ button {
   size: 1em;
   padding: 3px;
   float: right;
-}
-
-.alt1 {
-  color: rgb(11, 38, 45);
-}
-
-.alt2 {
-  color: rgb(36, 9, 45);
 }

@@ -2,20 +2,21 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getDailyRecipe} from '../reducer/dailyRecipe'
 
-const SpeechRecognition =
-  window.speechRecognition || window.webkitSpeechRecognition
-const recognition = new SpeechRecognition()
+if (window.speechRecognition || window.webkitSpeechRecognition) {
+  const SpeechRecognition =
+    window.speechRecognition || window.webkitSpeechRecognition
+  const recognition = new SpeechRecognition()
 
-recognition.onstart = function() {
-  console.log('voice is activated, you can speak to the microphone')
+  recognition.onstart = function() {
+    console.log('voice is activated, you can speak to the microphone')
+  }
+
+  recognition.onresult = function(evt) {
+    const transcript = evt.results[0][0].transcript
+    console.log('WHAT YOU SAID=>', transcript)
+    readOutLoud(transcript)
+  }
 }
-
-recognition.onresult = function(evt) {
-  const transcript = evt.results[0][0].transcript
-  console.log('WHAT YOU SAID=>', transcript)
-  readOutLoud(transcript)
-}
-
 function readOutLoud(message) {
   const speech = new SpeechSynthesisUtterance()
 
@@ -110,38 +111,45 @@ class DailyRecipe extends Component {
           </div>
         )}
         <br />
-        <div>
-          <h2>New to Chef Remy</h2>
-          <p>
-            Have an Amazon Alexa enabled device? <br />
-            Find us in your skill store! <br />
-            Don’t want to use Alexa? That's fine too! <br /> We recommend
-            talking to Chef Remy on our site. <br /> To get started, find the
-            button that says "Chat with Remy!"
-          </p>
-        </div>
-        <br />
-        <br />
-        {this.state.clickedChat === false ? (
-          <button
-            type="button"
-            onClick={() => {
-              this.handleSpeech() //(REASON WHY NO SPEECH ON INITL BTN CLICK)Remy starts his speech of how to boss him around
-              this.timer() //(DONE) sets clickedChat on state to true so the 'respond to Remy' btn can be activated
-            }}
-          >
-            Chat with Remy!
-          </button>
-        ) : (
-          <div>
-            <button type="button" onClick={this.handleTalk}>
-              Respond to Remy!
-            </button>
-            <p>
-              (If you stop talking and want to talk with Remy again, make sure
-              you re-click the button)
-            </p>
+        {window.speechRecognition || window.webkitSpeechRecognition ? (
+          <div id="remy">
+            <div>
+              <h2>New to Chef Remy</h2>
+              <p>
+                Have an Amazon Alexa enabled device? <br />
+                Find us in your skill store! <br />
+                Don’t want to use Alexa? That's fine too! <br /> We recommend
+                talking to Chef Remy on our site. <br /> To get started, find
+                the button that says "Chat with Remy!"
+              </p>
+            </div>
+            <br />
+            <br />(
+            {this.state.clickedChat === false ? (
+              <button
+                type="button"
+                onClick={() => {
+                  this.handleSpeech() //(REASON WHY NO SPEECH ON INITL BTN CLICK)Remy starts his speech of how to boss him around
+                  this.timer() //(DONE) sets clickedChat on state to true so the 'respond to Remy' btn can be activated
+                }}
+              >
+                Chat with Remy!
+              </button>
+            ) : (
+              <div>
+                <button type="button" onClick={this.handleTalk}>
+                  Respond to Remy!
+                </button>
+                <p>
+                  (If you stop talking and want to talk with Remy again, make
+                  sure you re-click the button)
+                </p>
+              </div>
+            )}
+            )
           </div>
+        ) : (
+          <div>Look for our Alexa Skill in the Alexa App!</div>
         )}
       </div>
     )

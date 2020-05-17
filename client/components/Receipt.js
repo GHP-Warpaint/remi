@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 export default class Receipt extends Component {
   constructor() {
@@ -47,6 +48,9 @@ export default class Receipt extends Component {
           <hr />
           <p id="countdown">{this.state.display}</p>
         </div>
+        <p>
+          Return to <Link to="/fridge">Fridge</Link>
+        </p>
       </div>
     )
   }

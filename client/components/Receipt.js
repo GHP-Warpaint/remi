@@ -47,10 +47,10 @@ export default class Receipt extends Component {
           <h1>COMING SOON</h1>
           <hr />
           <p id="countdown">{this.state.display}</p>
+          <p>
+            Return to <Link to="/fridge">Fridge</Link>
+          </p>
         </div>
-        <p>
-          Return to <Link to="/fridge">Fridge</Link>
-        </p>
       </div>
     )
   }

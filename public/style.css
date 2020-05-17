@@ -211,6 +211,29 @@ footer {
   color: rgb(177, 73, 91);
 }
 
+.alexa-icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#vol-icon {
+  font-size: xx-large;
+  width: 30px;
+}
+
+#vol-icon:hover {
+  color: rgb(177, 73, 91);
+}
+
+#info-icon {
+  font-size: xx-large;
+  width: 30px;
+}
+
+#info-icon:hover {
+  color: rgb(177, 73, 91);
+}
+
 .tooltiptext {
   position: absolute;
   visibility: hidden;

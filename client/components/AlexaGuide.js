@@ -14,12 +14,15 @@ class AlexaInstruct extends Component {
       <div>
         <br />
         <h1>Chef Remy's Guide to Amazon Alexa</h1>
-        <i
-          className="fa fa-volume-up"
-          id="help-icon"
-          aria-hidden="true"
-          onClick={this.handleSpeech}
-        />
+        <div className="alexa-icons">
+          <i
+            className="fa fa-volume-up"
+            id="vol-icon"
+            aria-hidden="true"
+            onClick={this.handleSpeech}
+          />
+          <i className="fa fa-info" id="info-icon" aria-hidden="true" />
+        </div>
         <br />
         <ul className="instructions">
           <li className="alt1">

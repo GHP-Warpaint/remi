@@ -21,7 +21,13 @@ class AlexaInstruct extends Component {
             aria-hidden="true"
             onClick={this.handleSpeech}
           />
-          <i className="fa fa-info" id="info-icon" aria-hidden="true" />
+          <i className="fa fa-info" id="info-icon" aria-hidden="true">
+            <span className="infotip">
+              Internet web speech is not capable of fully replicating Alexa’s
+              conversational abilities at this time. Remy’s online speech
+              capabilities are only available on Google Chrome.
+            </span>
+          </i>
         </div>
         <br />
         <ul className="instructions">

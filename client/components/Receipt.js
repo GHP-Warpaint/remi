@@ -34,6 +34,7 @@ export default class Receipt extends Component {
   }
 
   render() {
+    this.counter()
     return (
       <div>
         <h2>Scan your Receipts Here!</h2>
@@ -45,9 +46,9 @@ export default class Receipt extends Component {
           <h1>COMING SOON</h1>
           <hr />
           <p id="countdown">{this.state.display}</p>
-          <button type="button" onClick={this.counter}>
+          {/* <button type="button" onClick={this.counter}>
             Click Here
-          </button>
+          </button> */}
         </div>
       </div>
     )

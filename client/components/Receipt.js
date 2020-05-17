@@ -46,9 +46,6 @@ export default class Receipt extends Component {
           <h1>COMING SOON</h1>
           <hr />
           <p id="countdown">{this.state.display}</p>
-          {/* <button type="button" onClick={this.counter}>
-            Click Here
-          </button> */}
         </div>
       </div>
     )

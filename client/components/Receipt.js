@@ -9,6 +9,10 @@ export default class Receipt extends Component {
           We'll return your itemized list for you and you can decide if you'd
           like to add the items to your fridge
         </h3>
+        <form action="/upload" method="POST" encType="multipart/form-data">
+          <input type="file" name="avatar" />
+          <button type="submit">Convert</button>
+        </form>
       </div>
     )
   }

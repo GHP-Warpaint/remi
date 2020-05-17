@@ -77,7 +77,6 @@ class Recipe extends Component {
         ) : (
           <div>
             <br />
-            click the button to accept this recipe
           </div>
         )}
       </div>

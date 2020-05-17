@@ -181,7 +181,7 @@ button:hover {
   justify-content: center;
   margin: 1%;
   border-radius: 6px;
-  border: 1px transparent solid;
+  border: 1px rgb(62, 4, 28, 0.2) solid;
   font-size: 1em;
 }
 

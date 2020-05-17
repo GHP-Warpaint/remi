@@ -23,8 +23,9 @@ class AlexaInstruct extends Component {
         <br />
         <ul className="instructions">
           <li className="alt1">
-            To begin using Chef Remy, say "Alexa, ask for Chef Remy" and he will
-            start asking you to add items to your fridge.
+            To begin using Chef Remy on your Amazon Alexa enabled device, you'll
+            need to enable the Chef Remy skill. Say "Alexa, ask for Chef Remy"
+            and he will start asking you to add items to your fridge.
           </li>
           <br />
           <li className="alt2">

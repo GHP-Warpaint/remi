@@ -95,7 +95,11 @@ export default function userReducer(state = defaultUser, action) {
     case REMOVE_USER:
       return defaultUser
     case UPDATED_NAME:
-      return {...state, firstName: action.name[0], lastName: action.name[1]}
+      return {
+        ...state,
+        firstName: action.name.firstName,
+        lastName: action.name.lastName
+      }
     case UPDATED_EMAIL:
       return {...state, email: action.email}
     default:

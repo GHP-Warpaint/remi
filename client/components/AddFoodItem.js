@@ -15,7 +15,6 @@ class AddFoodItem extends React.Component {
 
   componentDidMount() {
     this.props.ingredientsList()
-    console.log('COMPON DID MT', this.props)
   }
 
   handleChange = event => {
@@ -35,7 +34,6 @@ class AddFoodItem extends React.Component {
   render() {
     const {ingredients} = this.props
     const {inventory} = ingredients
-    console.log('DDECONSTRUCTED INGREDIENTS', inventory)
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

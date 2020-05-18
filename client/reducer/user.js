@@ -6,12 +6,16 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
+const UPDATED_NAME = 'UPDATED_NAME'
+const UPDATED_EMAIL = 'UPDATED_EMAIL'
 
 /**
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+const updatedName = name => ({type: UPDATED_NAME, name})
+const updatedEmail = email => ({type: UPDATED_EMAIL, email})
 
 /**
  * THUNK CREATORS
@@ -22,6 +26,26 @@ export const me = () => async dispatch => {
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
+  }
+}
+
+export const updateName = (userId, name) => async dispatch => {
+  try {
+    const res = await axios.put(`/api/users/${userId}`, name)
+    dispatch(updatedName(res.data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const updateEmail = (userId, email) => async dispatch => {
+  try {
+    const res = await axios.put(`/api/users/${userId}`, email)
+    console.log('REDUX, res', res)
+    dispatch(updatedEmail(res.data))
+    console.log('REDUXY DISPATCH', dispatch(updatedEmail(res.data)))
+  } catch (error) {
+    console.error(error)
   }
 }
 
@@ -54,7 +78,11 @@ export const logout = () => async dispatch => {
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {
+  firstName: '',
+  lastName: '',
+  email: ''
+}
 
 /**
  * REDUCER
@@ -65,6 +93,10 @@ export default function userReducer(state = defaultUser, action) {
       return action.user
     case REMOVE_USER:
       return defaultUser
+    case UPDATED_NAME:
+      return {...state, firstName: action.name[0], lastName: action.name[1]}
+    case UPDATED_EMAIL:
+      return {...state, email: action.email}
     default:
       return state
   }

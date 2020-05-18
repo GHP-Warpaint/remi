@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchFood, addFoodItem} from '../reducer/fridge'
-// import {getFoodItem, addFoodItemToFridge} from '../reducer/foodItems'
+import {fetchFoodItems} from '../reducer/foodItems'
 
 class AddFoodItem extends React.Component {
   constructor() {
@@ -11,6 +11,10 @@ class AddFoodItem extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.ingredientsList()
   }
 
   handleChange = event => {
@@ -28,16 +32,26 @@ class AddFoodItem extends React.Component {
   }
 
   render() {
+    console.log('FOOD LIST PROPS', this.props)
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>Add Food Item</label>
+          {/* <label>Add Food Item</label> */}
           <input
             type="text"
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
+            list="ingredients"
+            className="field"
           />
+          <datalist id="ingredients">
+            <option value="Wine" />
+            <option value="Salt" />
+            <option value="Chocolate" />
+            <option value="Chicken" />
+          </datalist>
+
           <button type="submit">Add</button>
         </form>
       </div>
@@ -47,14 +61,16 @@ class AddFoodItem extends React.Component {
 
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
+    ingredients: state.foodItems
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     addFood: foodName => dispatch(addFoodItem(foodName)),
-    fetchFood: () => dispatch(fetchFood())
+    fetchFood: () => dispatch(fetchFood()),
+    ingredientsList: () => dispatch(fetchFoodItems())
   }
 }
 

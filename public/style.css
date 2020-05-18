@@ -27,6 +27,7 @@ body {
   margin: auto;
   padding: 0em 4em 4em;
   background-attachment: fixed;
+  background-size: auto 100%;
   min-height: 500px;
 }
 

@@ -31,7 +31,7 @@ class AddFoodItem extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>Add Food Item</label>
+          {/* <label>Add Food Item</label> */}
           <input
             type="text"
             name="name"

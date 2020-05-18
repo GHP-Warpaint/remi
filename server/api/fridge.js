@@ -46,15 +46,6 @@ router.delete('/:id', async (req, res, next) => {
 router.post('/add', async (req, res, next) => {
   try {
     const foodName = req.body.name
-    // console.log('----------------------------')
-    // console.log('in API foodName is ', foodName)
-    // console.log('----------------------------')
-    console.log('----------------------------')
-    console.log(
-      'in API req.session.passport.user is ',
-      req.session.passport.user
-    )
-    console.log('----------------------------')
     const userId = req.session.passport.user
     const user = await User.findByPk(userId)
     const food = await FoodItem.findOne({
@@ -62,17 +53,7 @@ router.post('/add', async (req, res, next) => {
         name: foodName
       }
     })
-    console.log('----------------------------')
-    console.log('in API food is ', food)
-    console.log('----------------------------')
-    console.log('in API user is ', user)
-    console.log('----------------------------')
     food.addUser(user)
-    // console.log('----------------------------')
-    // console.log('in api post', food.dataValues)
-    // console.log('----------------------------')
-    // const fridgeItem = data[0].dataValues
-
     res.json(food.dataValues)
   } catch (error) {
     console.error(error)

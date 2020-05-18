@@ -55,9 +55,24 @@ class Recipe extends Component {
           <div key={recipe.id} className="recipe-card">
             <h2>{recipe.title}</h2>
             <img src={recipe.image} />
+            {!this.state.recipeFound ? (
+              <button
+                type="button"
+                onClick={event => {
+                  this.cookRecipe(event)
+                  this.keepRecipe()
+                }}
+              >
+                Cook this Recipe!
+              </button>
+            ) : (
+              <div>
+                <br />
+              </div>
+            )}
           </div>
         ))}
-        {!this.state.recipeFound ? (
+        {/* {!this.state.recipeFound ? (
           <button
             type="button"
             onClick={event => {
@@ -71,7 +86,7 @@ class Recipe extends Component {
           <div>
             <br />
           </div>
-        )}
+        )} */}
         {this.props.directions.length ? (
           <div>
             <br />

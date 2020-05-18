@@ -32,6 +32,7 @@ export const me = () => async dispatch => {
 export const updateName = (userId, name) => async dispatch => {
   try {
     const res = await axios.put(`/api/users/${userId}`, name)
+    console.log('REDUX NAME, res', res)
     dispatch(updatedName(res.data))
   } catch (error) {
     console.error(error)
@@ -94,9 +95,13 @@ export default function userReducer(state = defaultUser, action) {
     case REMOVE_USER:
       return defaultUser
     case UPDATED_NAME:
-      return {...state, firstName: action.name[0], lastName: action.name[1]}
+      return {
+        ...state,
+        firstName: action.name.firstName,
+        lastName: action.name.lastName
+      }
     case UPDATED_EMAIL:
-      return {...state, email: action.email}
+      return {...state, email: action.email.email}
     default:
       return state
   }

@@ -101,7 +101,7 @@ export default function userReducer(state = defaultUser, action) {
         lastName: action.name.lastName
       }
     case UPDATED_EMAIL:
-      return {...state, email: action.email}
+      return {...state, email: action.email.email}
     default:
       return state
   }

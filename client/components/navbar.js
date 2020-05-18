@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
+  <div id="head">
     <Link to="/home">
       <h1>
         <img className="headlinerImg" src="./ChefHat.png" width="40" /> Chef
@@ -18,8 +18,9 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           {/* The navbar will show these links after you log in */}
           <Link to="/home">Home</Link>
           <Link to="/fridge">Fridge</Link>
-          <Link to="/account">My Account</Link>
           <Link to="/recipe">Recipe</Link>
+          <Link to="/about-alexa">Alexa</Link>
+          <Link to="/account">My Account</Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>

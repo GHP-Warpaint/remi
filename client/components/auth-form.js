@@ -19,14 +19,15 @@ class AuthForm extends Component {
             <label htmlFor="email">
               <small>Email</small>
             </label>
-            <input name="email" type="text" />
+            <input name="email" type="text" className="field" />
           </div>
           <div>
             <label htmlFor="password">
               <small>Password</small>
             </label>
-            <input name="password" type="password" />
+            <input name="password" type="password" className="field" />
           </div>
+          <br />
           <div>
             <button type="submit">{displayName}</button>
           </div>

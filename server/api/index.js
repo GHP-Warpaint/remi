@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 router.use('/users', require('./users'))
 
-// router.use('/foodItems', require('./foodItems'))
+router.use('/foodItems', require('./foodItems'))
 
 router.use('/fridge', require('./fridge'))
 

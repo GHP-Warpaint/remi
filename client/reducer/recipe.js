@@ -35,11 +35,11 @@ export const fetchRecipe = ingredients => async dispatch => {
     let requestString = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=`
 
     const ingredientsString = ingredientList.join(',+')
-    requestString = requestString + ingredientsString + '&number=1&ranking=2'
+    requestString = requestString + ingredientsString + '&number=6&ranking=2'
 
     //console.log('THUNK REQUEST STRING=>', requestString)
     const returnReq = await axios.get(requestString)
-    //console.log('THUNK RETURN REQUEST', returnReq)
+    console.log('THUNK RETURN REQUEST', returnReq)
 
     //just for testing
     // const returnReq = {

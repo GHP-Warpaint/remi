@@ -39,6 +39,7 @@ class Recipe extends Component {
   }
 
   render() {
+    console.log('LIST OF RECIPES=>', this.props.recipe)
     if (!this.props.recipe.length)
       return (
         <div>
@@ -48,14 +49,14 @@ class Recipe extends Component {
           </button>
         </div>
       )
-
     return (
-      <div id="recipe">
-        <br />
-        <h1>{this.props.recipe[0].title}</h1>
-        <br />
-        <img src={this.props.recipe[0].image} id="recipeImg" />
-        <br />
+      <div className="recipes-container">
+        {this.props.recipe.map(recipe => (
+          <div key={recipe.id} className="recipe-card">
+            <h2>{recipe.title}</h2>
+            <img src={recipe.image} />
+          </div>
+        ))}
         {!this.state.recipeFound ? (
           <button
             type="button"
@@ -66,12 +67,20 @@ class Recipe extends Component {
           >
             Cook this Recipe!
           </button>
-        ) : null}
-        {this.props.directions.length && (
+        ) : (
+          <div>
+            <br />
+          </div>
+        )}
+        {this.props.directions.length ? (
           <div>
             <br />
             <br />
             <h2>Directions:</h2>
+          </div>
+        ) : (
+          <div>
+            <br />
           </div>
         )}
         {this.props.directions.length ? (

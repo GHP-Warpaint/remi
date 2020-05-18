@@ -110,6 +110,19 @@ form div {
   font-size: 1.2em;
 }
 
+.recipes-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3rem;
+  padding: 1rem;
+}
+
+.recipe-card {
+  box-shadow: 0px 1px 5px #555;
+  background-color: white;
+  padding: 1rem;
+}
+
 .instructions {
   text-align: justify;
   display: inline-block;

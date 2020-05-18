@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import {createWorker} from 'tesseract.js'
 
-export default function ScanRecipt() {
+export default function ScanRecipt(uploadedImg) {
   const worker = createWorker({
     logger: m => console.log(m)
   })

@@ -30,7 +30,6 @@ export class Fridge extends React.Component {
   }
 
   render() {
-    console.log('in render, this. props >>>>>>>>>', this.props)
     return (
       <div id="fridge">
         <br />

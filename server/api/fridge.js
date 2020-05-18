@@ -53,8 +53,10 @@ router.post('/add', async (req, res, next) => {
         name: foodName
       }
     })
+    if (!food) {
+      res.json(null)
+    }
     food.addUser(user)
-
     res.json(food.dataValues)
   } catch (error) {
     console.error(error)

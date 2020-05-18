@@ -3,99 +3,97 @@ import {connect} from 'react-redux'
 import {getDailyRecipe} from '../reducer/dailyRecipe'
 import Loader from 'react-loader-spinner'
 
-// if (window.speechRecognition || window.webkitSpeechRecognition) {
-//   const SpeechRecognition =
-//     window.speechRecognition || window.webkitSpeechRecognition
-//   const recognition = new SpeechRecognition()
+if (window.speechRecognition || window.webkitSpeechRecognition) {
+  const SpeechRecognition =
+    window.speechRecognition || window.webkitSpeechRecognition
+  const recognition = new SpeechRecognition()
 
-//   recognition.onstart = function() {
-//     console.log('voice is activated, you can speak to the microphone')
-//   }
+  recognition.onstart = function() {
+    console.log('voice is activated, you can speak to the microphone')
+  }
 
-//   recognition.onresult = function(evt) {
-//     const transcript = evt.results[0][0].transcript
-//     console.log('WHAT YOU SAID=>', transcript)
-//     readOutLoud(transcript)
-//   }
-// }
-// function readOutLoud(message) {
-//   const speech = new SpeechSynthesisUtterance()
+  recognition.onresult = function(evt) {
+    const transcript = evt.results[0][0].transcript
+    console.log('WHAT YOU SAID=>', transcript)
+    readOutLoud(transcript)
+  }
+}
+function readOutLoud(message) {
+  const speech = new SpeechSynthesisUtterance()
 
-//   if (message.includes('fridge')) {
-//     location.assign('https://chef-remy.herokuapp.com/fridge')
-//     speech.text = 'magnificent decision! Welcome to the fridge.'
-//   } else if (message.includes('account')) {
-//     location.assign('https://chef-remy.herokuapp.com/account')
-//     speech.text =
-//       "great choice! Let's take a look at your current account details."
-//   } else if (message.includes('recipe')) {
-//     location.assign('https://chef-remy.herokuapp.com/recipe')
-//     speech.text = 'brilliant! Click the button to see what we can create.'
-//   } else if (message.includes('home')) {
-//     location.assign('https://chef-remy.herokuapp.com/home')
-//     speech.text = "Excellent! We're back at our lovely home."
-//   } else if (message.includes('Alexa')) {
-//     location.assign('https://chef-remy.herokuapp.com/about-alexa')
-//     speech.text = 'Smashing! Presenting my dear friend, Alexa.'
-//   } else {
-//     speech.text =
-//       "Sorry, didn't catch that. If you are not sure what to say, try saying something like 'fridge', or 'lets go to the fridge."
-//   }
+  if (message.includes('fridge')) {
+    location.assign('https://chef-remy.herokuapp.com/fridge')
+    speech.text = 'magnificent decision! Welcome to the fridge.'
+  } else if (message.includes('account')) {
+    location.assign('https://chef-remy.herokuapp.com/account')
+    speech.text =
+      "great choice! Let's take a look at your current account details."
+  } else if (message.includes('recipe')) {
+    location.assign('https://chef-remy.herokuapp.com/recipe')
+    speech.text = 'brilliant! Click the button to see what we can create.'
+  } else if (message.includes('home')) {
+    location.assign('https://chef-remy.herokuapp.com/home')
+    speech.text = "Excellent! We're back at our lovely home."
+  } else if (message.includes('Alexa')) {
+    location.assign('https://chef-remy.herokuapp.com/about-alexa')
+    speech.text = 'Smashing! Presenting my dear friend, Alexa.'
+  } else {
+    speech.text =
+      "Sorry, didn't catch that. If you are not sure what to say, try saying something like 'fridge', or 'lets go to the fridge."
+  }
 
-//   speech.volume = 1
-//   speech.rate = 1
-//   speech.pitch = 1
-//   speech.lang = 'en-GB'
+  speech.volume = 1
+  speech.rate = 1
+  speech.pitch = 1
+  speech.lang = 'en-GB'
 
-//   //need this v to have window speak back
-//   window.speechSynthesis.speak(speech)
-// }
+  //need this v to have window speak back
+  window.speechSynthesis.speak(speech)
+}
 
 class DailyRecipe extends Component {
   constructor() {
     super()
     this.state = {
-      loading: true,
-      clickedChat: false
+      clickedChat: false,
+      loading: true
     }
   }
 
   componentDidMount() {
     event.preventDefault()
-    console.log(this.props)
     this.props.getDailyRecipeInfo()
     this.setState({
       loading: false
     })
-    console.log(this.state)
   }
 
-  // handleSpeech = () => {
-  //   const msg = new SpeechSynthesisUtterance(
-  //     'Welcome to the home of Chef Remy. Would you like to add some food to your fridge, update your account details, or generate a new recipe?'
-  //   )
-  //   msg.lang = 'en-GB'
-  //   window.speechSynthesis.speak(msg)
-  // }
+  handleSpeech = () => {
+    const msg = new SpeechSynthesisUtterance(
+      'Welcome to the home of Chef Remy. Would you like to add some food to your fridge, update your account details, or generate a new recipe?'
+    )
+    msg.lang = 'en-GB'
+    window.speechSynthesis.speak(msg)
+  }
 
-  // letThemTalk = () => {
-  //   this.setState({
-  //     clickedChat: true
-  //   })
-  // }
+  letThemTalk = () => {
+    this.setState({
+      clickedChat: true
+    })
+  }
 
-  // timer = () => {
-  //   setTimeout(this.letThemTalk, 4000)
-  // }
+  timer = () => {
+    setTimeout(this.letThemTalk, 4000)
+  }
 
-  // handleTalk = () => {
-  //   recognition.start()
-  // }
+  handleTalk = () => {
+    recognition.start()
+  }
 
   render() {
-    const randomChoice = this.props.dailyRec.dailyRecipe
+    const {recipe, isLoading} = this.props
 
-    if (!randomChoice)
+    if (isLoading || this.state.loading)
       return <Loader type="Circles" color="#00BFFF" height={80} width={80} />
 
     return (
@@ -104,21 +102,17 @@ class DailyRecipe extends Component {
         <h1>Our Suggested Recipes of the Day!</h1>
         <br />
         <div>
-          <h3>{randomChoice.title}</h3>
-          <img src={randomChoice.imageUrl} height="300" />
+          <h3>{recipe.title}</h3>
+          <img src={recipe.imageUrl} height="300" />
           <p>
             Check out the recipe{' '}
-            <a
-              href={randomChoice.url}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
+            <a href={recipe.url} rel="noopener noreferrer" target="_blank">
               Here
             </a>
           </p>
         </div>
         <br />
-        {/* {window.speechRecognition || window.webkitSpeechRecognition ? (
+        {window.speechRecognition || window.webkitSpeechRecognition ? (
           <div id="remy">
             <div>
               <h2>New to Chef Remy</h2>
@@ -158,14 +152,15 @@ class DailyRecipe extends Component {
           </div>
         ) : (
           <div>Look for our Alexa Skill in the Alexa App!</div>
-        )} */}
+        )}
       </div>
     )
   }
 }
 
 const mapState = state => ({
-  dailyRec: state.dailyRecipe
+  recipe: state.dailyRecipe.dailyRecipe,
+  isLoading: state.dailyRecipe.isLoading
 })
 
 const mapDispatch = dispatch => ({

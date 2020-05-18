@@ -21,13 +21,18 @@ export const getDailyRecipe = () => {
 }
 
 const initialState = {
+  isLoading: true,
   dailyRecipe: {}
 }
 
 export default function dailyRecipeReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_DAILY_RECIPE:
-      return {...state, dailyRecipe: action.dailyrecipe}
+      return {
+        ...state,
+        dailyRecipe: action.dailyrecipe,
+        isLoading: false
+      }
     default:
       return state
   }

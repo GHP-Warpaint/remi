@@ -37,8 +37,16 @@ class AddFoodItem extends React.Component {
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
+            list="ingredients"
             className="field"
           />
+          <datalist id="ingredients">
+            <option value="Wine" />
+            <option value="Salt" />
+            <option value="Chocolate" />
+            <option value="Chicken" />
+          </datalist>
+
           <button type="submit">Add</button>
         </form>
       </div>

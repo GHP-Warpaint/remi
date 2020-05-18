@@ -32,6 +32,7 @@ export const me = () => async dispatch => {
 export const updateName = (userId, name) => async dispatch => {
   try {
     const res = await axios.put(`/api/users/${userId}`, name)
+    console.log('REDUX NAME, res', res)
     dispatch(updatedName(res.data))
   } catch (error) {
     console.error(error)

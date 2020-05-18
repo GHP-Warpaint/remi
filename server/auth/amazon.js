@@ -24,10 +24,11 @@ const strategy = new AmazonStrategy(
   (accessToken, refreshToken, profile, done) => {
     const amazonId = profile.id
     const email = profile.emails[0].value
+    const firstName = profile.displayName
 
     User.findOrCreate({
       where: {amazonId},
-      defaults: {email}
+      defaults: {email, firstName}
     })
       .then(([user]) => done(null, user))
       .catch(done)

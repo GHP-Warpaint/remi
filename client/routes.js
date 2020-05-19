@@ -6,7 +6,7 @@ import {Login, Signup, UserHome, Fridge, MyAccount} from './components'
 import AlexaInstruct from './components/AlexaGuide'
 import Welcome from './components/Welcome'
 import Receipt from './components/Receipt'
-
+import ErrorPage from './components/ErrorPage'
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
 import Privacy from './components/Privacy'
@@ -41,6 +41,7 @@ class Routes extends Component {
               <Route path="/home" component={DailyRecipe} />
               <Route path="/recipe" component={Recipe} />
               <Route path="/fridge" component={Fridge} />
+              <Route component={ErrorPage} />
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}

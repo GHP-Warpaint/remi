@@ -313,3 +313,50 @@ footer {
 #countdown {
   padding: 10%;
 }
+
+.alert {
+  padding: 20px;
+  background-color: green;
+  color: white;
+  -webkit-animation: cssAnimation 2s forwards;
+  animation: cssAnimation 2s forwards;
+}
+
+@keyframes cssAnimation {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes cssAnimation {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

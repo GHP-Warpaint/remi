@@ -1,10 +1,21 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 export default class SingleRecipe extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      savedRecipe: false
+    }
+    this.alert = this.alert.bind(this)
   }
+
+  alert() {
+    this.setState({
+      savedRecipe: true
+    })
+  }
+
   render() {
     console.log('SINGLE RECIPE PROPS', this.props)
     const {
@@ -16,8 +27,21 @@ export default class SingleRecipe extends Component {
     } = this.props
     return (
       <div>
+        <Link to="/recipes">Back to Recipes</Link>
         <h1>{title}</h1>
-        <button type="submit">Save This Recipe</button>
+        {!!this.state.savedRecipe && (
+          <div className="alert">
+            <span className="closebtn">&times;</span>
+            <strong>Success!</strong> Recipe saved! Find it in My Account.
+          </div>
+          // <div className="alert">
+          //   <span className="closebtn" onClick={this.parentElement.style.display='none'}>&times;</span>
+          //   <strong>Success!</strong> Recipe saved! Find it in My Account.
+          // </div>
+        )}
+        <button type="submit" onClick={this.alert}>
+          Save This Recipe
+        </button>
         <img src={image} />
         <div className="ingredients">
           {usedIngredients.length ? (

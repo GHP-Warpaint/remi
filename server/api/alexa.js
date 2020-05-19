@@ -24,6 +24,7 @@ router.post('/add', async (req, res, next) => {
   }
 })
 
+// sends recipe data to Alexa based on items in their fridge"
 router.get('/recipe/:id', async (req, res, next) => {
   try {
     const id = req.params.id
@@ -38,8 +39,6 @@ router.get('/recipe/:id', async (req, res, next) => {
     requestString = requestString + foodNames + '&number=1&ranking=2'
 
     const returnReq = await axios.get(requestString)
-
-    console.log(returnReq.data)
     const recipeId = returnReq.data[0].id
     const recipeTitle = returnReq.data[0].title
 

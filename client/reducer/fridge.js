@@ -67,6 +67,9 @@ export default function fridgeReducer(state = initialState, action) {
     case GET_FOOD:
       return {...state, food: action.food}
     case ADD_FOOD:
+      if (state.food.includes(action.food)) {
+        return state
+      }
       return {...state, food: [...state.food, action.foodItem]}
     case REMOVE_FOOD:
       return {

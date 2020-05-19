@@ -55,8 +55,7 @@ class DailyRecipe extends Component {
   constructor() {
     super()
     this.state = {
-      clickedChat: false,
-      loading: true
+      clickedChat: false
     }
   }
 
@@ -89,7 +88,7 @@ class DailyRecipe extends Component {
   render() {
     const {recipe, isLoading} = this.props
 
-    if (isLoading || this.state.loading)
+    if (isLoading)
       return <Loader type="Circles" color="#00BFFF" height={80} width={80} />
 
     return (

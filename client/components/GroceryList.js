@@ -7,20 +7,37 @@ export default class GroceryList extends Component {
       <div className="grocery-list">
         <h2>Grocery Shopping List</h2>
         <div className="container">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQG4X7mrHe8dR_J3TbT8IVm_hZixJ8WN7EMZ6Yo14ljEcvK3uia&usqp=CAU"
-            width="400px"
-          />
           <ul className="grocery-list-items">
-            <li>dummy &times;</li>
-            <li>placeholder &times;</li>
-            <li>words &times;</li>
-            <li>personal &times;</li>
-            <li>saved &times;</li>
-            <li>food &times;</li>
-            <li>items &times;</li>
-            <li>will go &times;</li>
-            <li>here &times;</li>
+            <li>dummy</li>
+            <li>&times;</li>
+          </ul>
+          <ul className="grocery-list-items">
+            <li>placeholder</li>
+            <li>&times;</li>
+          </ul>
+          <ul className="grocery-list-items">
+            <li>proof-of-concept</li>
+            <li>&times;</li>
+          </ul>
+          <ul className="grocery-list-items">
+            <li>in future</li>
+            <li>&times;</li>
+          </ul>
+          <ul className="grocery-list-items">
+            <li>mapping</li>
+            <li>&times;</li>
+          </ul>
+          <ul className="grocery-list-items">
+            <li>over</li>
+            <li>&times;</li>
+          </ul>
+          <ul className="grocery-list-items">
+            <li>food Names</li>
+            <li>&times;</li>
+          </ul>
+          <ul className="grocery-list-items">
+            <li>Is Necessary</li>
+            <li>&times;</li>
           </ul>
         </div>
       </div>

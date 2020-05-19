@@ -25,9 +25,9 @@ router.post('/add', async (req, res, next) => {
 })
 
 // sends recipe data to Alexa based on items in their fridge"
-router.get('/recipe/:id', async (req, res, next) => {
+router.get('/recipe/:userId', async (req, res, next) => {
   try {
-    const id = req.params.id
+    const id = req.params.userId
     const currentUser = await User.findByPk(id)
     const food = await currentUser.getFoodItems()
     let foodNames = food.map(food => {
@@ -44,6 +44,19 @@ router.get('/recipe/:id', async (req, res, next) => {
 
     const recipe = {recipeId, recipeTitle}
     res.json(recipe)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//pulls recipe based on items in the fridge
+router.get('/steps/:recipeId', async (req, res, next) => {
+  try {
+    const id = req.params.recipeId
+    const apiKey = process.env.SPOON_API_KEY
+    let requestString = `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey}`
+    const returnReq = await axios.get(requestString)
+    res.json(returnReq.data)
   } catch (error) {
     next(error)
   }

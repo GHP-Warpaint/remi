@@ -49,13 +49,13 @@ router.get('/recipe/:userId', async (req, res, next) => {
   }
 })
 
+//pulls recipe based on items in the fridge
 router.get('/steps/:recipeId', async (req, res, next) => {
   try {
     const id = req.params.recipeId
     const apiKey = process.env.SPOON_API_KEY
     let requestString = `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey}`
     const returnReq = await axios.get(requestString)
-
     res.json(returnReq.data)
   } catch (error) {
     next(error)

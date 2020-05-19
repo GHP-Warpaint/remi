@@ -6,6 +6,7 @@ import {Login, Signup, UserHome, Fridge, MyAccount} from './components'
 import AlexaInstruct from './components/AlexaGuide'
 import Welcome from './components/Welcome'
 import Receipt from './components/Receipt'
+import SingleRecipe from './components/SingleRecipe'
 
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
@@ -40,6 +41,7 @@ class Routes extends Component {
               <Route path="/account" component={MyAccount} />
               <Route path="/home" component={DailyRecipe} />
               <Route path="/recipe" component={Recipe} />
+              {/* <Route path={`/recipe/${recipe.id}`} component={SingleRecipe} /> */}
               <Route path="/fridge" component={Fridge} />
             </Switch>
           )}

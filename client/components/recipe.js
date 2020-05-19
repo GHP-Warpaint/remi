@@ -3,20 +3,19 @@ import {connect} from 'react-redux'
 import {fetchRecipe, sendRecipe, fetchRecipeDirections} from '../reducer/recipe'
 import {fetchFood} from '../reducer/fridge'
 import SingleRecipe from './SingleRecipe'
+import {Link} from 'react-router-dom'
 
 class Recipe extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      recipeFound: false
-    }
+    this.state = {}
     this.handleClick = this.handleClick.bind(this)
     this.cookRecipe = this.cookRecipe.bind(this)
-    this.keepRecipe = this.keepRecipe.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchFood()
+    console.log('CHECKING RECIPE ID', this.props.match.params)
   }
 
   handleClick(event) {
@@ -31,12 +30,6 @@ class Recipe extends Component {
     event.preventDefault()
     const id = this.props.recipe[0].id
     this.props.fetchDirections(id)
-  }
-
-  keepRecipe() {
-    this.setState({
-      recipeFound: true
-    })
   }
 
   render() {
@@ -56,6 +49,7 @@ class Recipe extends Component {
           <div key={recipe.id} className="recipe-card">
             <h2>{recipe.title}</h2>
             <img src={recipe.image} />
+            {/* <Link to={`/recipe/${recipe.id}`}> */}
             <button
               type="button"
               onClick={event => {
@@ -64,6 +58,7 @@ class Recipe extends Component {
             >
               Cook this Recipe!
             </button>
+            {/* </Link> */}
             <SingleRecipe
               image={recipe.image}
               missedIngredients={recipe.missedIngredients}

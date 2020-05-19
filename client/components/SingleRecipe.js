@@ -7,38 +7,94 @@ export default class SingleRecipe extends Component {
   }
   render() {
     console.log('SINGLE RECIPE PROPS', this.props)
-    const {} = this.props
+    const {
+      directions,
+      image,
+      missedIngredients,
+      title,
+      usedIngredients
+    } = this.props
     return (
-      <div />
-      // <div>
-
-      //   {this.props.directions.length ? (
-      //     <div>
-      //       <br />
-      //       <br />
-      //       <h2>Directions:</h2>
-      //     </div>
-      //   ) : (
-      //     <div>
-      //       <br />
-      //     </div>
-      //   )}
-      //   {this.props.directions.length ? (
-      //     this.props.directions[0].steps.map(steps => {
-      //       return (
-      //         <div key={steps.number} className="cook-instructions">
-      //           <p>
-      //             {steps.number}. {steps.step}
-      //           </p>
-      //         </div>
-      //       )
-      //     })
-      //   ) : (
-      //     <div>
-      //       <br />
-      //     </div>
-      //   )}
-      // </div>
+      <div>
+        <h1>{title}</h1>
+        <img src={image} />
+        <div className="ingredients">
+          {usedIngredients.length ? (
+            <div>
+              <h2>Ingredients:</h2>
+            </div>
+          ) : (
+            <div>
+              <br />
+            </div>
+          )}
+          {usedIngredients.length ? (
+            usedIngredients.map(item => {
+              return (
+                <div key={item.id} className="cook-instructions">
+                  <li>{item.name}</li>
+                </div>
+              )
+            })
+          ) : (
+            <div>
+              <br />
+            </div>
+          )}
+        </div>
+        <div className="missing-ingredients">
+          {missedIngredients.length ? (
+            <div>
+              <h2>Ingredients Not in Fridge:</h2>
+            </div>
+          ) : (
+            <div>
+              <br />
+            </div>
+          )}
+          {missedIngredients.length ? (
+            missedIngredients.map(item => {
+              return (
+                <div key={item.id} className="cook-instructions">
+                  <li>{item.name}</li>
+                </div>
+              )
+            })
+          ) : (
+            <div>
+              <br />
+            </div>
+          )}
+        </div>
+        <div className="directions">
+          {directions.length ? (
+            <div>
+              <br />
+              <br />
+              <h2>Directions:</h2>
+            </div>
+          ) : (
+            <div>
+              <br />
+            </div>
+          )}
+          {directions.length ? (
+            directions[0].steps.map(steps => {
+              return (
+                <div key={steps.number} className="cook-instructions">
+                  <p>
+                    {steps.number}. {steps.step}
+                  </p>
+                </div>
+              )
+            })
+          ) : (
+            <div>
+              <br />
+            </div>
+          )}
+        </div>
+      </div>
     )
   }
 }

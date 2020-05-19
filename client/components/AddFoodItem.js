@@ -32,7 +32,8 @@ class AddFoodItem extends React.Component {
   }
 
   render() {
-    console.log('FOOD LIST PROPS', this.props)
+    const {ingredients} = this.props
+    const {inventory} = ingredients
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -45,11 +46,12 @@ class AddFoodItem extends React.Component {
             list="ingredients"
             className="field"
           />
+
           <datalist id="ingredients">
-            <option value="Wine" />
-            <option value="Salt" />
-            <option value="Chocolate" />
-            <option value="Chicken" />
+            {inventory &&
+              inventory.map(ingredient => (
+                <option key={ingredient.id} value={ingredient.name} />
+              ))}
           </datalist>
 
           <button type="submit">Add</button>
@@ -62,7 +64,7 @@ class AddFoodItem extends React.Component {
 const mapState = state => {
   return {
     user: state.user,
-    ingredients: state.foodItems
+    ingredients: state.inventory
   }
 }
 

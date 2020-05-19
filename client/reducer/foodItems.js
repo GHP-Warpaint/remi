@@ -21,7 +21,7 @@ export const fetchFoodItems = () => {
 }
 
 const initialState = {
-  food: []
+  inventory: []
 }
 
 export default function foodItemsReducer(state = initialState, action) {
@@ -29,7 +29,7 @@ export default function foodItemsReducer(state = initialState, action) {
     case GET_FOODITEMS:
       return {
         ...state,
-        food: action.foodItems
+        inventory: action.foodItems
       }
     default:
       return state

@@ -1,4 +1,5 @@
 import axios from 'axios'
+require('../../secrets')
 
 const GET_FOOD = 'GET_FOOD'
 const REMOVE_FOOD = 'REMOVE_FOOD'
@@ -47,10 +48,32 @@ export const deleteFood = id => {
 export const addFoodItem = food => {
   return async dispatch => {
     try {
+      const edamamApiKey = process.env.EDAMAM_API_KEY
+      const edamamID = process.env.EDAMAM_APPLICATION_ID
+      const requestString =
+        'https://api.edamam.com/api/food-database/parser?ingr='
+      const foodString = food.name.split(' ').join('%20')
+      const edamam =
+        requestString +
+        foodString +
+        `&app_id=${edamamID}&app_key=${edamamApiKey}`
+      let foodObj = {}
+
       const newFoodItem = await axios.post(`/api/fridge/add`, {name: food.name})
-      // console.log('in Thunk', data)
-      // console.log('inthunk', newFoodItem)
-      dispatch(addFood(newFoodItem.data))
+
+      if (!newFoodItem.data) {
+        const foodData = await axios.get(edamam)
+        const foodItem = foodData.data.parsed[0].food
+        foodObj.name = foodItem.label
+        foodObj.imageUrl = foodItem.image
+        const addFoodtoFridge = await axios.post('/api/foodItems', foodObj)
+        const newFoodItem = await axios.post(`/api/fridge/add`, {
+          name: foodObj.name
+        })
+        dispatch(addFood(foodObj))
+      } else {
+        dispatch(addFood(newFoodItem.data))
+      }
     } catch (err) {
       dispatch(console.error(err))
     }

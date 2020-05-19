@@ -61,11 +61,7 @@ class DailyRecipe extends Component {
   }
 
   componentDidMount() {
-    event.preventDefault()
     this.props.getDailyRecipeInfo()
-    this.setState({
-      loading: false
-    })
   }
 
   handleSpeech = () => {

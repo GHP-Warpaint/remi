@@ -30,13 +30,13 @@ router.post('/add', async (req, res, next) => {
     const foodName = req.body.name
     const userId = req.session.passport.user
     const user = await User.findByPk(userId)
-    const food = await FoodItem.findOne({
+    const groceries = await GroceryList.findOne({
       where: {
         name: foodName
       }
     })
-    food.addUser(user)
-    res.json(groceryLists)
+    groceries.addUser(user)
+    res.json(groceries)
   } catch (error) {
     next(error)
   }

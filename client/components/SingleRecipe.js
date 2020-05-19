@@ -14,7 +14,11 @@ class SingleRecipe extends Component {
 
     const name = this.props.history.location.recipeProps.name
     const imageURL = this.props.history.location.recipeProps.image
-
+    const recipeId = this.props.history.location.recipeProps.recipeId
+    const recipeArr = this.props.recipe.recipe.filter(recipe => {
+      return recipe.id === recipeId
+    })
+    console.log('recipeArr', recipeArr)
     return (
       <div>
         <h1>{name}</h1>
@@ -35,8 +39,8 @@ const mapState = state => {
   return {
     food: state.fridge.food,
     recipe: state.recipe.recipe,
-    directions: state.recipe.directions,
-    recipe: state.recipe
+    directions: state.recipe.directions
+    // recipe: state.recipe
   }
 }
 

@@ -48,7 +48,8 @@ class SingleRecipe extends Component {
             pathname: '/SingleRecipe',
             recipeProps: {
               name: title,
-              image: image
+              image: image,
+              recipeId: id
             }
           }}
           onClick={() => {

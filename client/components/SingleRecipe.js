@@ -1,154 +1,47 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-//import {addGroceryListItem} from '../reducer/groceryList'
+import {connect} from 'react-redux'
+import {fetchRecipeDirections} from '../reducer/recipe'
 
-export default class SingleRecipe extends Component {
+class SingleRecipe extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      savedRecipe: false
-      //selectedFoods:  (not sure if I can put selected & submitted name vals on state)
-    }
-    this.alert = this.alert.bind(this)
-    //this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  //need to figure out how to get the name value (and maybe id) from the selected & submitted missing ingredients checkbox
-  // handleSubmit = async event => {
-  //   event.preventDefault()
-  //   const {addFood} = this.props
-  //   const food = this.state
-  //   await addToList(food)
-  // }
-
-  alert() {
-    this.setState({
-      savedRecipe: true
-    })
   }
 
   render() {
-    console.log('SINGLE RECIPE PROPS', this.props)
-    const {
-      directions,
-      image,
-      missedIngredients,
-      title,
-      usedIngredients
-    } = this.props
+    if (!this.props.directions[0]) return <h1>loading </h1>
+
+    const directions = this.props.directions[0].steps
+
+    const name = this.props.history.location.recipeProps.name
+    const imageURL = this.props.history.location.recipeProps.image
+
     return (
       <div>
-        <Link to="/recipes">Back to Recipes</Link>
-        <h1>{title}</h1>
-        {!!this.state.savedRecipe && (
-          <div className="alert">
-            <span className="closebtn">&times;</span>
-            <strong>Success!</strong> Recipe saved! Find it in My Account.
-          </div>
-          // <div className="alert">
-          //   <span className="closebtn" onClick={this.parentElement.style.display='none'}>&times;</span>
-          //   <strong>Success!</strong> Recipe saved! Find it in My Account.
-          // </div>
-        )}
-        <button type="submit" onClick={this.alert}>
-          Save This Recipe
-        </button>
-        <img src={image} />
-        <div className="ingredients">
-          {usedIngredients.length ? (
-            <div>
-              <h2>Ingredients:</h2>
-            </div>
-          ) : (
-            <div>
-              <br />
-            </div>
-          )}
-          {usedIngredients.length ? (
-            usedIngredients.map(item => {
-              return (
-                <div key={item.id} className="cook-instructions">
-                  <li>{item.name}</li>
-                </div>
-              )
-            })
-          ) : (
-            <div>
-              <br />
-            </div>
-          )}
-        </div>
-        <div className="missing-ingredients">
-          {missedIngredients.length ? (
-            <div>
-              <h2>Ingredients Not in Fridge:</h2>
-            </div>
-          ) : (
-            <div>
-              <br />
-            </div>
-          )}
-          <form onSubmit={this.handleSubmit}>
-            {missedIngredients.length ? (
-              missedIngredients.map(item => {
-                return (
-                  <div key={item.id} className="cook-instructions">
-                    <input
-                      type="checkbox"
-                      id={`${item.name}`}
-                      name={`${item.name}`}
-                    />
-                    <label htmlFor={`${item.name}`}>{`${item.name}`}</label>
-                  </div>
-                )
-              })
-            ) : (
-              <div>
-                <br />
-              </div>
-            )}
-            <input type="submit" value="Add to Grocery List" />
-          </form>
-        </div>
-        <div className="directions">
-          {directions.length ? (
-            <div>
-              <br />
-              <br />
-              <h2>Directions:</h2>
-            </div>
-          ) : (
-            <div>
-              <br />
-            </div>
-          )}
-          {directions.length ? (
-            directions[0].steps.map(steps => {
-              return (
-                <div key={steps.number} className="cook-instructions">
-                  <p>
-                    {steps.number}. {steps.step}
-                  </p>
-                </div>
-              )
-            })
-          ) : (
-            <div>
-              <br />
-            </div>
-          )}
-        </div>
+        <h1>{name}</h1>
+        <img src={imageURL} />
+        {directions.map(step => {
+          return (
+            <p key={step.number}>
+              {step.number}. {step.step}
+            </p>
+          )
+        })}
       </div>
     )
   }
 }
 
-// const mapState = state => ({
-//   shoppingList: state.groceryList
-// })
+const mapState = state => {
+  return {
+    food: state.fridge.food,
+    recipe: state.recipe.recipe,
+    directions: state.recipe.directions,
+    recipe: state.recipe
+  }
+}
 
-// const mapDispatch = dispatch => ({
-//   addToList: () => dispatch(addGroceryListItem())
-// })
+const mapDispatch = dispatch => ({
+  fetchDirections: id => dispatch(fetchRecipeDirections(id))
+})
 
-// export default connect(mapState, mapDispatch)(SingleRecipe)
+export default connect(mapState, mapDispatch)(SingleRecipe)

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchRecipe, sendRecipe, fetchRecipeDirections} from '../reducer/recipe'
 import {fetchFood} from '../reducer/fridge'
-import SingleRecipe from './SingleRecipe'
+import RecipeUI from './RecipeUI'
 import {Link} from 'react-router-dom'
 
 class Recipe extends Component {
@@ -15,7 +15,7 @@ class Recipe extends Component {
 
   componentDidMount() {
     this.props.fetchFood()
-    console.log('CHECKING RECIPE ID', this.props.match.params)
+    //console.log('CHECKING RECIPE ID', this.props.match.params)
   }
 
   handleClick(event) {
@@ -26,14 +26,17 @@ class Recipe extends Component {
     this.props.fetchRecipe(ingredients)
   }
 
-  cookRecipe(event) {
+  cookRecipe(id) {
     event.preventDefault()
-    const id = this.props.recipe[0].id
+    console.log('event', event.target)
+    console.log('id', id)
+    //const id = this.props.recipe[0].id
     this.props.fetchDirections(id)
   }
 
   render() {
-    console.log('LIST OF RECIPES=>', this.props.recipe)
+    //console.log('LIST OF RECIPES=>', this.props.recipe)
+
     if (!this.props.recipe.length)
       return (
         <div>
@@ -45,29 +48,40 @@ class Recipe extends Component {
       )
     return (
       <div className="recipes-container">
-        {this.props.recipe.map(recipe => (
-          <div key={recipe.id} className="recipe-card">
-            <h2>{recipe.title}</h2>
-            <img src={recipe.image} />
-            {/* <Link to={`/recipe/${recipe.id}`}> */}
-            <button
-              type="button"
-              onClick={event => {
-                this.cookRecipe(event)
-              }}
-            >
-              Cook this Recipe!
-            </button>
-            {/* </Link> */}
-            <SingleRecipe
+        {this.props.recipe.map(recipe => {
+          return (
+            <RecipeUI
+              key={recipe.id}
               image={recipe.image}
+              id={recipe.id}
               missedIngredients={recipe.missedIngredients}
               title={recipe.title}
               usedIngredients={recipe.usedIngredients}
               directions={this.props.directions}
             />
-          </div>
-        ))}
+          )
+        })}
+
+        {/* {this.props.recipe.map(recipe => (
+          <div key={recipe.id} className="recipe-card">
+            <h2>{recipe.title}</h2>
+            <img src={recipe.image} /> */}
+        {/* <Link to ='/SingleRecipe'
+              onClick={() => {
+                this.cookRecipe(recipe.id)
+              }}
+            >
+              Cook this Recipe!
+            </Link> */}
+        {/* <SingleRecipe
+              image={recipe.image}
+              missedIngredients={recipe.missedIngredients}
+              title={recipe.title}
+              usedIngredients={recipe.usedIngredients}
+              directions={this.props.directions}
+            /> */}
+        {/* </div>
+        ))} */}
       </div>
     )
   }

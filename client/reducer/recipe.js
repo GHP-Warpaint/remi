@@ -60,6 +60,7 @@ export const fetchRecipe = ingredients => async dispatch => {
 
 export const fetchRecipeDirections = id => async dispatch => {
   try {
+    console.log('in thunk', id)
     const apiKey = process.env.SPOON_API_KEY
     let requestString = `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${apiKey}`
 

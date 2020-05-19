@@ -7,7 +7,6 @@ import AlexaInstruct from './components/AlexaGuide'
 import Welcome from './components/Welcome'
 import Receipt from './components/Receipt'
 import SingleRecipe from './components/SingleRecipe'
-
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
 import Privacy from './components/Privacy'
@@ -41,8 +40,7 @@ class Routes extends Component {
               <Route path="/account" component={MyAccount} />
               <Route path="/home" component={DailyRecipe} />
               <Route path="/recipes" component={Recipe} />
-              {/* <Route path={`/recipes/${recipe.id}`} component={SingleRecipe} /> */}
-              <Route path="/recipes/recipeId" component={SingleRecipe} />
+              <Route path="/singleRecipe" component={SingleRecipe} />
               <Route path="/fridge" component={Fridge} />
             </Switch>
           )}

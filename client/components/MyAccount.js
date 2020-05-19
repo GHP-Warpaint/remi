@@ -46,7 +46,7 @@ export class MyAccount extends React.Component {
     console.log('STATE', this.state)
     const userId = this.props.user.id
     const {firstName, lastName} = {...this.state}
-    let name = [firstName, lastName]
+    const name = {firstName: firstName, lastName: lastName}
     this.props.updateName(userId, name)
     this.setState({
       firstName: '',

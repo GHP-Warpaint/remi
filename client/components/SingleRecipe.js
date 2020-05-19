@@ -40,7 +40,6 @@ const mapState = state => {
     food: state.fridge.food,
     recipe: state.recipe.recipe,
     directions: state.recipe.directions
-    // recipe: state.recipe
   }
 }
 

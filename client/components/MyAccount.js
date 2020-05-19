@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {me, updateEmail, updateName} from '../reducer/user'
+import GroceryList from './GroceryList'
+import SavedRecipes from './SavedRecipes'
 //import {removeGroceryListItem, fetchGroceryList} from '../reducer/groceryList'
 
 export class MyAccount extends React.Component {
@@ -149,26 +151,8 @@ export class MyAccount extends React.Component {
             </div>
           )}
         </div>
-        <div className="grocery-list">
-          <h2>Grocery Shopping List</h2>
-          <div className="container">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQG4X7mrHe8dR_J3TbT8IVm_hZixJ8WN7EMZ6Yo14ljEcvK3uia&usqp=CAU"
-              width="400px"
-            />
-            <ul className="grocery-list-items">
-              <li>dummy &times;</li>
-              <li>placeholder &times;</li>
-              <li>words &times;</li>
-              <li>personal &times;</li>
-              <li>saved &times;</li>
-              <li>food &times;</li>
-              <li>items &times;</li>
-              <li>will go &times;</li>
-              <li>here &times;</li>
-            </ul>
-          </div>
-        </div>
+        <SavedRecipes />
+        <GroceryList />
       </div>
     )
   }
@@ -176,7 +160,6 @@ export class MyAccount extends React.Component {
 const mapState = state => {
   return {
     user: state.user
-    //shoppingList: state.groceryList
   }
 }
 
@@ -185,8 +168,6 @@ const mapDispatch = dispatch => {
     me: () => dispatch(me()),
     updateName: (userId, name) => dispatch(updateName(userId, name)),
     updateEmail: (userId, email) => dispatch(updateEmail(userId, email))
-    //seeGroceryList: () => dispatch(fetchGroceryList())
-    //dontNeedListedItem: (id) => dispactch(removeGroceryListItem(id))
   }
 }
 

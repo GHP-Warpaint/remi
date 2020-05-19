@@ -41,6 +41,7 @@ class Routes extends Component {
               <Route path="/home" component={DailyRecipe} />
               <Route path="/recipe" component={Recipe} />
               <Route path="/fridge" component={Fridge} />
+              <Route path="recipt" component={Recipt} />
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}

@@ -7,9 +7,19 @@ export default class SingleRecipe extends Component {
     super(props)
     this.state = {
       savedRecipe: false
+      //selectedFoods:  (not sure if I can put selected & submitted name vals on state)
     }
     this.alert = this.alert.bind(this)
+    //this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  //need to figure out how to get the name value (and maybe id) from the selected & submitted missing ingredients checkbox
+  // handleSubmit = async event => {
+  //   event.preventDefault()
+  //   const {addFood} = this.props
+  //   const food = this.state
+  //   await addToList(food)
+  // }
 
   alert() {
     this.setState({
@@ -78,7 +88,7 @@ export default class SingleRecipe extends Component {
               <br />
             </div>
           )}
-          <form>
+          <form onSubmit={this.handleSubmit}>
             {missedIngredients.length ? (
               missedIngredients.map(item => {
                 return (

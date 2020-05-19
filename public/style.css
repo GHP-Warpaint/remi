@@ -360,3 +360,22 @@ footer {
 .closebtn:hover {
   color: black;
 }
+
+.grocery-list {
+  margin-top: 25%;
+  margin-top: 15%;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+.grocery-list-items {
+  list-style: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -60,13 +60,16 @@ export const addFoodItem = food => {
       let foodObj = {}
 
       const newFoodItem = await axios.post(`/api/fridge/add`, {name: food.name})
+
       if (!newFoodItem.data) {
         const foodData = await axios.get(edamam)
         const foodItem = foodData.data.parsed[0].food
-        console.log(foodItem)
         foodObj.name = foodItem.label
         foodObj.imageUrl = foodItem.image
-
+        const addFoodtoFridge = await axios.post('/api/foodItems', foodObj)
+        const newFoodItem = await axios.post(`/api/fridge/add`, {
+          name: foodObj.name
+        })
         dispatch(addFood(foodObj))
       } else {
         dispatch(addFood(newFoodItem.data))

@@ -9,14 +9,14 @@ export const getGroceryList = groceryList => ({
   groceryList
 })
 
-export const addToGroceryList = NewFoodNames => ({
+export const addToGroceryList = newFoodName => ({
   type: ADDTO_GROCERY_LIST,
-  NewFoodNames
+  newFoodName
 })
 
-export const removeFromGroceryList = OldFoodNames => ({
+export const removeFromGroceryList = oldFoodName => ({
   type: REMOVEFROM_GROCERY_LIST,
-  OldFoodNames
+  oldFoodName
 })
 
 export const fetchGroceryList = () => {
@@ -61,9 +61,14 @@ export default function groceryListReducer(state = initialState, action) {
     case GET_GROCERY_LIST:
       return {...state, groceryList: action.groceryList}
     case ADDTO_GROCERY_LIST:
-      return {...state, groceryList: action.groceryList}
+      return {...state, groceryList: [...state.groceryList, action.newFoodName]}
     case REMOVEFROM_GROCERY_LIST:
-      return {...state, groceryList: action.groceryList}
+      return {
+        ...state,
+        groceryList: [...state.groceryList].filter(
+          groceryList => groceryList.id !== action.oldFoodName
+        )
+      }
     default:
       return state
   }

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {me, updateEmail, updateName} from '../reducer/user'
+//import {removeGroceryListItem, fetchGroceryList} from '../reducer/groceryList'
 
 export class MyAccount extends React.Component {
   constructor(props) {
@@ -155,6 +156,7 @@ export class MyAccount extends React.Component {
 const mapState = state => {
   return {
     user: state.user
+    //shoppingList: state.groceryList
   }
 }
 
@@ -163,6 +165,8 @@ const mapDispatch = dispatch => {
     me: () => dispatch(me()),
     updateName: (userId, name) => dispatch(updateName(userId, name)),
     updateEmail: (userId, email) => dispatch(updateEmail(userId, email))
+    //seeGroceryList: () => dispatch(fetchGroceryList())
+    //dontNeedListedItem: (id) => dispactch(removeGroceryListItem(id))
   }
 }
 

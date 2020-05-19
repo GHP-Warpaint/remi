@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+//import {addGroceryListItem} from '../reducer/groceryList'
 
 export default class SingleRecipe extends Component {
   constructor(props) {
@@ -131,3 +132,13 @@ export default class SingleRecipe extends Component {
     )
   }
 }
+
+// const mapState = state => ({
+//   shoppingList: state.groceryList
+// })
+
+// const mapDispatch = dispatch => ({
+//   addToList: () => dispatch(addGroceryListItem())
+// })
+
+// export default connect(mapState, mapDispatch)(SingleRecipe)

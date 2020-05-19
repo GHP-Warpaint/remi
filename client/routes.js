@@ -40,8 +40,9 @@ class Routes extends Component {
               {/* Routes placed here are only available after logging in */}
               <Route path="/account" component={MyAccount} />
               <Route path="/home" component={DailyRecipe} />
-              <Route path="/recipe" component={Recipe} />
-              {/* <Route path={`/recipe/${recipe.id}`} component={SingleRecipe} /> */}
+              <Route path="/recipes" component={Recipe} />
+              {/* <Route path={`/recipes/${recipe.id}`} component={SingleRecipe} /> */}
+              <Route path="/recipes/recipeId" component={SingleRecipe} />
               <Route path="/fridge" component={Fridge} />
             </Switch>
           )}

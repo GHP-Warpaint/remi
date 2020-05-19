@@ -17,6 +17,7 @@ export default class SingleRecipe extends Component {
     return (
       <div>
         <h1>{title}</h1>
+        <button type="submit">Save This Recipe</button>
         <img src={image} />
         <div className="ingredients">
           {usedIngredients.length ? (
@@ -52,19 +53,27 @@ export default class SingleRecipe extends Component {
               <br />
             </div>
           )}
-          {missedIngredients.length ? (
-            missedIngredients.map(item => {
-              return (
-                <div key={item.id} className="cook-instructions">
-                  <li>{item.name}</li>
-                </div>
-              )
-            })
-          ) : (
-            <div>
-              <br />
-            </div>
-          )}
+          <form>
+            {missedIngredients.length ? (
+              missedIngredients.map(item => {
+                return (
+                  <div key={item.id} className="cook-instructions">
+                    <input
+                      type="checkbox"
+                      id={`${item.name}`}
+                      name={`${item.name}`}
+                    />
+                    <label htmlFor={`${item.name}`}>{`${item.name}`}</label>
+                  </div>
+                )
+              })
+            ) : (
+              <div>
+                <br />
+              </div>
+            )}
+            <input type="submit" value="Add to Grocery List" />
+          </form>
         </div>
         <div className="directions">
           {directions.length ? (

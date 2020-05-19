@@ -62,7 +62,7 @@ export class Fridge extends React.Component {
               <Link to="/receipt" className="fakeButton">
                 Scan my receipt!
               </Link>
-              <Link to="/recipe" className="fakeButton">
+              <Link to="/recipes" className="fakeButton">
                 Let's Cook!
               </Link>
             </div>

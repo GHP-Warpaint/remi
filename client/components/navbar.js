@@ -6,7 +6,7 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div id="head">
-    <Link to="/home">
+    <Link to="/">
       <h1>
         <img className="headlinerImg" src="./ChefHat.png" width="40" /> Chef
         Remy
@@ -30,7 +30,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           {/* The navbar will show these links before you log in */}
           {/* <Link to="/home">Home</Link> */}
           {/* <Link to="/recipe">Recipe</Link> */}
-          <Link to="/welcome">Welcome</Link>
           <Link to="/about-alexa">Alexa</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>

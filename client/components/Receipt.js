@@ -15,9 +15,7 @@ class Receipt extends React.Component {
     super(props)
     this.state = {
       uploads: [],
-      patterns: [],
-      documents: [],
-      text: ''
+      lines: []
     }
     //this.generateText = this.generateText.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -37,19 +35,24 @@ class Receipt extends React.Component {
     await worker.load()
     await worker.loadLanguage('eng')
     await worker.initialize('eng')
-    const {data: {text}} = await worker.recognize(this.state.uploads[0])
+    const {data} = await worker.recognize(this.state.uploads[0])
     await worker.terminate()
-    let newText = text.replace(/[^a-zA-Z ]/g, '')
-    console.log(newText)
-    let arr = newText.split(' ')
-    console.log(arr)
-    let unique = [...new Set(arr)]
-    console.log(unique)
+    console.log('Data Lines >>>>>>>>>', data.lines)
+    const groceryList = data.lines.map(obj => {
+      return obj.text.replace(/[^a-zA-Z ]/g, '')
+    })
+    console.log('groceryList ', groceryList)
+    // let newText = text.replace(/[^a-zA-Z ]/g, '')
+    // console.log(newText)
+    // let arr = newText.split('')
+    // console.log(arr)
+    // let unique = [...new Set(arr)]
+    // console.log(unique)
 
     // console.log(newArr)
-    // this.setState({
-    //   text: text
-    // })
+    this.setState({
+      lines: groceryList
+    })
     // console.log(this.state)
     //return text
   }
@@ -81,37 +84,6 @@ class Receipt extends React.Component {
           </button>
         </section>
 
-        <section className="results">
-          {this.state.documents.map((value, index) => {
-            return (
-              <div key={index} className="results__result">
-                <div className="results__result__image">
-                  <img src={this.state.uploads[index]} width="250px" />
-                </div>
-                <div className="results__result__info">
-                  <div className="results__result__info__codes">
-                    <small>
-                      <strong>Confidence Score:</strong> {value.confidence}
-                    </small>
-                  </div>
-                  <div className="results__result__info__codes">
-                    <small>
-                      <strong>Pattern Output:</strong>{' '}
-                      {value.pattern.map(pattern => {
-                        return pattern + ', '
-                      })}
-                    </small>
-                  </div>
-                  <div className="results__result__info__text">
-                    <small>
-                      <strong>Full Output:</strong> {value.text}
-                    </small>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </section>
         <p>
           Return to <Link to="/fridge">Fridge</Link>
         </p>

@@ -51,23 +51,24 @@ class Receipt extends React.Component {
     await worker.initialize('eng')
     const {data} = await worker.recognize(this.state.uploads[0])
     await worker.terminate()
-    console.log('Data Lines >>>>>>>>>', data.lines)
     const groceryList = data.lines.map(obj => {
-      return obj.text.replace(/[^a-zA-Z ]/g, '')
+      return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
     })
     console.log('groceryList ', groceryList)
+    // const items = groceryList.map( string => {
+    //   return string.split(' ')
+    // })
+    // console.log('items', items)
 
-    const food = []
-    const items = groceryList.map(line => {
-      line.split(' ').map(word => {
-        console.log(word)
-        if (this.state.foodHash[word]) {
-          food.push(word)
-        }
-      })
-    })
-
-    console.log(food)
+    // const food = []
+    // const items = groceryList.map(line => {
+    //   line.split(' ').map(word => {
+    //     console.log(word)
+    //     if (this.state.foodHash[word]) {
+    //       food.push(word)
+    //     }
+    //   })
+    // })
   }
 
   render() {

@@ -17,20 +17,22 @@ class Receipt extends React.Component {
     this.state = {
       uploads: [],
       lines: [],
-      foodHash: {}
+      foodHash: {},
+      reciptItems: []
     }
     //this.generateText = this.generateText.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.getTextFromImage = this.getTextFromImage.bind(this)
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     event.preventDefault()
-    this.props.fetchFoodItems()
+    await this.props.fetchFoodItems()
     const foodHash = {}
     this.props.inventory.map(foodObj => {
       foodHash[foodObj.name] = true
     })
+    console.log('foodHash 34', foodHash)
     this.setState({
       foodHash: foodHash
     })
@@ -51,10 +53,36 @@ class Receipt extends React.Component {
     await worker.initialize('eng')
     const {data} = await worker.recognize(this.state.uploads[0])
     await worker.terminate()
-    const groceryList = data.lines.map(obj => {
+    // const groceryList = data.lines.map(obj => {
+    //   return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
+    // })
+    // console.log('groceryList ', groceryList)
+    // this.setState({
+    //   lines: groceryList
+    // })
+    let words = data.words.map(obj => {
       return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
     })
-    console.log('groceryList ', groceryList)
+    words = Array.from(new Set(words))
+    const newArr = words.filter(word => {
+      word = word.toLowerCase()
+      if (this.state.foodHash[word]) {
+        return word.toLowerCase()
+      }
+    })
+
+    this.setState({
+      reciptItems: newArr
+    })
+
+    // const groceryList = data.lines.map(obj => {
+    //   return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
+    // })
+    // console.log('groceryList ', groceryList)
+    // this.setState({
+    //   lines: groceryList
+    // })
+
     // const items = groceryList.map( string => {
     //   return string.split(' ')
     // })
@@ -109,6 +137,12 @@ class Receipt extends React.Component {
         <p>
           Return to <Link to="/fridge">Fridge</Link>
         </p>
+
+        {this.state.lines.length
+          ? this.state.lines.map((line, i) => {
+              return <p key={i}>{line}</p>
+            })
+          : ''}
       </div>
     )
   }

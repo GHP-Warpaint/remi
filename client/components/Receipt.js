@@ -32,7 +32,6 @@ class Receipt extends React.Component {
     this.props.inventory.map(foodObj => {
       foodHash[foodObj.name] = true
     })
-    console.log('foodHash 34', foodHash)
     this.setState({
       foodHash: foodHash
     })
@@ -67,9 +66,11 @@ class Receipt extends React.Component {
     const newArr = words.filter(word => {
       word = word.toLowerCase()
       if (this.state.foodHash[word]) {
-        return word.toLowerCase()
+        return word
       }
     })
+
+    console.log(newArr)
 
     this.setState({
       reciptItems: newArr
@@ -137,12 +138,6 @@ class Receipt extends React.Component {
         <p>
           Return to <Link to="/fridge">Fridge</Link>
         </p>
-
-        {this.state.lines.length
-          ? this.state.lines.map((line, i) => {
-              return <p key={i}>{line}</p>
-            })
-          : ''}
       </div>
     )
   }

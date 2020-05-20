@@ -66,7 +66,9 @@ class Recipe extends Component {
           >
             Cook this Recipe!
           </button>
-        ) : null}
+        ) : (
+          ''
+        )}
         {this.props.directions.length && (
           <div>
             <br />
@@ -74,7 +76,7 @@ class Recipe extends Component {
             <h2>Directions:</h2>
           </div>
         )}
-        {this.props.directions.length ? (
+        {this.props.directions.length > 0 ? (
           this.props.directions[0].steps.map(steps => {
             return (
               <div key={steps.number} className="cook-instructions">

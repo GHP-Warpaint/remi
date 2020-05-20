@@ -1,57 +1,145 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import AddFoodItem from './AddFoodItem'
+import {fetchFood, deleteFood} from '../reducer/fridge'
+import axios from 'axios'
+import Tesseract from 'tesseract.js'
 
-export default class Receipt extends Component {
-  constructor() {
-    super()
+/**
+ * COMPONENT
+ */
+class Receipt extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      display: ''
+      uploads: [],
+      patterns: [],
+      documents: []
     }
-    this.counter = this.counter.bind(this)
+    this.generateText = this.generateText.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  counter() {
-    let countDownDate = new Date('May 31, 2020 15:30:00').getTime()
-
-    const countdownfunction = setInterval(() => {
-      let rightNow = new Date().getTime()
-      let difference = countDownDate - rightNow
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24))
-      const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      )
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000)
-
-      if (difference < 0) {
-        clearInterval(countdownfunction)
-        this.setState({display: 'EXPIRED'})
+  handleChange(event) {
+    if (event.target.files[0]) {
+      var uploads = []
+      for (var key in event.target.files) {
+        if (!event.target.files.hasOwnProperty(key)) continue
+        let upload = event.target.files[key]
+        uploads.push(URL.createObjectURL(upload))
       }
-
-      this.setState({
-        display: `${days}d ${hours}h ${minutes}m ${seconds}s`
+      this.setState({uploads: uploads})
+    } else {
+      this.setState({uploads: []})
+    }
+  }
+  generateText() {
+    console.log(this.state)
+    let uploads = this.state.uploads
+    for (var i = 0; i < uploads.length; i++) {
+      Tesseract.recognize(uploads[i], {
+        lang: 'eng'
       })
-    }, 1000)
+        .catch(err => {
+          console.error(err)
+        })
+        .then(result => {
+          // Get Confidence score
+          let confidence = result.confidence
+
+          // Get full output
+          let text = result.text
+
+          // // Get codes
+          // let pattern = /\b\w{10,10}\b/g
+          // let patterns = result.text.match(pattern)
+
+          // Update state
+          this.setState({
+            patterns: this.state.patterns.concat(patterns),
+            documents: this.state.documents.concat({
+              pattern: patterns,
+              text: text,
+              confidence: confidence
+            })
+          })
+        })
+    }
   }
 
   render() {
-    this.counter()
     return (
       <div>
-        <h2>Scan your Receipts Here!</h2>
-        <h3>
-          We'll return your itemized list for you and you can decide if you'd
-          like to add the items to your fridge
-        </h3>
-        <div className="middle">
-          <h1>COMING SOON</h1>
-          <hr />
-          <p id="countdown">{this.state.display}</p>
-          <p>
-            Return to <Link to="/fridge">Fridge</Link>
-          </p>
-        </div>
+        <h1>Please Upload Your Recipt</h1>
+        <section>
+          <label className="fileUploadContianer">
+            <input
+              type="file"
+              id="fileUploader"
+              onChange={this.handleChange}
+              multiple
+            />
+          </label>
+          <div id="previews">
+            {this.state.uploads.map((value, index) => {
+              return <img key={index} src={value} width="100px" />
+            })}
+          </div>
+          <button type="submit" className="button" onClick={this.generateText}>
+            Generate
+          </button>
+        </section>
+
+        <section className="results">
+          {this.state.documents.map((value, index) => {
+            return (
+              <div key={index} className="results__result">
+                <div className="results__result__image">
+                  <img src={this.state.uploads[index]} width="250px" />
+                </div>
+                <div className="results__result__info">
+                  <div className="results__result__info__codes">
+                    <small>
+                      <strong>Confidence Score:</strong> {value.confidence}
+                    </small>
+                  </div>
+                  <div className="results__result__info__codes">
+                    <small>
+                      <strong>Pattern Output:</strong>{' '}
+                      {value.pattern.map(pattern => {
+                        return pattern + ', '
+                      })}
+                    </small>
+                  </div>
+                  <div className="results__result__info__text">
+                    <small>
+                      <strong>Full Output:</strong> {value.text}
+                    </small>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </section>
+        <p>
+          Return to <Link to="/fridge">Fridge</Link>
+        </p>
       </div>
     )
   }
 }
+const mapState = state => {
+  return {
+    // food: state.fridge.food
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    // fetchFood: () => dispatch(fetchFood()),
+    // deleteFood: id => dispatch(deleteFood(id))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Receipt)

@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import AddFoodItem from './AddFoodItem'
-import {fetchFood, deleteFood} from '../reducer/fridge'
-import axios from 'axios'
-import Tesseract from 'tesseract.js'
+// import AddFoodItem from './AddFoodItem'
+// import {fetchFood, deleteFood} from '../reducer/fridge'
+// import axios from 'axios'
+import tesseract from 'tesseract.js'
+import {createWorker} from 'tesseract.js'
 
 /**
  * COMPONENT
@@ -17,56 +18,78 @@ class Receipt extends React.Component {
       patterns: [],
       documents: []
     }
-    this.generateText = this.generateText.bind(this)
+    //this.generateText = this.generateText.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.getTextFromImage = this.getTextFromImage.bind(this)
   }
 
-  handleChange(event) {
-    if (event.target.files[0]) {
-      var uploads = []
-      for (var key in event.target.files) {
-        if (!event.target.files.hasOwnProperty(key)) continue
-        let upload = event.target.files[key]
-        uploads.push(URL.createObjectURL(upload))
-      }
-      this.setState({uploads: uploads})
-    } else {
-      this.setState({uploads: []})
-    }
-  }
-  generateText() {
+  handleChange(e) {
+    // if (event.target.files[0]) {
+    //   var uploads = []
+    //   for (var key in event.target.files) {
+    //     if (!event.target.files.hasOwnProperty(key)) continue
+    //     let upload = event.target.files[key]
+    //     uploads.push(URL.createObjectURL(upload))
+    //   }
+    //   this.setState({uploads: uploads})
+    // } else {
+    //   this.setState({uploads: []})
+    // }
     console.log(this.state)
-    let uploads = this.state.uploads
-    for (var i = 0; i < uploads.length; i++) {
-      Tesseract.recognize(uploads[i], {
-        lang: 'eng'
-      })
-        .catch(err => {
-          console.error(err)
-        })
-        .then(result => {
-          // Get Confidence score
-          let confidence = result.confidence
-
-          // Get full output
-          let text = result.text
-
-          // // Get codes
-          // let pattern = /\b\w{10,10}\b/g
-          // let patterns = result.text.match(pattern)
-
-          // Update state
-          this.setState({
-            patterns: this.state.patterns.concat(patterns),
-            documents: this.state.documents.concat({
-              pattern: patterns,
-              text: text,
-              confidence: confidence
-            })
-          })
-        })
-    }
+    let file = Array.from(e.target.files)
+    let fileObj = file[0]
+    const newUploads = []
+    newUploads.push(URL.createObjectURL(fileObj))
+    console.log('uploads', newUploads)
+    this.setState({uploads: newUploads})
+    console.log(this.state)
   }
+
+  async getTextFromImage() {
+    const worker = createWorker()
+    await worker.load()
+    await worker.loadLanguage('eng')
+    await worker.initialize('eng')
+    console.log('state uploads', this.state.uploads[0])
+    const {data: {text}} = await worker.recognize(this.state.uploads[0])
+    await worker.terminate()
+    console.log(text)
+    //return text
+  }
+
+  // generateText() {
+  //   console.log(this.state)
+  //   let uploads = this.state.uploads
+  //   for (var i = 0; i < uploads.length; i++) {
+  //     tesseract.recognize(uploads[i], {
+  //       lang: 'eng'
+  //     })
+  //       .catch(err => {
+  //         console.error(err)
+  //       })
+  //       .then(result => {
+  //         // Get Confidence score
+  //         let confidence = result.confidence
+
+  //         // Get full output
+  //         let text = result.text
+
+  //         // // Get codes
+  //         // let pattern = /\b\w{10,10}\b/g
+  //         // let patterns = result.text.match(pattern)
+
+  //         // Update state
+  //         this.setState({
+  //           patterns: this.state.patterns.concat(patterns),
+  //           documents: this.state.documents.concat({
+  //             pattern: patterns,
+  //             text: text,
+  //             confidence: confidence
+  //           })
+  //         })
+  //       })
+  //   }
+  // }
 
   render() {
     return (
@@ -86,7 +109,11 @@ class Receipt extends React.Component {
               return <img key={index} src={value} width="100px" />
             })}
           </div>
-          <button type="submit" className="button" onClick={this.generateText}>
+          <button
+            type="submit"
+            className="button"
+            onClick={this.getTextFromImage}
+          >
             Generate
           </button>
         </section>

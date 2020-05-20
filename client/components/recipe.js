@@ -61,27 +61,6 @@ class Recipe extends Component {
             />
           )
         })}
-
-        {/* {this.props.recipe.map(recipe => (
-          <div key={recipe.id} className="recipe-card">
-            <h2>{recipe.title}</h2>
-            <img src={recipe.image} /> */}
-        {/* <Link to ='/SingleRecipe'
-              onClick={() => {
-                this.cookRecipe(recipe.id)
-              }}
-            >
-              Cook this Recipe!
-            </Link> */}
-        {/* <SingleRecipe
-              image={recipe.image}
-              missedIngredients={recipe.missedIngredients}
-              title={recipe.title}
-              usedIngredients={recipe.usedIngredients}
-              directions={this.props.directions}
-            /> */}
-        {/* </div>
-        ))} */}
       </div>
     )
   }

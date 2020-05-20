@@ -16,7 +16,8 @@ class Receipt extends React.Component {
     this.state = {
       uploads: [],
       patterns: [],
-      documents: []
+      documents: [],
+      text: ''
     }
     //this.generateText = this.generateText.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -24,25 +25,11 @@ class Receipt extends React.Component {
   }
 
   handleChange(e) {
-    // if (event.target.files[0]) {
-    //   var uploads = []
-    //   for (var key in event.target.files) {
-    //     if (!event.target.files.hasOwnProperty(key)) continue
-    //     let upload = event.target.files[key]
-    //     uploads.push(URL.createObjectURL(upload))
-    //   }
-    //   this.setState({uploads: uploads})
-    // } else {
-    //   this.setState({uploads: []})
-    // }
-    console.log(this.state)
     let file = Array.from(e.target.files)
     let fileObj = file[0]
     const newUploads = []
     newUploads.push(URL.createObjectURL(fileObj))
-    console.log('uploads', newUploads)
     this.setState({uploads: newUploads})
-    console.log(this.state)
   }
 
   async getTextFromImage() {
@@ -50,46 +37,22 @@ class Receipt extends React.Component {
     await worker.load()
     await worker.loadLanguage('eng')
     await worker.initialize('eng')
-    console.log('state uploads', this.state.uploads[0])
     const {data: {text}} = await worker.recognize(this.state.uploads[0])
     await worker.terminate()
-    console.log(text)
+    const newArr = text.split('$')
+    console.log(newArr)
+    const arr = newArr.map(string => {
+      return string.replace(/[^a-zA-Z ]/g, '')
+    })
+    console.log(arr)
+
+    // console.log(newArr)
+    // this.setState({
+    //   text: text
+    // })
+    // console.log(this.state)
     //return text
   }
-
-  // generateText() {
-  //   console.log(this.state)
-  //   let uploads = this.state.uploads
-  //   for (var i = 0; i < uploads.length; i++) {
-  //     tesseract.recognize(uploads[i], {
-  //       lang: 'eng'
-  //     })
-  //       .catch(err => {
-  //         console.error(err)
-  //       })
-  //       .then(result => {
-  //         // Get Confidence score
-  //         let confidence = result.confidence
-
-  //         // Get full output
-  //         let text = result.text
-
-  //         // // Get codes
-  //         // let pattern = /\b\w{10,10}\b/g
-  //         // let patterns = result.text.match(pattern)
-
-  //         // Update state
-  //         this.setState({
-  //           patterns: this.state.patterns.concat(patterns),
-  //           documents: this.state.documents.concat({
-  //             pattern: patterns,
-  //             text: text,
-  //             confidence: confidence
-  //           })
-  //         })
-  //       })
-  //   }
-  // }
 
   render() {
     return (

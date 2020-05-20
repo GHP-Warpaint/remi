@@ -8,10 +8,10 @@ class SingleRecipe extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      savedRecipe: false
+      //savedRecipe: false
       //selectedFoods:
     }
-    this.alert = this.alert.bind(this)
+    //this.alert = this.alert.bind(this)
     //this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -23,11 +23,11 @@ class SingleRecipe extends Component {
   //   await addToList(food)
   // }
 
-  alert() {
-    this.setState({
-      savedRecipe: true
-    })
-  }
+  // alert() {
+  //   this.setState({
+  //     savedRecipe: true
+  //   })
+  // }
 
   render() {
     if (!this.props.directions[0]) return <h1>loading</h1>
@@ -47,7 +47,7 @@ class SingleRecipe extends Component {
       <div>
         <Link to="/recipes">Back to Recipes</Link>
         <h1>{name}</h1>
-        {!!this.state.savedRecipe && (
+        {/* {!!this.state.savedRecipe && (
           <div className="alert">
             <span
               className="closebtn"
@@ -60,7 +60,7 @@ class SingleRecipe extends Component {
         )}
         <button type="submit" onClick={this.alert}>
           Save This Recipe
-        </button>
+        </button> */}
         <br />
         <br />
         <img src={imageURL} />
@@ -98,7 +98,7 @@ class SingleRecipe extends Component {
               <br />
             </div>
           )}
-          <form
+          {/* <form
           // onSubmit={this.handleSubmit}
           >
             {missedIngredients.length ? (
@@ -120,7 +120,7 @@ class SingleRecipe extends Component {
               </div>
             )}
             <input type="submit" value="Add to Grocery List" />
-          </form>
+          </form> */}
         </div>
         <div className="directions">
           <h2>Directions:</h2>

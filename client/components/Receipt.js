@@ -117,12 +117,13 @@ class Receipt extends React.Component {
           </button>
         </section>
         {console.log('PROPS! >>>>>>>>', this.props)}
-        <div id="foodItemsfromReceipt">
+        <div id="fridge">
           {this.state.reciptItems.length ? (
             <div>
               {this.state.reciptItems.map(item => (
-                <div key={item.id}>
+                <div key={item.id} className="item">
                   <img src={item.imageUrl} height="100px" width="auto" />
+                  <br />
                   {item.name}
                 </div>
               ))}

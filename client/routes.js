@@ -6,6 +6,7 @@ import {Login, Signup, UserHome, Fridge, MyAccount} from './components'
 import AlexaInstruct from './components/AlexaGuide'
 import Welcome from './components/Welcome'
 import Receipt from './components/Receipt'
+import SingleRecipe from './components/SingleRecipe'
 import ErrorPage from './components/ErrorPage'
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
@@ -39,7 +40,8 @@ class Routes extends Component {
               {/* Routes placed here are only available after logging in */}
               <Route path="/account" component={MyAccount} />
               <Route path="/home" component={DailyRecipe} />
-              <Route path="/recipe" component={Recipe} />
+              <Route path="/recipes" component={Recipe} />
+              <Route path="/singleRecipe" component={SingleRecipe} />
               <Route path="/fridge" component={Fridge} />
               <Route component={ErrorPage} />
             </Switch>

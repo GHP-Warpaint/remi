@@ -2,20 +2,20 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchRecipe, sendRecipe, fetchRecipeDirections} from '../reducer/recipe'
 import {fetchFood} from '../reducer/fridge'
+import RecipeUI from './RecipeUI'
+import {Link} from 'react-router-dom'
 
 class Recipe extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      recipeFound: false
-    }
+    this.state = {}
     this.handleClick = this.handleClick.bind(this)
     this.cookRecipe = this.cookRecipe.bind(this)
-    this.keepRecipe = this.keepRecipe.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchFood()
+    //console.log('CHECKING RECIPE ID', this.props.match.params)
   }
 
   handleClick(event) {
@@ -26,19 +26,17 @@ class Recipe extends Component {
     this.props.fetchRecipe(ingredients)
   }
 
-  cookRecipe(event) {
+  cookRecipe(id) {
     event.preventDefault()
-    const id = this.props.recipe[0].id
+    console.log('event', event.target)
+    console.log('id', id)
+    //const id = this.props.recipe[0].id
     this.props.fetchDirections(id)
   }
 
-  keepRecipe() {
-    this.setState({
-      recipeFound: true
-    })
-  }
-
   render() {
+    //console.log('LIST OF RECIPES=>', this.props.recipe)
+
     if (!this.props.recipe.length)
       return (
         <div>
@@ -48,47 +46,21 @@ class Recipe extends Component {
           </button>
         </div>
       )
-
     return (
-      <div id="recipe">
-        <br />
-        <h1>{this.props.recipe[0].title}</h1>
-        <br />
-        <img src={this.props.recipe[0].image} id="recipeImg" />
-        <br />
-        {!this.state.recipeFound ? (
-          <button
-            type="button"
-            onClick={event => {
-              this.cookRecipe(event)
-              this.keepRecipe()
-            }}
-          >
-            Cook this Recipe!
-          </button>
-        ) : null}
-        {this.props.directions.length && (
-          <div>
-            <br />
-            <br />
-            <h2>Directions:</h2>
-          </div>
-        )}
-        {this.props.directions.length ? (
-          this.props.directions[0].steps.map(steps => {
-            return (
-              <div key={steps.number} className="cook-instructions">
-                <p>
-                  {steps.number}. {steps.step}
-                </p>
-              </div>
-            )
-          })
-        ) : (
-          <div>
-            <br />
-          </div>
-        )}
+      <div className="recipes-container">
+        {this.props.recipe.map(recipe => {
+          return (
+            <RecipeUI
+              key={recipe.id}
+              image={recipe.image}
+              id={recipe.id}
+              missedIngredients={recipe.missedIngredients}
+              title={recipe.title}
+              usedIngredients={recipe.usedIngredients}
+              directions={this.props.directions}
+            />
+          )
+        })}
       </div>
     )
   }

@@ -1,6 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {me, updateEmail, updateName} from '../reducer/user'
+import GroceryList from './GroceryList'
+import SavedRecipes from './SavedRecipes'
+//import {removeGroceryListItem, fetchGroceryList} from '../reducer/groceryList'
 
 export class MyAccount extends React.Component {
   constructor(props) {
@@ -72,7 +75,7 @@ export class MyAccount extends React.Component {
     return (
       <div id="myAccount">
         <br />
-        <h2>Welcome Back {user.firstName}!</h2>
+        <h1>Welcome Back {user.firstName}!</h1>
 
         <div>
           {user && (
@@ -148,6 +151,10 @@ export class MyAccount extends React.Component {
             </div>
           )}
         </div>
+        {/* <div className="my-acct-extras">
+          <SavedRecipes />
+          <GroceryList />
+        </div> */}
       </div>
     )
   }

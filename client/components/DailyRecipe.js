@@ -29,7 +29,7 @@ function readOutLoud(message) {
     speech.text =
       "great choice! Let's take a look at your current account details."
   } else if (message.includes('recipe')) {
-    location.assign('https://chef-remy.herokuapp.com/recipe')
+    location.assign('https://chef-remy.herokuapp.com/recipes')
     speech.text = 'brilliant! Click the button to see what we can create.'
   } else if (message.includes('home')) {
     location.assign('https://chef-remy.herokuapp.com/home')
@@ -98,7 +98,7 @@ class DailyRecipe extends Component {
         <br />
         <div>
           <h3>{recipe.title}</h3>
-          <img src={recipe.imageUrl} height="300" />
+          <img src={recipe.imageUrl} height="300" alt="recipe of the day" />
           <p>
             Check out the recipe{' '}
             <a href={recipe.url} rel="noopener noreferrer" target="_blank">

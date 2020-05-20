@@ -62,7 +62,7 @@ export class Fridge extends React.Component {
               <Link to="/receipt" className="fakeButton">
                 Scan my receipt!
               </Link>
-              <Link to="/recipe" className="fakeButton">
+              <Link to="/recipes" className="fakeButton">
                 Let's Cook!
               </Link>
             </div>
@@ -78,7 +78,12 @@ export class Fridge extends React.Component {
                 >
                   X
                 </button>
-                <img src={food.imageUrl} height="100px" width="auto" />
+                <img
+                  src={food.imageUrl}
+                  height="100px"
+                  width="auto"
+                  alt="food ingredient"
+                />
                 <br />
                 {food.name}
               </div>

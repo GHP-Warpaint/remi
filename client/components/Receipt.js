@@ -30,7 +30,7 @@ class Receipt extends React.Component {
     await this.props.fetchFoodItems()
     const foodHash = {}
     this.props.inventory.map(foodObj => {
-      foodHash[foodObj.name] = true
+      foodHash[foodObj.name] = foodObj
     })
     this.setState({
       foodHash: foodHash
@@ -63,41 +63,23 @@ class Receipt extends React.Component {
       return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
     })
     words = Array.from(new Set(words))
-    const newArr = words.filter(word => {
-      word = word.toLowerCase()
-      if (this.state.foodHash[word]) {
-        return word
-      }
-    })
+    const newArr = words
+      .filter(word => {
+        word = word.toLowerCase()
+        if (this.state.foodHash[word]) {
+          return this.state.foodHash[word]
+        }
+      })
+      .map(word => {
+        word = word.toLowerCase()
+        return this.state.foodHash[word]
+      })
 
-    console.log(newArr)
+    console.log('newArr', newArr)
 
     this.setState({
       reciptItems: newArr
     })
-
-    // const groceryList = data.lines.map(obj => {
-    //   return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
-    // })
-    // console.log('groceryList ', groceryList)
-    // this.setState({
-    //   lines: groceryList
-    // })
-
-    // const items = groceryList.map( string => {
-    //   return string.split(' ')
-    // })
-    // console.log('items', items)
-
-    // const food = []
-    // const items = groceryList.map(line => {
-    //   line.split(' ').map(word => {
-    //     console.log(word)
-    //     if (this.state.foodHash[word]) {
-    //       food.push(word)
-    //     }
-    //   })
-    // })
   }
 
   render() {
@@ -122,9 +104,9 @@ class Receipt extends React.Component {
             />
           </label>
           <div id="previews">
-            {this.state.uploads.map((value, index) => {
-              return <img key={index} src={value} width="100px" />
-            })}
+            {this.state.uploads.map(value => (
+              <img key={value} src={value} width="100px" />
+            ))}
           </div>
           <button
             type="submit"
@@ -134,7 +116,21 @@ class Receipt extends React.Component {
             Generate
           </button>
         </section>
-
+        {console.log('PROPS! >>>>>>>>', this.props)}
+        <div id="foodItemsfromReceipt">
+          {this.state.reciptItems.length ? (
+            <div>
+              {this.state.reciptItems.map(item => (
+                <div key={item.id}>
+                  <img src={item.imageUrl} height="100px" width="auto" />
+                  {item.name}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div> </div>
+          )}
+        </div>
         <p>
           Return to <Link to="/fridge">Fridge</Link>
         </p>

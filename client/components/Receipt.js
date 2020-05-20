@@ -39,12 +39,12 @@ class Receipt extends React.Component {
     await worker.initialize('eng')
     const {data: {text}} = await worker.recognize(this.state.uploads[0])
     await worker.terminate()
-    const newArr = text.split('$')
-    console.log(newArr)
-    const arr = newArr.map(string => {
-      return string.replace(/[^a-zA-Z ]/g, '')
-    })
+    let newText = text.replace(/[^a-zA-Z ]/g, '')
+    console.log(newText)
+    let arr = newText.split(' ')
     console.log(arr)
+    let unique = [...new Set(arr)]
+    console.log(unique)
 
     // console.log(newArr)
     // this.setState({

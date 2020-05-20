@@ -79,6 +79,7 @@ label {
 #head {
   background-color: rgb(51, 0, 17);
   color: whitesmoke;
+  font-weight: bold;
 }
 nav div {
   /* background-color: rgba(255, 255, 255, 0.7); */

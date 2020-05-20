@@ -98,7 +98,7 @@ class DailyRecipe extends Component {
         <br />
         <div>
           <h3>{recipe.title}</h3>
-          <img src={recipe.imageUrl} height="300" />
+          <img src={recipe.imageUrl} height="300" alt="recipe of the day" />
           <p>
             Check out the recipe{' '}
             <a href={recipe.url} rel="noopener noreferrer" target="_blank">

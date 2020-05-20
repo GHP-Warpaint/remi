@@ -21,7 +21,7 @@ class SingleRecipe extends Component {
       <div>
         <div className="recipe-card">
           <h2>{title}</h2>
-          <img src={image} />
+          <img src={image} alt="recipe image" />
         </div>
         <Link
           to={{

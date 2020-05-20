@@ -8,8 +8,13 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <div id="head">
     <Link to="/">
       <h1>
-        <img className="headlinerImg" src="./ChefHat.png" width="40" /> Chef
-        Remy
+        <img
+          className="headlinerImg"
+          src="./ChefHat.png"
+          width="40"
+          alt="chef hat logo"
+        />{' '}
+        Chef Remy
       </h1>
     </Link>
     <nav>

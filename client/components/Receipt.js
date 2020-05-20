@@ -50,6 +50,7 @@ class Receipt extends React.Component {
     // console.log(unique)
 
     // console.log(newArr)
+
     this.setState({
       lines: groceryList
     })

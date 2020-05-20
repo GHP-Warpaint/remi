@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 // import AddFoodItem from './AddFoodItem'
 // import {fetchFood, deleteFood} from '../reducer/fridge'
 // import axios from 'axios'
+import {fetchFoodItems} from '../reducer/foodItems'
 import tesseract from 'tesseract.js'
 import {createWorker} from 'tesseract.js'
 
@@ -15,11 +16,24 @@ class Receipt extends React.Component {
     super(props)
     this.state = {
       uploads: [],
-      lines: []
+      lines: [],
+      foodHash: {}
     }
     //this.generateText = this.generateText.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.getTextFromImage = this.getTextFromImage.bind(this)
+  }
+
+  componentDidMount() {
+    event.preventDefault()
+    this.props.fetchFoodItems()
+    const foodHash = {}
+    this.props.inventory.map(foodObj => {
+      foodHash[foodObj.name] = true
+    })
+    this.setState({
+      foodHash: foodHash
+    })
   }
 
   handleChange(e) {
@@ -42,22 +56,29 @@ class Receipt extends React.Component {
       return obj.text.replace(/[^a-zA-Z ]/g, '')
     })
     console.log('groceryList ', groceryList)
-    // let newText = text.replace(/[^a-zA-Z ]/g, '')
-    // console.log(newText)
-    // let arr = newText.split('')
-    // console.log(arr)
-    // let unique = [...new Set(arr)]
-    // console.log(unique)
 
-    // console.log(newArr)
-    this.setState({
-      lines: groceryList
+    const food = []
+    const items = groceryList.map(line => {
+      line.split(' ').map(word => {
+        console.log(word)
+        if (this.state.foodHash[word]) {
+          food.push(word)
+        }
+      })
     })
-    // console.log(this.state)
-    //return text
+
+    console.log(food)
   }
 
   render() {
+    if (!this.props.inventory) return <h1> loading... </h1>
+
+    const foodHash = {}
+
+    this.props.inventory.map(foodObj => {
+      foodHash[foodObj.name] = true
+    })
+
     return (
       <div>
         <h1>Please Upload Your Recipt</h1>
@@ -93,12 +114,14 @@ class Receipt extends React.Component {
 }
 const mapState = state => {
   return {
-    // food: state.fridge.food
+    inventory: state.inventory.inventory
+    //food: state.fridge.food
   }
 }
 
 const mapDispatch = dispatch => {
   return {
+    fetchFoodItems: () => dispatch(fetchFoodItems())
     // fetchFood: () => dispatch(fetchFood()),
     // deleteFood: id => dispatch(deleteFood(id))
   }

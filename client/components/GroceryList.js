@@ -11,35 +11,35 @@ export default class GroceryList extends Component {
         </h2>
         <div className="container">
           <ul className="grocery-list-items">
-            <li>dummy</li>
+            <li>apples</li>
             <li>&times;</li>
           </ul>
           <ul className="grocery-list-items">
-            <li>placeholder</li>
+            <li>oranges</li>
             <li>&times;</li>
           </ul>
           <ul className="grocery-list-items">
-            <li>proof-of-concept</li>
+            <li>yogurt</li>
             <li>&times;</li>
           </ul>
           <ul className="grocery-list-items">
-            <li>in future</li>
+            <li>turmeric</li>
             <li>&times;</li>
           </ul>
           <ul className="grocery-list-items">
-            <li>mapping</li>
+            <li>heavy cream</li>
             <li>&times;</li>
           </ul>
           <ul className="grocery-list-items">
-            <li>over</li>
+            <li>barley</li>
             <li>&times;</li>
           </ul>
           <ul className="grocery-list-items">
-            <li>food Names</li>
+            <li>chives</li>
             <li>&times;</li>
           </ul>
           <ul className="grocery-list-items">
-            <li>Is Necessary</li>
+            <li>tortilla</li>
             <li>&times;</li>
           </ul>
         </div>

@@ -5,7 +5,10 @@ export default class GroceryList extends Component {
   render() {
     return (
       <div className="grocery-list">
-        <h2>Grocery Shopping List</h2>
+        <h2>
+          Grocery Shopping List{' '}
+          <i className="fa fa-download" aria-hidden="true" id="download" />
+        </h2>
         <div className="container">
           <ul className="grocery-list-items">
             <li>dummy</li>

@@ -391,7 +391,8 @@ footer {
 }
 
 .saved-scroll {
-  background-color: rgb(229, 107, 235);
+  background-color: rgb(123, 39, 92);
+  color: white;
   border-radius: 16px;
   margin-top: 5%;
   width: 100%;
@@ -402,4 +403,28 @@ footer {
 
 .saved-recipes-items {
   list-style: none;
+  cursor: pointer;
+}
+
+.saved-recipes-items li:hover {
+  background: rgb(63, 62, 62, 0.5);
+}
+
+.saved-recipe-img {
+  position: absolute;
+  visibility: hidden;
+  color: black;
+  border: solid black;
+  padding: 7px;
+  margin: 5px;
+  border-radius: 16px;
+  font-size: 16px;
+  background: rgb(243, 181, 192, 0.9);
+  line-height: 20px;
+  font-family: 'Jost', sans-serif;
+}
+
+li:hover .saved-recipe-img {
+  visibility: visible;
+  bottom: 6%;
 }

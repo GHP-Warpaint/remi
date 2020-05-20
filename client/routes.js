@@ -7,6 +7,7 @@ import AlexaInstruct from './components/AlexaGuide'
 import Welcome from './components/Welcome'
 import Receipt from './components/Receipt'
 import SingleRecipe from './components/SingleRecipe'
+import ErrorPage from './components/ErrorPage'
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
 import Privacy from './components/Privacy'
@@ -26,9 +27,9 @@ class Routes extends Component {
         <br />
         <Switch>
           {/* Routes placed here are available to all visitors */}
-          <Route path="/welcome" component={Welcome} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Route exact path="/" component={Welcome} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
 
           <Route path="/about-alexa" component={AlexaInstruct} />
           <Route path="/privacy" component={Privacy} />
@@ -42,10 +43,11 @@ class Routes extends Component {
               <Route path="/recipes" component={Recipe} />
               <Route path="/singleRecipe" component={SingleRecipe} />
               <Route path="/fridge" component={Fridge} />
+              <Route component={ErrorPage} />
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}
-          <Route component={Login} />
+          {/* <Route component={Login} /> */}
         </Switch>
       </div>
     )

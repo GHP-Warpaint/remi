@@ -36,7 +36,7 @@ class Routes extends Component {
               {/* Routes placed here are only available after logging in */}
               <Route path="/account" component={MyAccount} />
               <Route path="/home" component={DailyRecipe} />
-              <Route path="/recipe" component={Recipe} />
+              <Route path="/recipes" component={Recipe} />
               <Route path="/singleRecipe" component={SingleRecipe} />
               <Route path="/fridge" component={Fridge} />
               <Route path="/receipt" component={Receipt} />

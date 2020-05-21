@@ -29,7 +29,7 @@ function readOutLoud(message) {
     speech.text =
       "great choice! Let's take a look at your current account details."
   } else if (message.includes('recipe')) {
-    location.assign('https://chef-remy.herokuapp.com/recipe')
+    location.assign('https://chef-remy.herokuapp.com/recipes')
     speech.text = 'brilliant! Click the button to see what we can create.'
   } else if (message.includes('home')) {
     location.assign('https://chef-remy.herokuapp.com/home')
@@ -55,8 +55,7 @@ class DailyRecipe extends Component {
   constructor() {
     super()
     this.state = {
-      clickedChat: false,
-      loading: true
+      clickedChat: false
     }
   }
 
@@ -89,7 +88,7 @@ class DailyRecipe extends Component {
   render() {
     const {recipe, isLoading} = this.props
 
-    if (isLoading || this.state.loading)
+    if (isLoading)
       return <Loader type="Circles" color="#00BFFF" height={80} width={80} />
 
     return (
@@ -99,11 +98,11 @@ class DailyRecipe extends Component {
         <br />
         <div>
           <h3>{recipe.title}</h3>
-          <img src={recipe.imageUrl} height="300" />
+          <img src={recipe.imageUrl} height="300" alt="recipe of the day" />
           <p>
-            Check out the recipe{' '}
+            Check out the recipe at{' '}
             <a href={recipe.url} rel="noopener noreferrer" target="_blank">
-              Here
+              Food Network
             </a>
           </p>
         </div>

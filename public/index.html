@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <meta name="Description" content="Recipe generating website that customizes recipe results based on specified ingredients, Category: Food">
     <title class="headliner">Chef Remy</title>
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src=”https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js”></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="pwa_info/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="pwa_info/favicon-16x16.png">
+    <link rel="manifest" href="pwa_info/site.webmanifest" />
+    <link rel="mask-icon" href="pwa_info/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="canonical" href="https://chef-remy.herokuapp.com/">
+    <link rel="apple-touch-icon" sizes="180x180" href="pwa_info/apple-touch-icon.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#5d4954">
     <script defer src="/bundle.js"></script>
   </head>
   <body>
@@ -15,4 +24,14 @@
   <footer>
     © Copyright 2020, REMY WARPAINT 🎨. All Rights Reserved. GHP - Allison, Michelle, Nora, Shannon
   </footer>
+  <script>
+    if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+  navigator.serviceWorker
+  .register('./sw_cached_pages.js')
+  .then(reg => console.log('Service Worker: Registered'))
+  .catch(err => console.log(`Service Worker Error: ${err}`))
+})
+}
+  </script>
 </html>

@@ -188,9 +188,9 @@ async function seed() {
         'https://cdn1.iconfinder.com/data/icons/colorix-vegetables/128/Colorix_bell_pepper-128.png'
     }),
     FoodItem.create({
-      name: 'jalapeno pepper',
+      name: 'fish',
       imageUrl:
-        'https://cdn4.iconfinder.com/data/icons/food-line-filled/614/369_-_Pepper-128.png'
+        'https://cdn2.iconfinder.com/data/icons/food-drink-9/90/fish-128.png'
     }),
     FoodItem.create({
       name: 'jalapenos',
@@ -203,9 +203,9 @@ async function seed() {
         'https://cdn0.iconfinder.com/data/icons/food-beverages-1/24/Chilli-128.png'
     }),
     FoodItem.create({
-      name: 'chilis',
+      name: 'cherries',
       imageUrl:
-        'https://cdn0.iconfinder.com/data/icons/food-beverages-1/24/Chilli-128.png'
+        'https://cdn0.iconfinder.com/data/icons/food-volume-ii/128/cherries-128.png'
     }),
     FoodItem.create({
       name: 'green pepper',

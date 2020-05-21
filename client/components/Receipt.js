@@ -93,7 +93,7 @@ class Receipt extends React.Component {
 
     return (
       <div>
-        <h1>Please Upload Your Recipt</h1>
+        <h1>Please Upload Your Receipt</h1>
         <section>
           <label className="fileUploadContianer">
             <input

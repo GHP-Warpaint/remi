@@ -2,7 +2,7 @@ importScripts(
   'https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js'
 )
 
-console.log('Hello Cache')
+console.log('CacheTown')
 
 if (workbox) {
   console.log('WORKBOX')
@@ -37,7 +37,7 @@ registerRoute(
     plugins: [
       new ExpirationPlugin({
         maxEntries: 20,
-        // Cache for 1 week max
+        // Cache for 1 week
         maxAgeSeconds: 7 * 24 * 60 * 60
       })
     ]

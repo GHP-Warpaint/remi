@@ -148,6 +148,9 @@ export class MyAccount extends React.Component {
                   </form>
                 ) : null}
               </h2>
+              <h2 className="acct-details">
+                <div>User ID</div> <div>{user.id}</div>
+              </h2>
             </div>
           )}
         </div>

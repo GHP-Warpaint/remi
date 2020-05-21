@@ -48,9 +48,10 @@ export class Fridge extends React.Component {
               Click for Audio{' '}
               <i className="fa fa-volume-up" aria-hidden="true" />
             </button>
-            <br />Type and add the foods you currently have available in your
-            kitchen. When you're done head over to the Recipes by clicking the
-            Let's Cook button or select Recipe in the nav menu.
+            <br />
+            Type and add the foods you currently have available in your kitchen.
+            When you're done head over to the Recipes by clicking the Let's Cook
+            button or select Recipe in the nav menu.
           </span>
         </i>
         <div>

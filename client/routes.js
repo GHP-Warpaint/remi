@@ -33,7 +33,6 @@ class Routes extends Component {
 
           <Route path="/about-alexa" component={AlexaInstruct} />
           <Route path="/privacy" component={Privacy} />
-          <Route path="/receipt" component={Receipt} />
 
           {isLoggedIn && (
             <Switch>
@@ -43,6 +42,7 @@ class Routes extends Component {
               <Route path="/recipes" component={Recipe} />
               <Route path="/singleRecipe" component={SingleRecipe} />
               <Route path="/fridge" component={Fridge} />
+              <Route path="/receipt" component={Receipt} />
               <Route component={ErrorPage} />
             </Switch>
           )}

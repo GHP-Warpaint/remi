@@ -98,7 +98,7 @@ class SingleRecipe extends Component {
               <br />
             </div>
           )}
-          {/* <form
+          <form
           // onSubmit={this.handleSubmit}
           >
             {missedIngredients.length ? (
@@ -120,7 +120,7 @@ class SingleRecipe extends Component {
               </div>
             )}
             <input type="submit" value="Add to Grocery List" />
-          </form> */}
+          </form>
         </div>
         <div className="directions">
           <h2>Directions:</h2>

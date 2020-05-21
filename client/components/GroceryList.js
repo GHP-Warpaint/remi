@@ -7,7 +7,7 @@ export default class GroceryList extends Component {
       <div className="grocery-list">
         <h2>
           Grocery Shopping List{' '}
-          <i className="fa fa-download" aria-hidden="true" id="download" />
+          {/* <i className="fa fa-download" aria-hidden="true" id="download" /> */}
         </h2>
         <div className="container">
           <ul className="grocery-list-items">

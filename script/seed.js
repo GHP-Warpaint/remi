@@ -680,7 +680,7 @@ async function seed() {
     FoodItem.create({
       name: 'grapes',
       imageUrl:
-        'https://lh3.googleusercontent.com/proxy/1DxXr8tkROW8G_o4uxT6v9wgkzNtdt41LeKXiiYNXJRackn6_4z36nbsCqpOWcVLbdtag3jfPKSdNQMa83ZzPLHfOYjD4tZSLj18ZJHYsGqn6CWrEILKWlHMKoysC3YKgvONdCKlaXejXgQ-KD7IaOY'
+        'https://cdn1.iconfinder.com/data/icons/food-2-11/128/bunch-grapes-food-fruit-grape-512.png'
     }),
     FoodItem.create({
       name: 'carrots',

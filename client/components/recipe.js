@@ -42,7 +42,7 @@ class Recipe extends Component {
         <div>
           <br />
           <button type="button" onClick={this.handleClick}>
-            Get my Recipe
+            Get my Recipes
           </button>
         </div>
       )

@@ -4,6 +4,7 @@ require('../../secrets')
 const GET_FOOD = 'GET_FOOD'
 const REMOVE_FOOD = 'REMOVE_FOOD'
 const ADD_FOOD = 'ADD_FOOD'
+const ADD_MULTIPLE_FOODS = 'ADD_MULTIPLE_FOODS'
 
 const setFood = food => ({
   type: GET_FOOD,
@@ -21,6 +22,11 @@ const addFood = foodItem => ({
   type: ADD_FOOD,
   foodItem
 })
+
+// const addMultipleFoods = foods => ({
+//   type: ADD_FOOD,
+//   foods
+// })
 
 export const fetchFood = () => {
   return async dispatch => {
@@ -75,7 +81,7 @@ export const addFoodItem = food => {
         dispatch(addFood(newFoodItem.data))
       }
     } catch (err) {
-      dispatch(console.error(err))
+      console.error(err)
     }
   }
 }
@@ -83,15 +89,15 @@ export const addFoodItem = food => {
 export const addMultipleItemsToFridge = foodItems => {
   return async dispatch => {
     try {
-      console.log('in dispatch')
       const returnVal = await Promise.all(
         foodItems.map(food => {
           return axios.post(`/api/fridge/add`, {name: food})
         })
       )
-      console.log(returnVal)
-      console.log('fin')
-      // let bulkAdd =
+      const addedFoods = returnVal.map(obj => {
+        return obj.data
+      })
+      // dispatch(addMultipleFoods(addedFoods))
     } catch (error) {
       console.error(error)
     }
@@ -109,6 +115,8 @@ export default function fridgeReducer(state = initialState, action) {
       return {...state, food: action.food}
     case ADD_FOOD:
       return {...state, food: [...state.food, action.foodItem]}
+    // case ADD_MULTIPLE_FOODS:
+    //     return {...state, food: [...state.food, ...action.foods]}
     case REMOVE_FOOD:
       return {
         state,

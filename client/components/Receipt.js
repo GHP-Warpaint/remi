@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 // import {fetchFood, deleteFood} from '../reducer/fridge'
 // import axios from 'axios'
 import {fetchFoodItems} from '../reducer/foodItems'
+import {addMultipleItemsToFridge} from '../reducer/fridge'
 import tesseract from 'tesseract.js'
 import {createWorker} from 'tesseract.js'
 
@@ -18,11 +19,12 @@ class Receipt extends React.Component {
       uploads: [],
       lines: [],
       foodHash: {},
-      reciptItems: []
+      receiptItems: []
     }
     //this.generateText = this.generateText.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.getTextFromImage = this.getTextFromImage.bind(this)
+    this.sendItemsToFridge = this.sendItemsToFridge.bind(this)
   }
 
   async componentDidMount() {
@@ -52,13 +54,7 @@ class Receipt extends React.Component {
     await worker.initialize('eng')
     const {data} = await worker.recognize(this.state.uploads[0])
     await worker.terminate()
-    // const groceryList = data.lines.map(obj => {
-    //   return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
-    // })
-    // console.log('groceryList ', groceryList)
-    // this.setState({
-    //   lines: groceryList
-    // })
+
     let words = data.words.map(obj => {
       return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
     })
@@ -78,15 +74,21 @@ class Receipt extends React.Component {
     console.log('newArr', newArr)
 
     this.setState({
-      reciptItems: newArr
+      receiptItems: newArr
     })
+  }
+
+  async sendItemsToFridge() {
+    let items = this.state.receiptItems
+    items = items.map(food => {
+      return food.name
+    })
+    await this.props.bulkAdd(items)
   }
 
   render() {
     if (!this.props.inventory) return <h1> loading... </h1>
-
     const foodHash = {}
-
     this.props.inventory.map(foodObj => {
       foodHash[foodObj.name] = true
     })
@@ -115,14 +117,20 @@ class Receipt extends React.Component {
           >
             Generate
           </button>
+          <button
+            type="submit"
+            className="button"
+            onClick={this.sendItemsToFridge}
+          >
+            Add Items To Fridge
+          </button>
         </section>
-        {console.log('PROPS! >>>>>>>>', this.props)}
         <div id="fridge">
-          {this.state.reciptItems.length ? (
+          {this.state.receiptItems.length ? (
             <div>
-              {this.state.reciptItems.map(item => (
+              {this.state.receiptItems.map(item => (
                 <div key={item.id} className="item">
-                  <img src={item.imageUrl} height="100px" width="auto" />
+                  <img src={item.imageUrl} height="50px" width="auto" />
                   <br />
                   {item.name}
                 </div>
@@ -148,7 +156,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    fetchFoodItems: () => dispatch(fetchFoodItems())
+    fetchFoodItems: () => dispatch(fetchFoodItems()),
+    bulkAdd: foodItems => dispatch(addMultipleItemsToFridge(foodItems))
     // fetchFood: () => dispatch(fetchFood()),
     // deleteFood: id => dispatch(deleteFood(id))
   }

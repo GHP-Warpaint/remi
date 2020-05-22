@@ -80,6 +80,24 @@ export const addFoodItem = food => {
   }
 }
 
+export const addMultipleItemsToFridge = foodItems => {
+  return async dispatch => {
+    try {
+      console.log('in dispatch')
+      const returnVal = await Promise.all(
+        foodItems.map(food => {
+          return axios.post(`/api/fridge/add`, {name: food})
+        })
+      )
+      console.log(returnVal)
+      console.log('fin')
+      // let bulkAdd =
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 const initialState = {
   food: [],
   foodItem: {}

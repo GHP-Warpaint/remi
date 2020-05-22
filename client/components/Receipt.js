@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchFoodItems} from '../reducer/foodItems'
 import {addMultipleItemsToFridge} from '../reducer/fridge'
-import {createWorker} from 'tesseract.js'
+import tesseract, {createWorker} from 'tesseract.js'
 
 /**
  * COMPONENT
@@ -13,6 +13,7 @@ class Receipt extends React.Component {
     super(props)
     this.state = {
       uploads: [],
+      lines: [],
       foodHash: {},
       receiptItems: []
     }
@@ -83,6 +84,10 @@ class Receipt extends React.Component {
 
   render() {
     if (!this.props.inventory) return <h1> loading... </h1>
+    const foodHash = {}
+    this.props.inventory.map(foodObj => {
+      foodHash[foodObj.name] = true
+    })
 
     return (
       <div>

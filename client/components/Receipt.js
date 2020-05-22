@@ -1,12 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-// import AddFoodItem from './AddFoodItem'
-// import {fetchFood, deleteFood} from '../reducer/fridge'
-// import axios from 'axios'
 import {fetchFoodItems} from '../reducer/foodItems'
 import {addMultipleItemsToFridge} from '../reducer/fridge'
-import tesseract from 'tesseract.js'
 import {createWorker} from 'tesseract.js'
 
 /**
@@ -17,11 +13,9 @@ class Receipt extends React.Component {
     super(props)
     this.state = {
       uploads: [],
-      lines: [],
       foodHash: {},
       receiptItems: []
     }
-    //this.generateText = this.generateText.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.getTextFromImage = this.getTextFromImage.bind(this)
     this.sendItemsToFridge = this.sendItemsToFridge.bind(this)
@@ -89,10 +83,6 @@ class Receipt extends React.Component {
 
   render() {
     if (!this.props.inventory) return <h1> loading... </h1>
-    const foodHash = {}
-    this.props.inventory.map(foodObj => {
-      foodHash[foodObj.name] = true
-    })
 
     return (
       <div>
@@ -155,7 +145,6 @@ class Receipt extends React.Component {
 const mapState = state => {
   return {
     inventory: state.inventory.inventory
-    //food: state.fridge.food
   }
 }
 
@@ -163,8 +152,6 @@ const mapDispatch = dispatch => {
   return {
     fetchFoodItems: () => dispatch(fetchFoodItems()),
     bulkAdd: foodItems => dispatch(addMultipleItemsToFridge(foodItems))
-    // fetchFood: () => dispatch(fetchFood()),
-    // deleteFood: id => dispatch(deleteFood(id))
   }
 }
 

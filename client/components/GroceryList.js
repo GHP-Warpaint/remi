@@ -21,7 +21,15 @@ export default class GroceryList extends Component {
           {/* going to map over shoppingList. if !shoppingList return "your grocery list is empty" */}
           <ul className="grocery-list-items">
             <li>apples</li>
-            <li>&times;</li>
+            <li>
+              <button
+                className="groceryItemRemove"
+                type="submit"
+                // onClick={() => this.removeListedItem(ListedItem.id)}
+              >
+                &times;
+              </button>
+            </li>
           </ul>
           <ul className="grocery-list-items">
             <li>oranges</li>
@@ -29,17 +37,25 @@ export default class GroceryList extends Component {
           </ul>
           <ul className="grocery-list-items">
             <li>yogurt</li>
-            <li>&times;</li>
+            <li>
+              <button
+                className="groceryItemRemove"
+                type="submit"
+                // onClick={() => this.removeListedItem(ListedItem.id)}
+              >
+                &times;
+              </button>
+            </li>
           </ul>
           <ul className="grocery-list-items">
             <li>turmeric</li>
             <li>
               <button
-                className="itemBtn"
+                className="groceryItemRemove"
                 type="submit"
                 // onClick={() => this.removeListedItem(ListedItem.id)}
               >
-                X
+                &times;
               </button>
             </li>
           </ul>

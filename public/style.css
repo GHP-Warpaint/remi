@@ -161,6 +161,19 @@ button {
   padding: 10px 50px 10px 50px;
 }
 
+.add-button {
+  background-color: whitesmoke;
+  color: rgb(152, 10, 72);
+  border-radius: 4px;
+  font-size: 1em;
+  padding: 10px 50px 10px 50px;
+}
+
+.add-button:hover {
+  background: g;
+  cursor: pointer;
+}
+
 button:hover {
   background: rgb(141, 4, 63);
   cursor: pointer;

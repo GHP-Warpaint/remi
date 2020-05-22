@@ -71,8 +71,6 @@ class Receipt extends React.Component {
         return this.state.foodHash[word]
       })
 
-    console.log('newArr', newArr)
-
     this.setState({
       receiptItems: newArr
     })
@@ -105,25 +103,29 @@ class Receipt extends React.Component {
               multiple
             />
           </label>
+
           <div id="previews">
             {this.state.uploads.map(value => (
               <img key={value} src={value} width="100px" />
             ))}
           </div>
-          <button
-            type="submit"
-            className="button"
-            onClick={this.getTextFromImage}
-          >
-            Generate
-          </button>
-          <button
-            type="submit"
-            className="button"
-            onClick={this.sendItemsToFridge}
-          >
-            Add Items To Fridge
-          </button>
+          {!this.state.receiptItems.length ? (
+            <button
+              type="submit"
+              className="button"
+              onClick={this.getTextFromImage}
+            >
+              Generate
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="add-button"
+              onClick={this.sendItemsToFridge}
+            >
+              Add Items To Fridge
+            </button>
+          )}
         </section>
         <div id="fridge">
           {this.state.receiptItems.length ? (

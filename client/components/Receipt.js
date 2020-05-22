@@ -82,6 +82,9 @@ class Receipt extends React.Component {
       return food.name
     })
     await this.props.bulkAdd(items)
+    this.setState({
+      receiptItems: []
+    })
   }
 
   render() {

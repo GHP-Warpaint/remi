@@ -11,7 +11,9 @@ export const getDailyRecipe = () => {
   return async dispatch => {
     try {
       const {data} = await axios.get(`/api/dailyRecipes`)
-      dispatch(fetchDailyRecipe(data))
+      const randomNum = Math.floor(Math.random() * data.length)
+      const dailyRecipe = data[randomNum]
+      dispatch(fetchDailyRecipe(dailyRecipe))
     } catch (error) {
       console.error(error)
     }
@@ -19,13 +21,18 @@ export const getDailyRecipe = () => {
 }
 
 const initialState = {
-  dailyRecipe: []
+  isLoading: true,
+  dailyRecipe: {}
 }
 
 export default function dailyRecipeReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_DAILY_RECIPE:
-      return {...state, dailyRecipe: action.dailyrecipe}
+      return {
+        ...state,
+        dailyRecipe: action.dailyrecipe,
+        isLoading: false
+      }
     default:
       return state
   }

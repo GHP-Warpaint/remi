@@ -1,57 +1,163 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {fetchFoodItems} from '../reducer/foodItems'
+import {addMultipleItemsToFridge} from '../reducer/fridge'
+import tesseract, {createWorker} from 'tesseract.js'
 
-export default class Receipt extends Component {
-  constructor() {
-    super()
+/**
+ * COMPONENT
+ */
+class Receipt extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      display: ''
+      uploads: [],
+      lines: [],
+      foodHash: {},
+      receiptItems: []
     }
-    this.counter = this.counter.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.getTextFromImage = this.getTextFromImage.bind(this)
+    this.sendItemsToFridge = this.sendItemsToFridge.bind(this)
   }
 
-  counter() {
-    let countDownDate = new Date('May 31, 2020 15:30:00').getTime()
+  async componentDidMount() {
+    event.preventDefault()
+    await this.props.fetchFoodItems()
+    const foodHash = {}
+    this.props.inventory.map(foodObj => {
+      foodHash[foodObj.name] = foodObj
+    })
+    this.setState({
+      foodHash: foodHash
+    })
+  }
 
-    const countdownfunction = setInterval(() => {
-      let rightNow = new Date().getTime()
-      let difference = countDownDate - rightNow
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24))
-      const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      )
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000)
+  handleChange(e) {
+    let file = Array.from(e.target.files)
+    let fileObj = file[0]
+    const newUploads = []
+    newUploads.push(URL.createObjectURL(fileObj))
+    this.setState({uploads: newUploads})
+  }
 
-      if (difference < 0) {
-        clearInterval(countdownfunction)
-        this.setState({display: 'EXPIRED'})
-      }
+  async getTextFromImage() {
+    const worker = createWorker()
+    await worker.load()
+    await worker.loadLanguage('eng')
+    await worker.initialize('eng')
+    const {data} = await worker.recognize(this.state.uploads[0])
+    await worker.terminate()
 
-      this.setState({
-        display: `${days}d ${hours}h ${minutes}m ${seconds}s`
+    let words = data.words.map(obj => {
+      return obj.text.replace(/[^a-zA-Z ]/g, '').trim()
+    })
+    words = Array.from(new Set(words))
+    const newArr = words
+      .filter(word => {
+        word = word.toLowerCase()
+        if (this.state.foodHash[word]) {
+          return this.state.foodHash[word]
+        }
       })
-    }, 1000)
+      .map(word => {
+        word = word.toLowerCase()
+        return this.state.foodHash[word]
+      })
+
+    this.setState({
+      receiptItems: newArr
+    })
+  }
+
+  async sendItemsToFridge() {
+    let items = this.state.receiptItems
+    items = items.map(food => {
+      return food.name
+    })
+    await this.props.bulkAdd(items)
+    this.setState({
+      receiptItems: []
+    })
   }
 
   render() {
-    this.counter()
+    if (!this.props.inventory) return <h1> loading... </h1>
+    const foodHash = {}
+    this.props.inventory.map(foodObj => {
+      foodHash[foodObj.name] = true
+    })
+
     return (
       <div>
-        <h2>Scan your Receipts Here!</h2>
-        <h3>
-          We'll return your itemized list for you and you can decide if you'd
-          like to add the items to your fridge
-        </h3>
-        <div className="middle">
-          <h1>COMING SOON</h1>
-          <hr />
-          <p id="countdown">{this.state.display}</p>
-          <p>
-            Return to <Link to="/fridge">Fridge</Link>
-          </p>
+        <h1>Please Upload Your Receipt</h1>
+        <section>
+          <label className="fileUploadContianer">
+            <input
+              type="file"
+              id="fileUploader"
+              onChange={this.handleChange}
+              multiple
+            />
+          </label>
+
+          <div id="previews">
+            {this.state.uploads.map(value => (
+              <img key={value} src={value} width="100px" />
+            ))}
+          </div>
+          {!this.state.receiptItems.length ? (
+            <button
+              type="submit"
+              className="button"
+              onClick={this.getTextFromImage}
+            >
+              Generate
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="add-button"
+              onClick={this.sendItemsToFridge}
+            >
+              Add Items To Fridge
+            </button>
+          )}
+        </section>
+        <div id="fridge">
+          {this.state.receiptItems.length ? (
+            <div>
+              {this.state.receiptItems.map(item => (
+                <div key={item.id} className="item">
+                  <img src={item.imageUrl} height="50px" width="auto" />
+                  <br />
+                  {item.name}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div> </div>
+          )}
         </div>
+        <p>
+          Return to <Link to="/fridge">Fridge</Link>
+        </p>
       </div>
     )
   }
 }
+const mapState = state => {
+  return {
+    inventory: state.inventory.inventory
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    fetchFoodItems: () => dispatch(fetchFoodItems()),
+    bulkAdd: foodItems => dispatch(addMultipleItemsToFridge(foodItems))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Receipt)

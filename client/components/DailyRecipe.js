@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getDailyRecipe} from '../reducer/dailyRecipe'
+import Loader from 'react-loader-spinner'
 
 if (window.speechRecognition || window.webkitSpeechRecognition) {
   const SpeechRecognition =
@@ -28,7 +29,7 @@ function readOutLoud(message) {
     speech.text =
       "great choice! Let's take a look at your current account details."
   } else if (message.includes('recipe')) {
-    location.assign('https://chef-remy.herokuapp.com/recipe')
+    location.assign('https://chef-remy.herokuapp.com/recipes')
     speech.text = 'brilliant! Click the button to see what we can create.'
   } else if (message.includes('home')) {
     location.assign('https://chef-remy.herokuapp.com/home')
@@ -57,6 +58,7 @@ class DailyRecipe extends Component {
       clickedChat: false
     }
   }
+
   componentDidMount() {
     this.props.getDailyRecipeInfo()
   }
@@ -84,32 +86,26 @@ class DailyRecipe extends Component {
   }
 
   render() {
-    const randomNum =
-      this.props.dailyRec.dailyRecipe.length &&
-      Math.floor(Math.random() * this.props.dailyRec.dailyRecipe.length)
-    const randomChoice = this.props.dailyRec.dailyRecipe[1]
-      ? this.props.dailyRec.dailyRecipe[randomNum]
-      : 'loads'
+    const {recipe, isLoading} = this.props
+
+    if (isLoading)
+      return <Loader type="Circles" color="#00BFFF" height={80} width={80} />
+
     return (
       <div>
         <br />
-        <h1>Our Suggested Recipes of the Day!</h1> <br />
-        {randomChoice !== 'loads' && (
-          <div>
-            <h3>{randomChoice.title}</h3>
-            <img src={randomChoice.imageUrl} height="300" />
-            <p>
-              Check out the recipe{' '}
-              <a
-                href={randomChoice.url}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Here
-              </a>
-            </p>
-          </div>
-        )}
+        <h1>Our Suggested Recipes of the Day!</h1>
+        <br />
+        <div>
+          <h3>{recipe.title}</h3>
+          <img src={recipe.imageUrl} height="300" alt="recipe of the day" />
+          <p>
+            Check out the recipe at{' '}
+            <a href={recipe.url} rel="noopener noreferrer" target="_blank">
+              Food Network
+            </a>
+          </p>
+        </div>
         <br />
         {window.speechRecognition || window.webkitSpeechRecognition ? (
           <div id="remy">
@@ -158,7 +154,8 @@ class DailyRecipe extends Component {
 }
 
 const mapState = state => ({
-  dailyRec: state.dailyRecipe
+  recipe: state.dailyRecipe.dailyRecipe,
+  isLoading: state.dailyRecipe.isLoading
 })
 
 const mapDispatch = dispatch => ({

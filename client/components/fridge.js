@@ -30,7 +30,6 @@ export class Fridge extends React.Component {
   }
 
   render() {
-    console.log('in render, this. props >>>>>>>>>', this.props)
     return (
       <div id="fridge">
         <br />
@@ -49,9 +48,10 @@ export class Fridge extends React.Component {
               Click for Audio{' '}
               <i className="fa fa-volume-up" aria-hidden="true" />
             </button>
-            <br />Type and add the foods you currently have available in your
-            kitchen. When you're done head over to the Recipes by clicking the
-            Let's Cook button or select Recipe in the nav menu.
+            <br />
+            Type and add the foods you currently have available in your kitchen.
+            When you're done head over to the Recipes by clicking the Let's Cook
+            button or select Recipe in the nav menu.
           </span>
         </i>
         <div>
@@ -63,7 +63,7 @@ export class Fridge extends React.Component {
               <Link to="/receipt" className="fakeButton">
                 Scan my receipt!
               </Link>
-              <Link to="/recipe" className="fakeButton">
+              <Link to="/recipes" className="fakeButton">
                 Let's Cook!
               </Link>
             </div>
@@ -79,7 +79,12 @@ export class Fridge extends React.Component {
                 >
                   X
                 </button>
-                <img src={food.imageUrl} height="100px" width="auto" />
+                <img
+                  src={food.imageUrl}
+                  height="100px"
+                  width="auto"
+                  alt="food ingredient"
+                />
                 <br />
                 {food.name}
               </div>

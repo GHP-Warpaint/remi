@@ -2,6 +2,14 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 export default class GroceryList extends Component {
+  // componentDidMount() {
+  //   this.props.seeGroceryList()
+  // }
+
+  // removeListedItem = (id) => {
+  //   this.props.dontNeedListedItem(id)
+  // }
+
   render() {
     return (
       <div className="grocery-list">
@@ -10,6 +18,7 @@ export default class GroceryList extends Component {
           {/* <i className="fa fa-download" aria-hidden="true" id="download" /> */}
         </h2>
         <div className="container">
+          {/* going to map over shoppingList. if !shoppingList return "your grocery list is empty" */}
           <ul className="grocery-list-items">
             <li>apples</li>
             <li>&times;</li>
@@ -24,7 +33,15 @@ export default class GroceryList extends Component {
           </ul>
           <ul className="grocery-list-items">
             <li>turmeric</li>
-            <li>&times;</li>
+            <li>
+              <button
+                className="itemBtn"
+                type="submit"
+                // onClick={() => this.removeListedItem(ListedItem.id)}
+              >
+                X
+              </button>
+            </li>
           </ul>
           <ul className="grocery-list-items">
             <li>heavy cream</li>
@@ -57,7 +74,7 @@ export default class GroceryList extends Component {
 // const mapDispatch = dispatch => {
 //   return {
 //     seeGroceryList: () => dispatch(fetchGroceryList())
-//     dontNeedListedItem: (id) => dispactch(removeGroceryListItem(id))
+//     dontNeedListedItem: (id) => dispatch(removeGroceryListItem(id))
 //   }
 // }
 

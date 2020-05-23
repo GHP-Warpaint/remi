@@ -113,6 +113,9 @@ nav a:visited {
   #hamburger:hover div {
     visibility: visible;
   }
+  #hamburger:active div {
+    visibility: visible;
+  }
 }
 
 form div {

@@ -13,24 +13,25 @@ class SingleRecipe extends Component {
     }
     //this.alert = this.alert.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  // handleChange(event) {
-  //   let needItems = Array.from(event.target.value)
-  //   let groceryList = needItems[0]
-  //   const newList = []
-  //   newList.push(URL.createObjectURL(groceryList))
-  //   this.setState({uploads: newList})
-  // }
+  handleChange(event) {
+    console.log("I'm checking you out")
+    console.log('event.target.value', event.target.value) //returns food item's name
+  }
 
-  //need to figure out how to get the name value (and maybe id) from the selected & submitted missing ingredients checkbox
-  handleSubmit = async event => {
+  //need to figure out how to get the name value from the selected & submitted missing ingredients checkbox
+  handleSubmit = event => {
     event.preventDefault()
+    const userId = this.props.user.id
     console.log('this.props', this.props)
     console.log('this.state', this.state)
+    console.log('event.target', event.target)
+    console.log('event name', event.target.name)
     // const {addFood} = this.props
     //const food = this.state
-    // await addToList(food)
+    //this.props.addToList(userId, newFood)
   }
 
   // alert() {
@@ -118,6 +119,7 @@ class SingleRecipe extends Component {
                       id={`${item.name}`}
                       name={`${item.name}`}
                       value={`${item.name}`}
+                      onChange={this.handleChange}
                     />
                     <label htmlFor={`${item.name}`}>{`${item.name}`}</label>
                   </div>

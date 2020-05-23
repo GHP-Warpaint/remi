@@ -10,7 +10,7 @@ Upload an image of your grocery receipt to our site to add the groceries to your
 
 ## Setup
 
-To get started on the website you can signup as a new user with online or use your Amazon login to make an account with us. You can still use the website with all its functionality even without an Alexa skill, but to get the most out of our app (and to reduce the stress and mess in the kitchen) we recommend using Alexa from one of her enabled devices.
+To get started on the website you can signup as a new user online or use your Amazon login to make an account with us. You can still use the website with all its functionality even without an Alexa skill, but to get the most out of our app (and to reduce the stress and mess in the kitchen) we recommend using Alexa from one of her enabled devices.
 
 # Visit: https://chef-remy.herokuapp.com/ to get started.
 

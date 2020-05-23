@@ -25,7 +25,15 @@ async function seed() {
     User.create({
       firstName: 'Anthony',
       lastName: 'Bourdain',
-      groceryList: ['chili peppers', 'potato', 'flour', 'cumin', 'turmeric'],
+      groceryList: [
+        'chili peppers',
+        'potato',
+        'flour',
+        'cumin',
+        'turmeric',
+        'leeks',
+        'lemongrass'
+      ],
       email: 'anthony@remy.com',
       password: 'noreservations'
     }),

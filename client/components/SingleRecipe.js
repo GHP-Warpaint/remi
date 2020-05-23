@@ -9,11 +9,19 @@ class SingleRecipe extends Component {
     super(props)
     this.state = {
       //savedRecipe: false
-      checkedFoods: ''
+      checkedFoods: []
     }
     //this.alert = this.alert.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  // handleChange(event) {
+  //   let needItems = Array.from(event.target.value)
+  //   let groceryList = needItems[0]
+  //   const newList = []
+  //   newList.push(URL.createObjectURL(groceryList))
+  //   this.setState({uploads: newList})
+  // }
 
   //need to figure out how to get the name value (and maybe id) from the selected & submitted missing ingredients checkbox
   handleSubmit = async event => {

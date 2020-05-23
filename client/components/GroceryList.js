@@ -3,19 +3,32 @@ import {connect} from 'react-redux'
 import {me, updateGroceryList} from '../reducer/user'
 
 class GroceryList extends Component {
-  componentDidMount() {
-    // this.props.me()
+  constructor(props) {
+    super(props)
+    this.state = {
+      //should equal an array of strings that the user currently has in their list
+      groceryList: [...this.props.user.groceryList]
+    }
   }
 
-  // removeListedItem = (id) => {
-  //   this.props.dontNeedListedItem(id)
-  // }
+  //need to remove the identified string item from the arr of grocerylistitem strings
+  handleRemoveListedItem = event => {
+    // event.preventDefault()
+    const userId = this.props.user.id
+    const findItem = this.state.groceryList.indexOf(event)
+
+    // console.log("spliced item", this.state.groceryList.splice(findItem, 1))
+    const newState = this.state.groceryList
+    const groceryList = {groceryList: newState}
+    // console.log("groceryList", groceryList)
+    this.props.updateList(userId, groceryList)
+  }
 
   render() {
     let groceryList = this.props.user.groceryList
-    console.log('Grocery state', this.state)
-    console.log('PROPS', this.props)
-    console.log('Grocery PROPS', this.props.user.groceryList)
+    // console.log('Grocery state', this.state)
+    // console.log('PROPS', this.props)
+    // console.log('Grocery PROPS', this.props.user.groceryList)
     return (
       <div className="grocery-list">
         <h2>
@@ -31,7 +44,7 @@ class GroceryList extends Component {
                     <button
                       className="groceryItemRemove"
                       type="submit"
-                      // onClick={() => this.removeListedItem(ListedItem.id)}
+                      onClick={() => this.handleRemoveListedItem(item)}
                     >
                       &times;
                     </button>

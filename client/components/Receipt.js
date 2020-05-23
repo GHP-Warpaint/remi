@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchFoodItems} from '../reducer/foodItems'
 import {addMultipleItemsToFridge} from '../reducer/fridge'
-import tesseract, {createWorker} from 'tesseract.js'
+import {createWorker} from 'tesseract.js'
 
 /**
  * COMPONENT
@@ -15,8 +15,11 @@ class Receipt extends React.Component {
       uploads: [],
       lines: [],
       foodHash: {},
-      receiptItems: []
+      receiptItems: [],
+      isProcessing: true,
+      pctg: '0.00'
     }
+    this.updateProgressAndLog = this.updateProgressAndLog.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.getTextFromImage = this.getTextFromImage.bind(this)
     this.sendItemsToFridge = this.sendItemsToFridge.bind(this)
@@ -32,6 +35,11 @@ class Receipt extends React.Component {
     this.setState({
       foodHash: foodHash
     })
+    // Logs the output object to Update Progress, which
+    // checks for Tesseract JS status & Updates the progress
+    this.worker = createWorker({
+      logger: m => this.updateProgressAndLog(m)
+    })
   }
 
   handleChange(e) {
@@ -40,13 +48,23 @@ class Receipt extends React.Component {
     const newUploads = []
     newUploads.push(URL.createObjectURL(fileObj))
     this.setState({uploads: newUploads})
+    this.worker = createWorker({
+      logger: m => this.updateProgressAndLog(m)
+    })
+    console.log('Worker!!!', this.worker)
   }
 
   async getTextFromImage() {
+    this.setState({
+      isProcessing: true,
+      pctg: '0.00'
+    })
+
     const worker = createWorker()
     await worker.load()
     await worker.loadLanguage('eng')
     await worker.initialize('eng')
+
     const {data} = await worker.recognize(this.state.uploads[0])
     await worker.terminate()
 
@@ -67,8 +85,27 @@ class Receipt extends React.Component {
       })
 
     this.setState({
+      isProcessing: false,
       receiptItems: newArr
     })
+  }
+
+  updateProgressAndLog(m) {
+    // Maximum value out of which percentage needs to be
+    // calculated. In our case it's 0 for 0 % and 1 for Max 100%
+    // DECIMAL_COUNT specifies no of floating decimal points in our
+    // Percentage
+    var MAX_PARCENTAGE = 1
+    var DECIMAL_COUNT = 2
+
+    if (m.status === 'recognizing text') {
+      var pctg = m.progress / MAX_PARCENTAGE * 100
+      this.setState({
+        pctg: pctg.toFixed(DECIMAL_COUNT)
+      })
+      console.log('Update Progress this.state', this.state)
+    }
+    console.log('Worker In Update!!!', this.worker)
   }
 
   async sendItemsToFridge() {
@@ -125,6 +162,15 @@ class Receipt extends React.Component {
             </button>
           )}
         </section>
+
+        <div className="loading">
+          <span className="status-text">
+            {this.state.isProcessing
+              ? `Processing Image ( ${this.state.pctg} % )`
+              : 'It looks like you have purchased:'}
+          </span>
+        </div>
+
         <div id="fridge">
           {this.state.receiptItems.length ? (
             <div>

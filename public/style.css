@@ -49,11 +49,9 @@ body {
 }
 a {
   text-decoration: none;
-  color: white;
 }
 a:visited {
   text-decoration: none;
-  color: white;
 }
 
 .welcome {
@@ -92,9 +90,13 @@ nav div {
 
 nav a {
   margin: 1em;
+  color: white;
 }
 nav a:visited {
   color: whitesmoke;
+}
+nav a:hover {
+  color: silver;
 }
 
 form div {

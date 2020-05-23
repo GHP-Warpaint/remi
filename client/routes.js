@@ -10,8 +10,6 @@ import SingleRecipe from './components/SingleRecipe'
 import ErrorPage from './components/ErrorPage'
 import DailyRecipe from './components/DailyRecipe'
 import Recipe from './components/recipe'
-import Privacy from './components/Privacy'
-
 import {me} from './store'
 
 class Routes extends Component {
@@ -32,8 +30,6 @@ class Routes extends Component {
           <Route exact path="/signup" component={Signup} />
 
           <Route path="/about-alexa" component={AlexaInstruct} />
-          <Route path="/privacy" component={Privacy} />
-          <Route path="/receipt" component={Receipt} />
 
           {isLoggedIn && (
             <Switch>
@@ -43,6 +39,7 @@ class Routes extends Component {
               <Route path="/recipes" component={Recipe} />
               <Route path="/singleRecipe" component={SingleRecipe} />
               <Route path="/fridge" component={Fridge} />
+              <Route path="/receipt" component={Receipt} />
               <Route component={ErrorPage} />
             </Switch>
           )}

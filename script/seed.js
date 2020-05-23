@@ -187,12 +187,22 @@ async function seed() {
         'https://cdn1.iconfinder.com/data/icons/food-111/512/banana-128.png'
     }),
     FoodItem.create({
+      name: 'bananas',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/food-111/512/banana-128.png'
+    }),
+    FoodItem.create({
       name: 'eggs',
       imageUrl:
         'https://cdn2.iconfinder.com/data/icons/food-98/64/Food_eggs-128.png'
     }),
     FoodItem.create({
       name: 'tomato',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/food-111/512/tomato-128.png'
+    }),
+    FoodItem.create({
+      name: 'tomatoes',
       imageUrl:
         'https://cdn1.iconfinder.com/data/icons/food-111/512/tomato-128.png'
     }),
@@ -263,6 +273,11 @@ async function seed() {
     }),
     FoodItem.create({
       name: 'potato',
+      imageUrl:
+        'https://cdn4.iconfinder.com/data/icons/food-volume-ii/128/potato-128.png'
+    }),
+    FoodItem.create({
+      name: 'potatoes',
       imageUrl:
         'https://cdn4.iconfinder.com/data/icons/food-volume-ii/128/potato-128.png'
     }),
@@ -582,6 +597,11 @@ async function seed() {
         'https://cdn1.iconfinder.com/data/icons/summer-1-3/512/SUMMER_ICON_1_FINAL-25-128.png'
     }),
     FoodItem.create({
+      name: 'cucumbers',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/summer-1-3/512/SUMMER_ICON_1_FINAL-25-128.png'
+    }),
+    FoodItem.create({
       name: 'pickles',
       imageUrl:
         'https://cdn4.iconfinder.com/data/icons/smashicons-gastronomy-2-retro-vol-2/61/48_-Pickles-_gastronomy_food_cooking-128.png'
@@ -672,9 +692,19 @@ async function seed() {
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSqGNxmheVX1qRiAW3QXnm-M8wuXvX4A9o-ZtZuzSqKkLvkCoW&s'
     }),
     FoodItem.create({
+      name: 'bananas',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/fruits-filled-outline-1/50/Fruits_-_Filled_outline-10-512.png'
+    }),
+    FoodItem.create({
       name: 'grapefruit',
       imageUrl:
         'https://cdn4.iconfinder.com/data/icons/fruits-79/48/03-grapefruit-128.png'
+    }),
+    FoodItem.create({
+      name: 'grapes',
+      imageUrl:
+        'https://cdn1.iconfinder.com/data/icons/food-2-11/128/bunch-grapes-food-fruit-grape-512.png'
     }),
     FoodItem.create({
       name: 'carrots',

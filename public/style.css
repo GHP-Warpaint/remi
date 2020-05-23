@@ -95,6 +95,26 @@ nav a:visited {
   color: whitesmoke;
 }
 
+#hamburger {
+  display: none;
+  font-size: x-large;
+}
+
+@media screen and (max-width: 800px) {
+  #hamburger {
+    display: contents;
+    margin-left: 4%;
+    cursor: pointer;
+  }
+  .nav-links {
+    visibility: hidden;
+  }
+
+  #hamburger:hover div {
+    visibility: visible;
+  }
+}
+
 form div {
   margin: 1em;
   display: inline-block;

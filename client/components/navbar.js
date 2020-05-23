@@ -21,15 +21,30 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/fridge">Fridge</Link>
-          <Link to="/receipt">Add Receipt</Link>
-          <Link to="/recipes">Recipes</Link>
-          <Link to="/about-alexa">Alexa</Link>
-          <Link to="/account">My Account</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+          <div className="nav-links">
+            <Link to="/home">Home</Link>
+            <Link to="/fridge">Fridge</Link>
+            <Link to="/receipt">Add Receipt</Link>
+            <Link to="/recipes">Recipes</Link>
+            <Link to="/about-alexa">Alexa</Link>
+            <Link to="/account">My Account</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+          <i className="fa fa-bars" id="hamburger" aria-hidden="true">
+            <div className="nav-links">
+              <Link to="/home">Home</Link>
+              <Link to="/fridge">Fridge</Link>
+              <Link to="/receipt">Add Receipt</Link>
+              <Link to="/recipes">Recipes</Link>
+              <Link to="/about-alexa">Alexa</Link>
+              <Link to="/account">My Account</Link>
+              <a href="#" onClick={handleClick}>
+                Logout
+              </a>
+            </div>
+          </i>
         </div>
       ) : (
         <div>

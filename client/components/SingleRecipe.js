@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchRecipeDirections} from '../reducer/recipe'
-//import {addGroceryListItem} from '../reducer/groceryList'
+import {me, updateGroceryList} from '../reducer/user'
 import {Link} from 'react-router-dom'
 
 class SingleRecipe extends Component {
@@ -9,19 +9,21 @@ class SingleRecipe extends Component {
     super(props)
     this.state = {
       //savedRecipe: false
-      //selectedFoods:
+      checkedFoods: ''
     }
     //this.alert = this.alert.bind(this)
-    //this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   //need to figure out how to get the name value (and maybe id) from the selected & submitted missing ingredients checkbox
-  // handleSubmit = async event => {
-  //   event.preventDefault()
-  //   const {addFood} = this.props
-  //   const food = this.state
-  //   await addToList(food)
-  // }
+  handleSubmit = async event => {
+    event.preventDefault()
+    console.log('this.props', this.props)
+    console.log('this.state', this.state)
+    // const {addFood} = this.props
+    //const food = this.state
+    // await addToList(food)
+  }
 
   // alert() {
   //   this.setState({
@@ -98,9 +100,7 @@ class SingleRecipe extends Component {
               <br />
             </div>
           )}
-          <form
-          // onSubmit={this.handleSubmit}
-          >
+          <form onSubmit={this.handleSubmit}>
             {missedIngredients.length ? (
               missedIngredients.map(item => {
                 return (
@@ -109,6 +109,7 @@ class SingleRecipe extends Component {
                       type="checkbox"
                       id={`${item.name}`}
                       name={`${item.name}`}
+                      value={`${item.name}`}
                     />
                     <label htmlFor={`${item.name}`}>{`${item.name}`}</label>
                   </div>
@@ -149,8 +150,9 @@ const mapState = state => {
 }
 
 const mapDispatch = dispatch => ({
-  fetchDirections: id => dispatch(fetchRecipeDirections(id))
-  //addToList: () => dispatch(addGroceryListItem())
+  fetchDirections: id => dispatch(fetchRecipeDirections(id)),
+  addToList: (userId, groceryList) =>
+    dispatch(updateGroceryList(userId, groceryList))
 })
 
 export default connect(mapState, mapDispatch)(SingleRecipe)

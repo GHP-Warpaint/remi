@@ -1,16 +1,19 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {me, updateGroceryList} from '../reducer/user'
 
-export default class GroceryList extends Component {
-  // componentDidMount() {
-  //   this.props.seeGroceryList()
-  // }
+export class GroceryList extends Component {
+  componentDidMount() {
+    // this.props.me()
+  }
 
   // removeListedItem = (id) => {
   //   this.props.dontNeedListedItem(id)
   // }
 
   render() {
+    let user = this.props.user
+    console.log('Grocery User', user)
     return (
       <div className="grocery-list">
         <h2>
@@ -81,17 +84,18 @@ export default class GroceryList extends Component {
   }
 }
 
-// const mapState = state => {
-//   return {
-//     shoppingList: state.groceryList
-//   }
-// }
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
 
-// const mapDispatch = dispatch => {
-//   return {
-//     seeGroceryList: () => dispatch(fetchGroceryList())
-//     dontNeedListedItem: (id) => dispatch(removeGroceryListItem(id))
-//   }
-// }
+const mapDispatch = dispatch => {
+  return {
+    me: () => dispatch(me()),
+    updateList: (userId, groceryList) =>
+      dispatch(updateGroceryList(userId, groceryList))
+  }
+}
 
-// export default connect(mapState, mapDispatch)(MyAccount)
+export default connect(mapState, mapDispatch)(GroceryList)

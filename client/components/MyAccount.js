@@ -1,9 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {me, updateEmail, updateName} from '../reducer/user'
-import GroceryList from './GroceryList'
+import {GroceryList} from './GroceryList'
 import SavedRecipes from './SavedRecipes'
-//import {removeGroceryListItem, fetchGroceryList} from '../reducer/groceryList'
 
 export class MyAccount extends React.Component {
   constructor(props) {

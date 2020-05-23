@@ -11,24 +11,28 @@ async function seed() {
     User.create({
       firstName: 'Cody',
       lastName: 'Pug',
+      groceryList: ['flour', 'milk', 'eggs', 'butter', 'chicken', 'tequila'],
       email: 'cody@email.com',
       password: '123'
     }),
     User.create({
       firstName: 'Gordon',
       lastName: 'Ramsey',
+      groceryList: ['flour', 'milk', 'eggs', 'butter', 'pollock'],
       email: 'gordon@remy.com',
       password: 'masterchef'
     }),
     User.create({
       firstName: 'Anthony',
       lastName: 'Bourdain',
+      groceryList: ['chili peppers', 'potato', 'flour', 'cumin', 'turmeric'],
       email: 'anthony@remy.com',
       password: 'noreservations'
     }),
     User.create({
       firstName: 'Guy',
       lastName: 'Fieri',
+      groceryList: ['butter'],
       email: 'guy@remy.com',
       password: 'flavortown'
     }),
@@ -41,18 +45,21 @@ async function seed() {
     User.create({
       firstName: 'Ina',
       lastName: 'Garten',
+      groceryList: ['vanilla beans', 'almonds'],
       email: 'ina@remy.com',
       password: 'barefootcontessa'
     }),
     User.create({
       firstName: 'Bobby',
       lastName: 'Flay',
+      groceryList: ['beef', 'arugula'],
       email: 'bobby@remy.com',
       password: 'throwdown'
     }),
     User.create({
       firstName: 'Rachel',
       lastName: 'Ray',
+      groceryList: ['honey'],
       email: 'rachel@remy.com',
       password: 'kitchen'
     })

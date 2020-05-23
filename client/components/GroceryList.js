@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {me, updateGroceryList} from '../reducer/user'
 
-export class GroceryList extends Component {
+class GroceryList extends Component {
   componentDidMount() {
     // this.props.me()
   }
@@ -12,8 +12,10 @@ export class GroceryList extends Component {
   // }
 
   render() {
-    let user = this.props.user
-    console.log('Grocery User', user)
+    let groceryList = this.props.user.groceryList
+    console.log('Grocery state', this.state)
+    console.log('PROPS', this.props)
+    console.log('Grocery PROPS', this.props.user.groceryList)
     return (
       <div className="grocery-list">
         <h2>
@@ -21,63 +23,22 @@ export class GroceryList extends Component {
           {/* <i className="fa fa-download" aria-hidden="true" id="download" /> */}
         </h2>
         <div className="container">
-          {/* going to map over shoppingList. if !shoppingList return "your grocery list is empty" */}
-          <ul className="grocery-list-items">
-            <li>apples</li>
-            <li>
-              <button
-                className="groceryItemRemove"
-                type="submit"
-                // onClick={() => this.removeListedItem(ListedItem.id)}
-              >
-                &times;
-              </button>
-            </li>
-          </ul>
-          <ul className="grocery-list-items">
-            <li>oranges</li>
-            <li>&times;</li>
-          </ul>
-          <ul className="grocery-list-items">
-            <li>yogurt</li>
-            <li>
-              <button
-                className="groceryItemRemove"
-                type="submit"
-                // onClick={() => this.removeListedItem(ListedItem.id)}
-              >
-                &times;
-              </button>
-            </li>
-          </ul>
-          <ul className="grocery-list-items">
-            <li>turmeric</li>
-            <li>
-              <button
-                className="groceryItemRemove"
-                type="submit"
-                // onClick={() => this.removeListedItem(ListedItem.id)}
-              >
-                &times;
-              </button>
-            </li>
-          </ul>
-          <ul className="grocery-list-items">
-            <li>heavy cream</li>
-            <li>&times;</li>
-          </ul>
-          <ul className="grocery-list-items">
-            <li>barley</li>
-            <li>&times;</li>
-          </ul>
-          <ul className="grocery-list-items">
-            <li>chives</li>
-            <li>&times;</li>
-          </ul>
-          <ul className="grocery-list-items">
-            <li>tortilla</li>
-            <li>&times;</li>
-          </ul>
+          {groceryList
+            ? groceryList.map(item => (
+                <ul key={item} className="grocery-list-items">
+                  <li>{item}</li>
+                  <li>
+                    <button
+                      className="groceryItemRemove"
+                      type="submit"
+                      // onClick={() => this.removeListedItem(ListedItem.id)}
+                    >
+                      &times;
+                    </button>
+                  </li>
+                </ul>
+              ))
+            : 'your grocery list is empty'}
         </div>
       </div>
     )

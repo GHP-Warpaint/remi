@@ -144,8 +144,8 @@ const mapState = state => {
   return {
     food: state.fridge.food,
     recipe: state.recipe,
-    directions: state.recipe.directions
-    //shoppingList: state.groceryList
+    directions: state.recipe.directions,
+    user: state.user
   }
 }
 

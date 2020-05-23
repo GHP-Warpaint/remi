@@ -21,8 +21,8 @@ router.put('/:userId', async (req, res, next) => {
       }
     })
     console.log('express req.body=>', req.body)
-    const updateCampus = await userUpdate.update(req.body)
-    res.json(updateCampus)
+    const updateUser = await userUpdate.update(req.body)
+    res.json(updateUser)
   } catch (error) {
     next(error)
   }

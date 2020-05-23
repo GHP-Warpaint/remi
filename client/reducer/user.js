@@ -116,8 +116,7 @@ export default function userReducer(state = defaultUser, action) {
     case UPDATED_EMAIL:
       return {...state, email: action.email.email}
     case UPDATED_GROCERIES:
-      console.log('REDUX REDUCER GROCERIES ACTION', action)
-      return {...state, groceryList: action.groceryList}
+      return {...state, groceryList: [...action.groceryList.groceryList]}
     default:
       return state
   }

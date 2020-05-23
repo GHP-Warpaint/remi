@@ -13,14 +13,11 @@ class GroceryList extends Component {
 
   //need to remove the identified string item from the arr of grocerylistitem strings
   handleRemoveListedItem = event => {
-    // event.preventDefault()
     const userId = this.props.user.id
     const findItem = this.state.groceryList.indexOf(event)
-
-    // console.log("spliced item", this.state.groceryList.splice(findItem, 1))
+    this.state.groceryList.splice(findItem, 1)
     const newState = this.state.groceryList
     const groceryList = {groceryList: newState}
-    // console.log("groceryList", groceryList)
     this.props.updateList(userId, groceryList)
   }
 

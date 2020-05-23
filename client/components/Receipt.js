@@ -23,6 +23,7 @@ class Receipt extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.getTextFromImage = this.getTextFromImage.bind(this)
     this.sendItemsToFridge = this.sendItemsToFridge.bind(this)
+    this.generateButtonLoader = this.generateButtonLoader.bind(this)
   }
 
   async componentDidMount() {
@@ -54,11 +55,17 @@ class Receipt extends React.Component {
     console.log('Worker!!!', this.worker)
   }
 
+  generateButtonLoader() {
+    let generateButton = document.getElementById('generate')
+    generateButton.className += ' respond'
+  }
+
   async getTextFromImage() {
     this.setState({
       isProcessing: true,
       pctg: '0.00'
     })
+    this.generateButtonLoader()
 
     const worker = createWorker()
     await worker.load()
@@ -88,6 +95,7 @@ class Receipt extends React.Component {
       isProcessing: false,
       receiptItems: newArr
     })
+    // generateButton.className = 'button'
   }
 
   updateProgressAndLog(m) {
@@ -147,10 +155,12 @@ class Receipt extends React.Component {
           {!this.state.receiptItems.length ? (
             <button
               type="submit"
+              id="generate"
               className="button"
               onClick={this.getTextFromImage}
             >
               Generate
+              <i id="genSpinner" className="fa fa-spinner fa-spin" />
             </button>
           ) : (
             <button

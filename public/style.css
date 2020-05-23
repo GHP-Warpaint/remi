@@ -455,3 +455,11 @@ li:hover .saved-recipe-img {
   visibility: visible;
   bottom: 6%;
 }
+#genSpinner {
+  display: none;
+  visibility: hidden;
+}
+.respond #genSpinner {
+  display: inline;
+  visibility: visible;
+}

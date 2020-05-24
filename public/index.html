@@ -19,12 +19,37 @@
     <script defer src="/bundle.js"></script>
   </head>
   <body>
+    <div id="loader"></div>
     <div id="app"></div>
   </body>
   <footer>
     © Copyright 2020, REMY WARPAINT 🎨. All Rights Reserved. GHP - Allison, Michelle, Nora, Shannon
   </footer>
   <script>
+    //start pre-loader
+    let loader;
+    function loadNow(opacity) {
+      if (opacity <= 0) {
+        displayContent();
+      } else {
+        loader.style.opacity = opacity;
+        window.setTimeout(function() {
+          loadNow(opacity - 0.5)
+        }, 100)
+      }
+    }
+
+    function displayContent() {
+      loader.style.display = 'none';
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      loader = document.getElementById('loader');
+      loadNow(1);
+    })
+//end pre-loader
+
+//detect browser serviceWorker, link to serviceWorker file
     if ('serviceWorker' in navigator) {
 window.addEventListener('load', () => {
   navigator.serviceWorker

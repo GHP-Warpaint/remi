@@ -9,16 +9,22 @@ class SingleRecipe extends Component {
     super(props)
     this.state = {
       //savedRecipe: false
-      checkedFoods: []
+      checkedFoods: [],
+      addMe: false
     }
     //this.alert = this.alert.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
+  //needs to get both the checkbox val and determine if the val is still checked before setting state
   handleChange(event) {
     console.log("I'm checking you out")
     console.log('event.target.value', event.target.value) //returns food item's name
+    console.log('event.target', event.target)
+    // if () {this.setState({
+    //   checkedFoods: this.state.checkedFoods.push(event.target.value)
+    // })}
   }
 
   //need to figure out how to get the name value from the selected & submitted missing ingredients checkbox
@@ -27,8 +33,6 @@ class SingleRecipe extends Component {
     const userId = this.props.user.id
     console.log('this.props', this.props)
     console.log('this.state', this.state)
-    console.log('event.target', event.target)
-    console.log('event name', event.target.name)
     // const {addFood} = this.props
     //const food = this.state
     //this.props.addToList(userId, newFood)
@@ -131,7 +135,9 @@ class SingleRecipe extends Component {
                 <br />
               </div>
             )}
-            <input type="submit" value="Add to Grocery List" />
+            <div>
+              <button type="submit">Add to Grocery List</button>
+            </div>
           </form>
         </div>
         <div className="directions">

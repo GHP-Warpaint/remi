@@ -17,8 +17,9 @@ button {
   height: 100vh;
   z-index: 1;
   overflow: visible;
-  background: #000 url(https://i.giphy.com/media/3o85g3loeiLcF26OZy/giphy.webp)
-    no-repeat center center;
+  background: rgb(51, 0, 17)
+    url(https://i.giphy.com/media/3o85g3loeiLcF26OZy/giphy.webp) no-repeat
+    center center;
   color: white;
 }
 

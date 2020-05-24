@@ -24,7 +24,8 @@ const User = db.define('user', {
   },
   groceryList: {
     type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: true
+    allowNull: true,
+    defaultValue: []
   },
   password: {
     type: Sequelize.STRING,

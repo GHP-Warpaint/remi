@@ -8,7 +8,7 @@ Upload an image of your grocery receipt to our site to add the groceries to your
 
 **Developers**:[Allison Sasso](https://github.com/AlliQS) | [Michelle Broomes](https://github.com/mbroomes22) | [Nora Lashner](https://github.com/nlashner) | [Shannon Crowley](https://github.com/scrowley016)
 
-**Technologies**: Javascript, AWS Lambda, Spoonacular API, Speech Synthesis API, Edamam API, Node, Tesseract, Express, React, Redux, Redis, Git, Github, Sequelize, PSQL, HTML, and CSS
+**Technologies**: Javascript, AWS Lambda, Spoonacular API, Speech Synthesis API, Edamam API, Node, Tesseract, Express, React, Redux, Git, Github, Sequelize, PSQL, HTML, and CSS
 
 **Technology Implementation**:
 

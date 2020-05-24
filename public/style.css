@@ -19,6 +19,11 @@ button {
   overflow: visible;
   background: #000 url(https://i.giphy.com/media/3o85g3loeiLcF26OZy/giphy.webp)
     no-repeat center center;
+  color: white;
+}
+
+#loader h1 {
+  color: white;
 }
 
 body {

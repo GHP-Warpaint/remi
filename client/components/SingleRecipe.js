@@ -117,7 +117,8 @@ class SingleRecipe extends Component {
                     <input
                       type="checkbox"
                       id={`${item.name}`}
-                      name={`${item.name}`}
+                      // name={`${item.name}`}
+                      name="groceryItem"
                       value={`${item.name}`}
                       onChange={this.handleChange}
                     />

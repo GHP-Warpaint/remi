@@ -1,10 +1,12 @@
 const router = require('express').Router()
 const {FoodItem, User} = require('../db/models')
+const isAuthenticated = require('./utilities')
+
 module.exports = router
 
 //mounted on /fridge
 //getting contents of fridge by user
-router.get('/', async (req, res, next) => {
+router.get('/', isAuthenticated, async (req, res, next) => {
   try {
     const id = req.session.passport.user
     const currentUser = await User.findByPk(id)

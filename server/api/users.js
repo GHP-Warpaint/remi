@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
+const isAuthenticated = require('./utilities')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -13,7 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.put('/:userId', async (req, res, next) => {
+router.put('/:userId', isAuthenticated, async (req, res, next) => {
   try {
     const userUpdate = await User.findOne({
       where: {

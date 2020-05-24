@@ -12,49 +12,57 @@ async function seed() {
       firstName: 'Cody',
       lastName: 'Pug',
       email: 'cody@email.com',
-      password: '123'
+      password: '123',
+      isAdmin: true
     }),
     User.create({
       firstName: 'Gordon',
       lastName: 'Ramsey',
       email: 'gordon@remy.com',
-      password: 'masterchef'
+      password: 'masterchef',
+      isAdmin: false
     }),
     User.create({
       firstName: 'Anthony',
       lastName: 'Bourdain',
       email: 'anthony@remy.com',
-      password: 'noreservations'
+      password: 'noreservations',
+      isAdmin: false
     }),
     User.create({
       firstName: 'Guy',
       lastName: 'Fieri',
       email: 'guy@remy.com',
-      password: 'flavortown'
+      password: 'flavortown',
+      isAdmin: false
     }),
     User.create({
       firstName: 'Julia',
       lastName: 'Childs',
       email: 'julia@remy.com',
-      password: 'classic'
+      password: 'classic',
+      isAdmin: false
     }),
     User.create({
       firstName: 'Ina',
       lastName: 'Garten',
       email: 'ina@remy.com',
-      password: 'barefootcontessa'
+      password: 'barefootcontessa',
+      isAdmin: false
     }),
     User.create({
       firstName: 'Bobby',
       lastName: 'Flay',
       email: 'bobby@remy.com',
-      password: 'throwdown'
+      password: 'throwdown',
+      isAdmin: false
     }),
     User.create({
       firstName: 'Rachel',
       lastName: 'Ray',
       email: 'rachel@remy.com',
-      password: 'kitchen'
+      password: 'kitchen',
+      isAdmin: false
     })
   ])
 

@@ -38,6 +38,9 @@ const User = db.define('user', {
       return () => this.getDataValue('salt')
     }
   },
+  isAdmin: {
+    type: Sequelize.BOOLEAN
+  },
   googleId: {
     type: Sequelize.STRING
   },

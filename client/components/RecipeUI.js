@@ -21,23 +21,25 @@ class SingleRecipe extends Component {
       <div>
         <div className="recipe-card">
           <h2>{title}</h2>
-          <img src={image} alt="recipe image" />
+          <img src={image} alt="recipe image" /> <br />
+          <Link
+            to={{
+              pathname: '/SingleRecipe',
+              recipeProps: {
+                name: title,
+                image: image,
+                recipeId: id
+              }
+            }}
+            onClick={() => {
+              this.cookRecipe(id)
+            }}
+          >
+            <button type="button">Cook this Recipe!</button>
+          </Link>
         </div>
-        <Link
-          to={{
-            pathname: '/SingleRecipe',
-            recipeProps: {
-              name: title,
-              image: image,
-              recipeId: id
-            }
-          }}
-          onClick={() => {
-            this.cookRecipe(id)
-          }}
-        >
-          Cook this Recipe!
-        </Link>
+        <br />
+        <br />
       </div>
     )
   }

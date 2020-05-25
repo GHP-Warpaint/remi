@@ -159,8 +159,7 @@ class Receipt extends React.Component {
               className="button"
               onClick={this.getTextFromImage}
             >
-              Generate
-              <i id="genSpinner" className="fa fa-spinner fa-spin" />
+              Generate <i id="genSpinner" className="fa fa-spinner fa-spin" />
             </button>
           ) : (
             <button
@@ -176,7 +175,8 @@ class Receipt extends React.Component {
         <div className="loading">
           <span className="status-text">
             {this.state.isProcessing
-              ? `Processing Image ( ${this.state.pctg} % )`
+              ? // ? `Processing Image ( ${this.state.pctg} % )`
+                null
               : 'It looks like you have purchased:'}
           </span>
         </div>

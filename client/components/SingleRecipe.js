@@ -10,7 +10,8 @@ class SingleRecipe extends Component {
     this.state = {
       //savedRecipe: false
       checkedFoods: [],
-      addMe: false
+      addMe: false,
+      checked: false
     }
     //this.alert = this.alert.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,6 +23,14 @@ class SingleRecipe extends Component {
     console.log("I'm checking you out")
     console.log('event.target.value', event.target.value) //returns food item's name
     console.log('event.target', event.target)
+    this.state.checkedFoods.push(event.target.value)
+
+    this.setState({
+      checked: event.target.checked
+    })
+
+    console.log('state', this.state)
+
     // if () {this.setState({
     //   checkedFoods: this.state.checkedFoods.push(event.target.value)
     // })}
@@ -121,6 +130,7 @@ class SingleRecipe extends Component {
                     <input
                       type="checkbox"
                       id={`${item.name}`}
+                      checked={this.state.checked}
                       // name={`${item.name}`}
                       name="groceryItem"
                       value={`${item.name}`}

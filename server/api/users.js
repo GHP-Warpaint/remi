@@ -15,16 +15,17 @@ router.get('/', isAdmin, async (req, res, next) => {
   }
 })
 
-router.put('/:userId', isAuthenticated, async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
+    console.log(req.session.passport)
     const userUpdate = await User.findOne({
       where: {
         id: req.params.userId
       }
     })
-    console.log('express req.body=>', req.body)
-    const updateCampus = await userUpdate.update(req.body)
-    res.json(updateCampus)
+    const updatedUser = await userUpdate.update(req.body)
+    console.log(updatedUser)
+    res.json(updatedUser)
   } catch (error) {
     next(error)
   }

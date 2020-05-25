@@ -1,6 +1,7 @@
 const {User} = require('../db/models')
 
 module.exports = async function isAuthenticated(req, res, next) {
+  console.log('in auhthenticator')
   if (req.session.passport) {
     const userId = req.session.passport.user
     try {

@@ -9,7 +9,7 @@ class SingleRecipe extends Component {
     super(props)
     this.state = {
       //savedRecipe: false
-      checkedFoods: [],
+      groceryList: [],
       addMe: false,
       checked: false
     }
@@ -23,35 +23,30 @@ class SingleRecipe extends Component {
     console.log("I'm checking you out")
     console.log('event.target.value', event.target.value) //returns food item's name
     console.log('event.target', event.target)
-    this.state.checkedFoods.push(event.target.value)
 
+    console.log('state BEFORE=>', this.state)
     this.setState({
       checked: event.target.checked
     })
+    console.log('state BETWEEN SETSTATE AND ARR UPDATE=>', this.state)
+    if (this.state.checked === true) {
+      this.state.groceryList.push(event.target.value)
+    } else if (this.state.checked === false) {
+      const findItem = this.state.groceryList.indexOf(event.target.value)
+      this.state.groceryList.splice(findItem, 1)
+    }
 
-    console.log('state', this.state)
-
-    // if () {this.setState({
-    //   checkedFoods: this.state.checkedFoods.push(event.target.value)
-    // })}
+    console.log('state AFTER=>', this.state)
   }
 
-  //need to figure out how to get the name value from the selected & submitted missing ingredients checkbox
   handleSubmit = event => {
     event.preventDefault()
     const userId = this.props.user.id
     console.log('this.props', this.props)
     console.log('this.state', this.state)
-    // const {addFood} = this.props
-    //const food = this.state
-    //this.props.addToList(userId, newFood)
+    const newFood = {groceryList: this.state.groceryList}
+    this.props.addToList(userId, newFood)
   }
-
-  // alert() {
-  //   this.setState({
-  //     savedRecipe: true
-  //   })
-  // }
 
   render() {
     if (!this.props.directions[0]) return <h1>loading</h1>
@@ -71,20 +66,6 @@ class SingleRecipe extends Component {
       <div>
         <Link to="/recipes">Back to Recipes</Link>
         <h1>{name}</h1>
-        {/* {!!this.state.savedRecipe && (
-          <div className="alert">
-            <span
-              className="closebtn"
-              // onClick={this.parentElement.style.display='none'}
-            >
-              &times;
-            </span>
-            <strong>Success!</strong> Recipe saved! Find it in My Account.
-          </div>
-        )}
-        <button type="submit" onClick={this.alert}>
-          Save This Recipe
-        </button> */}
         <br />
         <br />
         <img src={imageURL} />

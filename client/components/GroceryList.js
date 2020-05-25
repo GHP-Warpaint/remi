@@ -23,8 +23,6 @@ class GroceryList extends Component {
 
   render() {
     let groceryList = this.props.user.groceryList
-    // console.log('Grocery state', this.state)
-    // console.log('PROPS', this.props)
     // console.log('Grocery PROPS', this.props.user.groceryList)
     return (
       <div className="grocery-list">

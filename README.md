@@ -24,7 +24,7 @@ Upload an image of your grocery receipt to our site to add the groceries to your
 * PostgreSQL - A relational database where all of our web application's data is stored within various tables.
 * Sequelize - A Javascript library that helps with managing the PSQL database.
 * HTML/CSS - HTML provides the template structure for the DOM and all of the statically typed words seen on the DOM; CSS is responsible for styling all of the elements on the DOM.
-  <!-- * Redis - A key-value database that stores all of its data in RAM, providing incredible data access speeds. Redis allows us to cache the info that the browser requires to render certain information so that on the user's visit they can quickly access the information they need.-->
+  <!-- * Redis - A NoSQL database that stores all of its data in RAM, providing incredible data access speeds. Redis allows us to cache the info that the browser requires to render certain information, more specifically the Spoonacular API info, so that on the user's visit they can quickly access the information they need.-->
 
 ## Setup
 

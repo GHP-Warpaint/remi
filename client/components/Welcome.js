@@ -14,6 +14,16 @@ const Welcome = () => {
         you decide on a recipe, Chef Remy will take you step-by-step through the
         meal preparation.
       </h5>
+      <br />
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube-nocookie.com/embed/EXpQ9vEJ4XU"
+        frameBorder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+      <br />
 
       <Link to="/about-alexa">
         <button type="button" className="entice-btn">

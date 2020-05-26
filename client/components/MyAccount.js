@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {me, updateEmail, updateName} from '../reducer/user'
 import GroceryList from './GroceryList'
 import SavedRecipes from './SavedRecipes'
-//import {removeGroceryListItem, fetchGroceryList} from '../reducer/groceryList'
 
 export class MyAccount extends React.Component {
   constructor(props) {
@@ -148,13 +147,16 @@ export class MyAccount extends React.Component {
                   </form>
                 ) : null}
               </h2>
+              <h2 className="acct-details">
+                <div>User ID</div> <div>{user.id}</div>
+              </h2>
             </div>
           )}
         </div>
-        {/* <div className="my-acct-extras">
-          <SavedRecipes />
-          <GroceryList />
-        </div> */}
+        <div className="my-acct-extras">
+          {/* <SavedRecipes /> */}
+          {/* <GroceryList /> */}
+        </div>
       </div>
     )
   }

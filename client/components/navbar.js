@@ -4,6 +4,15 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
+// function respondTag() {
+//   var x = document.getElementById('myTopnav')
+//   if (x.className === 'topnav') {
+//     x.className += ' responsive'
+//   } else {
+//     x.className = 'topnav'
+//   }
+// }
+
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div id="head">
     <Link to="/">
@@ -21,15 +30,30 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/fridge">Fridge</Link>
-          <Link to="/receipt">Add Receipt</Link>
-          <Link to="/recipes">Recipes</Link>
-          <Link to="/about-alexa">Alexa</Link>
-          <Link to="/account">My Account</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+          <div className="topnav" id="myTopnav">
+            <Link to="/home">Home</Link>
+            <Link to="/fridge">Fridge</Link>
+            <Link to="/receipt">Add Receipt</Link>
+            <Link to="/recipes">Recipes</Link>
+            <Link to="/about-alexa">Alexa</Link>
+            <Link to="/account">My Account</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+            <a
+              href=""
+              className="icon"
+              onClick={e => {
+                e.preventDefault()
+                let x = document.getElementById('myTopnav')
+                x.className === 'topnav'
+                  ? (x.className += ' responsive')
+                  : (x.className = 'topnav')
+              }}
+            >
+              <i className="fa fa-bars" />
+            </a>
+          </div>
         </div>
       ) : (
         <div>

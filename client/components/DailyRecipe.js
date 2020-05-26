@@ -3,10 +3,11 @@ import {connect} from 'react-redux'
 import {getDailyRecipe} from '../reducer/dailyRecipe'
 import Loader from 'react-loader-spinner'
 
+let recognition
 if (window.speechRecognition || window.webkitSpeechRecognition) {
   const SpeechRecognition =
     window.speechRecognition || window.webkitSpeechRecognition
-  const recognition = new SpeechRecognition()
+  recognition = new SpeechRecognition()
 
   recognition.onstart = function() {
     console.log('voice is activated, you can speak to the microphone')

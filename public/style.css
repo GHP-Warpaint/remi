@@ -11,6 +11,22 @@ button {
   font-family: 'Jost', sans-serif;
 }
 
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  overflow: visible;
+  background: rgb(51, 0, 17)
+    url(https://i.giphy.com/media/3o85g3loeiLcF26OZy/giphy.webp) no-repeat
+    center center;
+  color: white;
+}
+
+#loader h1 {
+  color: white;
+}
+
 body {
   font-family: sans-serif;
   text-align: center;
@@ -90,9 +106,63 @@ nav div {
 
 nav a {
   margin: 1em;
+  color: whitesmoke;
 }
 nav a:visited {
   color: whitesmoke;
+}
+nav a:hover {
+  color: lightsteelblue;
+}
+
+#hamburger {
+  display: none;
+  font-size: x-large;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  text-align: center;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 750px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 750px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 }
 
 form div {
@@ -129,6 +199,12 @@ form div {
   background-color: white;
   padding: 1rem;
   border-radius: 5px;
+  height: 350px;
+}
+
+.recipe-card img {
+  max-width: 100%;
+  max-height: 90%;
 }
 
 .instructions {
@@ -187,6 +263,15 @@ button:hover {
 .itemBtn {
   /* background-color: #f44336;
   color: cornsilk; */
+  size: 1em;
+  padding: 3px;
+  float: right;
+}
+
+.groceryItemRemove {
+  background: none;
+  color: black;
+  border: none;
   size: 1em;
   padding: 3px;
   float: right;
@@ -450,4 +535,12 @@ footer {
 li:hover .saved-recipe-img {
   visibility: visible;
   bottom: 6%;
+}
+#genSpinner {
+  display: none;
+  visibility: hidden;
+}
+.respond #genSpinner {
+  display: inline;
+  visibility: visible;
 }

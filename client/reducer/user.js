@@ -8,6 +8,7 @@ const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const UPDATED_NAME = 'UPDATED_NAME'
 const UPDATED_EMAIL = 'UPDATED_EMAIL'
+const UPDATED_GROCERIES = 'UPDATED_GROCERIES'
 
 /**
  * ACTION CREATORS
@@ -16,6 +17,10 @@ const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const updatedName = name => ({type: UPDATED_NAME, name})
 const updatedEmail = email => ({type: UPDATED_EMAIL, email})
+const updatedGroceryList = groceryList => ({
+  type: UPDATED_GROCERIES,
+  groceryList
+})
 
 /**
  * THUNK CREATORS
@@ -29,10 +34,19 @@ export const me = () => async dispatch => {
   }
 }
 
+export const updateGroceryList = (userId, groceryList) => async dispatch => {
+  try {
+    const res = await axios.put(`/api/users/${userId}`, groceryList)
+    console.log('REDUX GROCERIES, res', res)
+    dispatch(updatedGroceryList(res.data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const updateName = (userId, name) => async dispatch => {
   try {
     const res = await axios.put(`/api/users/${userId}`, name)
-    console.log('REDUX NAME, res', res)
     dispatch(updatedName(res.data))
   } catch (error) {
     console.error(error)
@@ -42,9 +56,7 @@ export const updateName = (userId, name) => async dispatch => {
 export const updateEmail = (userId, email) => async dispatch => {
   try {
     const res = await axios.put(`/api/users/${userId}`, email)
-    console.log('REDUX, res', res)
     dispatch(updatedEmail(res.data))
-    console.log('REDUXY DISPATCH', dispatch(updatedEmail(res.data)))
   } catch (error) {
     console.error(error)
   }
@@ -82,7 +94,8 @@ export const logout = () => async dispatch => {
 const defaultUser = {
   firstName: '',
   lastName: '',
-  email: ''
+  email: '',
+  groceryList: []
 }
 
 /**
@@ -102,6 +115,8 @@ export default function userReducer(state = defaultUser, action) {
       }
     case UPDATED_EMAIL:
       return {...state, email: action.email.email}
+    case UPDATED_GROCERIES:
+      return {...state, groceryList: [...action.groceryList.groceryList]}
     default:
       return state
   }

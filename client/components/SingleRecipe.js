@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchRecipeDirections} from '../reducer/recipe'
-//import {addGroceryListItem} from '../reducer/groceryList'
+import {me, updateGroceryList} from '../reducer/user'
 import {Link} from 'react-router-dom'
 
 class SingleRecipe extends Component {
@@ -9,25 +9,47 @@ class SingleRecipe extends Component {
     super(props)
     this.state = {
       //savedRecipe: false
-      //selectedFoods:
+      groceryList: [],
+      addMe: false,
+      checked: false
     }
     //this.alert = this.alert.bind(this)
-    //this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  //need to figure out how to get the name value (and maybe id) from the selected & submitted missing ingredients checkbox
-  // handleSubmit = async event => {
-  //   event.preventDefault()
-  //   const {addFood} = this.props
-  //   const food = this.state
-  //   await addToList(food)
-  // }
+  //needs to get both the checkbox val and determine if the val is still checked before setting state
+  handleChange(event) {
+    console.log("I'm checking you out")
+    console.log('event.target.value', event.target.value) //returns food item's name
+    console.log('event.target', event.target)
 
-  // alert() {
-  //   this.setState({
-  //     savedRecipe: true
-  //   })
-  // }
+    console.log('state BEFORE=>', this.state)
+    this.setState({
+      checked: event.target.checked
+    })
+    // console.log('state BETWEEN SETSTATE AND ARR UPDATE=>', this.state)
+    if (
+      this.state.checked === true &&
+      !this.state.groceryList.includes(event.target.value)
+    ) {
+      this.state.groceryList.push(event.target.value)
+    } else if (this.state.checked === false) {
+      const findItem = this.state.groceryList.indexOf(event.target.value)
+      this.state.groceryList.splice(findItem, 1)
+    }
+
+    console.log('state AFTER=>', this.state)
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    const userId = this.props.user.id
+    console.log('this.props', this.props)
+    console.log('this.state', this.state)
+    const newFood = {groceryList: this.state.groceryList}
+    this.props.addToList(userId, newFood)
+  }
 
   render() {
     if (!this.props.directions[0]) return <h1>loading</h1>
@@ -47,20 +69,6 @@ class SingleRecipe extends Component {
       <div>
         <Link to="/recipes">Back to Recipes</Link>
         <h1>{name}</h1>
-        {/* {!!this.state.savedRecipe && (
-          <div className="alert">
-            <span
-              className="closebtn"
-              // onClick={this.parentElement.style.display='none'}
-            >
-              &times;
-            </span>
-            <strong>Success!</strong> Recipe saved! Find it in My Account.
-          </div>
-        )}
-        <button type="submit" onClick={this.alert}>
-          Save This Recipe
-        </button> */}
         <br />
         <br />
         <img src={imageURL} />
@@ -98,9 +106,20 @@ class SingleRecipe extends Component {
               <br />
             </div>
           )}
-          {/* <form
-          // onSubmit={this.handleSubmit}
-          >
+          {missedIngredients.length ? (
+            missedIngredients.map(item => {
+              return (
+                <div key={item.id} className="cook-instructions">
+                  <p>{`${item.name}`}</p>
+                </div>
+              )
+            })
+          ) : (
+            <div>
+              <br />
+            </div>
+          )}
+          {/* <form onSubmit={this.handleSubmit}>
             {missedIngredients.length ? (
               missedIngredients.map(item => {
                 return (
@@ -108,7 +127,11 @@ class SingleRecipe extends Component {
                     <input
                       type="checkbox"
                       id={`${item.name}`}
-                      name={`${item.name}`}
+                      checked={this.state.checked}
+                      // name={`${item.name}`}
+                      name="groceryItem"
+                      value={`${item.name}`}
+                      onChange={this.handleChange}
                     />
                     <label htmlFor={`${item.name}`}>{`${item.name}`}</label>
                   </div>
@@ -119,7 +142,9 @@ class SingleRecipe extends Component {
                 <br />
               </div>
             )}
-            <input type="submit" value="Add to Grocery List" />
+            <div>
+              <button type="submit">Add to Grocery List</button>
+            </div>
           </form> */}
         </div>
         <div className="directions">
@@ -143,14 +168,15 @@ const mapState = state => {
   return {
     food: state.fridge.food,
     recipe: state.recipe,
-    directions: state.recipe.directions
-    //shoppingList: state.groceryList
+    directions: state.recipe.directions,
+    user: state.user
   }
 }
 
 const mapDispatch = dispatch => ({
-  fetchDirections: id => dispatch(fetchRecipeDirections(id))
-  //addToList: () => dispatch(addGroceryListItem())
+  fetchDirections: id => dispatch(fetchRecipeDirections(id)),
+  addToList: (userId, groceryList) =>
+    dispatch(updateGroceryList(userId, groceryList))
 })
 
 export default connect(mapState, mapDispatch)(SingleRecipe)

@@ -1,0 +1,25 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri":
+            "arn:aws:lambda:us-east-1:811027267943:function:9cc59d1b-c15c-4d76-8ff3-4952323db08e:Release_0"
+        },
+        "interfaces": []
+      }
+    },
+    "permissions": [
+      {
+        "name": "alexa::profile:email:read"
+      }
+    ],
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "nora test"
+        }
+      }
+    }
+  }
+}

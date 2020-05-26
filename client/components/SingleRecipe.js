@@ -28,8 +28,11 @@ class SingleRecipe extends Component {
     this.setState({
       checked: event.target.checked
     })
-    console.log('state BETWEEN SETSTATE AND ARR UPDATE=>', this.state)
-    if (this.state.checked === true) {
+    // console.log('state BETWEEN SETSTATE AND ARR UPDATE=>', this.state)
+    if (
+      this.state.checked === true &&
+      !this.state.groceryList.includes(event.target.value)
+    ) {
       this.state.groceryList.push(event.target.value)
     } else if (this.state.checked === false) {
       const findItem = this.state.groceryList.indexOf(event.target.value)

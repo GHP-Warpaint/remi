@@ -155,12 +155,11 @@ class Receipt extends React.Component {
           {!this.state.receiptItems.length ? (
             <button
               type="submit"
-              id="generate"
               className="button"
               onClick={this.getTextFromImage}
             >
               Generate
-              <i id="genSpinner" className="fa fa-spinner fa-spin" />
+              {/* <i id="genSpinner" className="fa fa-spinner fa-spin" /> */}
             </button>
           ) : (
             <button
@@ -175,9 +174,13 @@ class Receipt extends React.Component {
 
         <div className="loading">
           <span className="status-text">
-            {this.state.isProcessing
-              ? `Processing Image ( ${this.state.pctg} % )`
-              : 'It looks like you have purchased:'}
+            {this.state.isProcessing ? (
+              <div id="generate">
+                <i id="genSpinner" className="fa fa-spinner fa-spin" />
+              </div>
+            ) : (
+              'It looks like you have purchased:'
+            )}
           </span>
         </div>
 

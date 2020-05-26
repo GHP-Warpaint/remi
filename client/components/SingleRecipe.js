@@ -106,7 +106,20 @@ class SingleRecipe extends Component {
               <br />
             </div>
           )}
-          <form onSubmit={this.handleSubmit}>
+          {missedIngredients.length ? (
+            missedIngredients.map(item => {
+              return (
+                <div key={item.id} className="cook-instructions">
+                  <p>{`${item.name}`}</p>
+                </div>
+              )
+            })
+          ) : (
+            <div>
+              <br />
+            </div>
+          )}
+          {/* <form onSubmit={this.handleSubmit}>
             {missedIngredients.length ? (
               missedIngredients.map(item => {
                 return (
@@ -132,7 +145,7 @@ class SingleRecipe extends Component {
             <div>
               <button type="submit">Add to Grocery List</button>
             </div>
-          </form>
+          </form> */}
         </div>
         <div className="directions">
           <h2>Directions:</h2>

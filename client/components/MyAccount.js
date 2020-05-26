@@ -155,7 +155,7 @@ export class MyAccount extends React.Component {
         </div>
         <div className="my-acct-extras">
           {/* <SavedRecipes /> */}
-          <GroceryList />
+          {/* <GroceryList /> */}
         </div>
       </div>
     )

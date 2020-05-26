@@ -1,0 +1,160 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "chef remy",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AddFoodIntent",
+          "slots": [
+            {
+              "name": "food",
+              "type": "AMAZON.Food"
+            }
+          ],
+          "samples": ["{food}", "add {food}", "add {food} to my fridge"]
+        },
+        {
+          "name": "CaptureUserIDIntent",
+          "slots": [
+            {
+              "name": "userID",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": ["my user id is {userID}", "{userID}", "my id is {userID}"]
+        },
+        {
+          "name": "FridgeIntent",
+          "slots": [
+            {
+              "name": "fridge",
+              "type": "fridge"
+            }
+          ],
+          "samples": [
+            "remy open my {fridge}",
+            "add to my {fridge}",
+            "open my {fridge}",
+            "open the {fridge}",
+            "{fridge}",
+            "add food to my {fridge}",
+            "go to my {fridge}"
+          ]
+        },
+        {
+          "name": "RecipeIntent",
+          "slots": [
+            {
+              "name": "recipe",
+              "type": "recipe"
+            }
+          ],
+          "samples": [
+            "new {recipe}",
+            "get new {recipe}",
+            "{recipe}",
+            "get {recipe}",
+            "start {recipe}"
+          ]
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "ContinueIntent",
+          "slots": [
+            {
+              "name": "continue",
+              "type": "continue"
+            }
+          ],
+          "samples": [
+            "{continue} steps",
+            "what is {continue}",
+            "please {continue}",
+            "{continue}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "fridge",
+                "synonyms": [
+                  "cupboards",
+                  "fridges",
+                  "kitchen",
+                  "pantry",
+                  "storage",
+                  "inventory",
+                  "refrigerators"
+                ]
+              }
+            }
+          ],
+          "name": "fridge"
+        },
+        {
+          "values": [
+            {
+              "id": "recipe",
+              "name": {
+                "value": "recipe",
+                "synonyms": [
+                  "dish",
+                  "instructions",
+                  "cookbook",
+                  "home cooking",
+                  "cookbooks",
+                  "recipes"
+                ]
+              }
+            }
+          ],
+          "name": "recipe"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "continue",
+                "synonyms": [
+                  "after this",
+                  "continues",
+                  "continuing",
+                  "continued",
+                  "next"
+                ]
+              }
+            }
+          ],
+          "name": "continue"
+        }
+      ]
+    }
+  },
+  "version": "22"
+}

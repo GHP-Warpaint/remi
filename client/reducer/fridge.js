@@ -114,6 +114,11 @@ export default function fridgeReducer(state = initialState, action) {
     case GET_FOOD:
       return {...state, food: action.food}
     case ADD_FOOD:
+      console.log('in add reducer>>>>>>>>>>>>', state.food)
+      console.log(action.foodItem)
+      if (state.food.some(element => element.id === action.foodItem.id)) {
+        return state
+      }
       return {...state, food: [...state.food, action.foodItem]}
     // case ADD_MULTIPLE_FOODS:
     //     return {...state, food: [...state.food, ...action.foods]}
